@@ -17,21 +17,19 @@ Little is known about the dynamics of gene expression during development in non-
 * Brief summary of your analysis goals.
 * Experimental design (structure of replication, what tissues you sampled, how many libraries you have, how long the reads are and how many reads there are).
 
------------------------------------------------------------------------------
-					|		  Female 1			|		  Female 2			|
-------------+-------+---------------------------+---------------------------+
-	stage	|  time	|	  ID	|	  reads		|	  ID	|	  reads		|
-------------+-------+-----------+---------------+-----------+---------------+
-   oocyte	|	0d	|	Pc1_0d	|	40524220	|	Pc2_0d	|	19240372	|
-   32 cell	|	1d	|	Pc1_1d	|	14403749	|	Pc2_1d	|	13153749	|
-			|	2d	|	  -		|		-		|	  -		|		-		|
-  gastrula	|	3d	|	Pc1_3d	|	30566620	|	Pc2_3d	|	18861835	|
-			|	4d	|	  -		|		-		|	  -		|		-		|
-			|	5d	|	Pc1_5d	|	20631875	|	Pc2_5d	|	10762813	|
-introvertula|	6d	|	  -		|		-		|	  -		|		-		|
-			|	7d	|	  -		|		-		|	Pc2_7d	|	17112976	|
-			|	9d	|	Pc1_9d	|	17617125	|	Pc2_9d	|	14976016	|
-hatch. larva|  12d	|	  -		|		-		|	  -		|		-		|
-			|  15d	|	  -		|		-		|	  -		|		-		|
-lorica larva|  20d	|	  -		|		-		|	  -		|		-		|
-------------+-------+-----------+---------------+-----------+---------------+
+-----------------------------------------------------
+	stage	|  time	|	F1 reads	|	F2 reads	|
+------------+-------+---------------+---------------+
+   oocyte	|	0d	|	40524220	|	19240372	|
+   32 cell	|	1d	|	14403749	|	13153749	|
+			|	2d	|	-			|	-			|
+  gastrula	|	3d	|	30566620	|	18861835	|
+			|	4d	|	-			|	-			|
+			|	5d	|	20631875	|	10762813	|
+introvertula|	6d	|	-			|	-			|
+			|	7d	|	-			|	17112976	|
+			|	9d	|	17617125	|	14976016	|
+hatch. larva|  12d	|	-			|	-			|
+			|  15d	|	-			|	-			|
+lorica larva|  20d	|	-			|	-			|
+------------+-------+---------------+---------------+
