@@ -17,19 +17,19 @@ Little is known about the dynamics of gene expression during development in non-
 * Brief summary of your analysis goals.
 * Experimental design (structure of replication, what tissues you sampled, how many libraries you have, how long the reads are and how many reads there are).
 
------------------------------------------------------
-	stage	|  time	|	F1 reads	|	F2 reads	|
-------------+-------+---------------+---------------+
-   oocyte	|	0d	|	40524220	|	19240372	|
-   32 cell	|	1d	|	14403749	|	13153749	|
-			|	2d	|	-			|	-			|
-  gastrula	|	3d	|	30566620	|	18861835	|
-			|	4d	|	-			|	-			|
-			|	5d	|	20631875	|	10762813	|
-introvertula|	6d	|	-			|	-			|
-			|	7d	|	-			|	17112976	|
-			|	9d	|	17617125	|	14976016	|
-hatch. larva|  12d	|	-			|	-			|
-			|  15d	|	-			|	-			|
-lorica larva|  20d	|	-			|	-			|
-------------+-------+---------------+---------------+
+	-----------------------------------------------------
+		stage	|  time	|	F1 reads	|	F2 reads	|
+	------------+-------+---------------+---------------+
+	   oocyte	|	0d	|	40524220	|	19240372	|
+	   32 cell	|	1d	|	14403749	|	13153749	|
+				|	2d	|	-			|	-			|
+	  gastrula	|	3d	|	30566620	|	18861835	|
+				|	4d	|	-			|	-			|
+				|	5d	|	20631875	|	10762813	|
+	introvertula|	6d	|	-			|	-			|
+				|	7d	|	-			|	17112976	|
+				|	9d	|	17617125	|	14976016	|
+	hatch. larva|  12d	|	-			|	-			|
+				|  15d	|	-			|	-			|
+	lorica larva|  20d	|	-			|	-			|
+	------------+-------+---------------+---------------+
