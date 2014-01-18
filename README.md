@@ -32,8 +32,8 @@ We collected adult priapulids by dredging at the Sven Lovén Marine Station in K
 
 Every day we picked at least 100 good-looking embryos (usually more) and added directly to a tube with RNAlater.
 
-RNA Extraction & Sequencing
----------------------------
+RNA Extraction
+--------------
 
 I extracted the total RNA with phenol/chloroform protocol for female 1 and female 2, separately. Later stages of female 1 were not collected.
 
@@ -51,6 +51,9 @@ I extracted the total RNA with phenol/chloroform protocol for female 1 and femal
 |	hatching larva	|	12d		|	-			|	390			|
 |					|	15d		|	-			|	485			|
 |	lorica larva	|	20d		|	-			|	132			|
+
+Sequencing
+----------
 
 Samples of 0, 1, 3, 5, 7, and 9 days for each female were selected for sequencing; 12 samples in total to be sequenced on a single lane. We sent to GeneCore sequencing facility for a Illumina HiSeq2000 Single End with 50 bp reads. Due to low RNA amount, one library preparation failed, female 1 7d. Only 11 samples were sequenced on a single lane.
 
