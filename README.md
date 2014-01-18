@@ -55,6 +55,8 @@ I extracted the total RNA with phenol/chloroform protocol for female 1 and femal
 Sequencing
 ----------
 
+### Time-series
+
 Samples of 0, 1, 3, 5, 7, and 9 days for each female were selected for sequencing; 12 samples in total to be sequenced on a single lane. We sent to GeneCore sequencing facility for a Illumina HiSeq2000 Single End with 50 bp reads. Due to low RNA amount, one library preparation failed, female 1 7d. Only 11 samples were sequenced on a single lane.
 
 |	stage			|	time	|	F1 reads	|	F2 reads	|
@@ -65,3 +67,16 @@ Samples of 0, 1, 3, 5, 7, and 9 days for each female were selected for sequencin
 |	late gastrula	|	5d		|	20631875	|	10762813	|
 |	introvertula	|	7d		|	-			|	17112976	|
 |	pre-hatch larva	|	9d		|	17617125	|	14976016	|
+
+### Reference
+
+RNA samples above were pooled together for a deeper sequencing with a single lane of Illumina HiSeq2000 Paired Ends with 100 bp reads.
+
+|	Paired ends		|	reads		|
+|	:---------:		|	:---:		|
+|	PcauRNAseq_1	|	232220195	|
+|	PcauRNAseq_2	|	232220195	|
+
+Assembly was performed with Agalma 0.3.3 skipping `oases_merge` step.
+
+	agalma transcriptome --id PcauRNAseq --skip oases_merge --outdir /sysdev/s9/bruno/Priapulus_caudatus/RNAseq/agalma/analyses/ > PcauRNAseq.log 2>&1 &
