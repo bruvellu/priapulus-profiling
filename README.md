@@ -15,16 +15,15 @@ Thus, profiling the gene expression of _P. caudatus_ can provide interesting dat
 Questions
 ---------
 
-* Which genes change their expression levels over time?
-* Does the dynamics reflect any developmental event?
-* Are the gene expression levels congruent with the in situ hybridizations?
-* What kind of genes are there?
-
+* Which patterns of gene expression occur during development? Do they correlate with any developmental event?
+* Can these patterns be identified and compared to _D. melanogaster_, for example? What is conserved or missing?
 
 Technical goals
 ---------------
 
-I will learn the methodology to (1) clean and process raw data of high-throughput sequencing, (2) assemble transcriptomes, (3) run time-series analysis on transcriptome data including statistical tests for identifying differentially expressed genes, and finally (4) annotating and characterizing relevant developmental genes.
+* Develop hands-on bioinformatics toolset.
+* Learn how to process raw data of high-throughput sequencing including stages of Agalma pipeline. What is the rationale and approach behind each step?
+* Learn time-series analysis on transcriptome data including statistical tests for identifying differentially expressed genes.
 
 Collection & Sampling
 ---------------------
@@ -63,5 +62,3 @@ Samples of 0, 1, 3, 5, 7, and 9 days for each female were selected for sequencin
 |	late gastrula	|	5d		|	20631875	|	10762813	|
 |	introvertula	|	7d		|	-			|	17112976	|
 |	pre-hatch larva	|	9d		|	17617125	|	14976016	|
-
-
