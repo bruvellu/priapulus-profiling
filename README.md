@@ -72,10 +72,13 @@ Samples of 0, 1, 3, 5, 7, and 9 days for each female were selected for sequencin
 
 RNA samples above were pooled together for a deeper sequencing with a single lane of Illumina HiSeq2000 Paired Ends with 100 bp reads.
 
-|	Paired ends		|	reads		|
-|	:---------:		|	:---:		|
-|	PcauRNAseq_1	|	232220195	|
-|	PcauRNAseq_2	|	232220195	|
+|	Paired ends		|	reads								|
+|	:---------:		|	:---:								|
+|	PcauRNAseq_1	|	[232220195][PcauRNAseq_1_fastqc]	|
+|	PcauRNAseq_2	|	[232220195][PcauRNAseq_2_fastqc]	|
+
+[PcauRNAseq_1_fastqc]: https://dl.dropboxusercontent.com/u/203439/priapulus_caudatus/Link%20to%20PcauRNAseq_1_fastqc/fastqc_report.html Click for FASTQC report.
+[PcauRNAseq_2_fastqc]: https://dl.dropboxusercontent.com/u/203439/priapulus_caudatus/Link%20to%20PcauRNAseq_2_fastqc/fastqc_report.html Click for FASTQC report.
 
 Assembly was performed with Agalma 0.3.3 skipping `oases_merge` step.
 
