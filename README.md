@@ -77,8 +77,8 @@ RNA samples above were pooled together for a deeper sequencing with a single lan
 |	PcauRNAseq_1	|	[232220195][PcauRNAseq_1_fastqc]	|
 |	PcauRNAseq_2	|	[232220195][PcauRNAseq_2_fastqc]	|
 
-[PcauRNAseq_1_fastqc]: https://dl.dropboxusercontent.com/u/203439/priapulus_caudatus/Link%20to%20PcauRNAseq_1_fastqc/fastqc_report.html Click for FASTQC report.
-[PcauRNAseq_2_fastqc]: https://dl.dropboxusercontent.com/u/203439/priapulus_caudatus/Link%20to%20PcauRNAseq_2_fastqc/fastqc_report.html Click for FASTQC report.
+[PcauRNAseq_1_fastqc]: https://dl.dropboxusercontent.com/u/203439/priapulus_caudatus/Link%20to%20PcauRNAseq_1_fastqc/fastqc_report.html 
+[PcauRNAseq_2_fastqc]: https://dl.dropboxusercontent.com/u/203439/priapulus_caudatus/Link%20to%20PcauRNAseq_2_fastqc/fastqc_report.html 
 
 Assembly was performed with Agalma 0.3.3 skipping `oases_merge` step.
 
