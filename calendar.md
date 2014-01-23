@@ -7,22 +7,22 @@ Week 04 2014
 
 ### Tuesday 21 January
 
-- [x] Arrive through snow storm.
-- [x] Get house keys, unpack, and buy food.
+- ~~Arrive through snow storm.~~
+- ~~Get house keys, unpack, and buy food.~~
 
 ### Wednesday 22 January
 
-- [x] Pay housing.
-- [x] Check in at Graduate School and OISSS.
-- [x] Organize fritzen and data files.
-- [x] Re-do Priapulus reference assembly.
-- [ ] Sketch a calendar with activities.
+- ~~Pay housing.~~
+- ~~Check in at Graduate School and OISSS.~~
+- ~~Organize fritzen and data files.~~
+- ~~Re-do Priapulus reference assembly.~~
+- Sketch a calendar with activities.
 
 ### Thursday 23 January
 
-- [ ] Order Brown ID with Shannon.
-- [ ] Download Nemertoderma RNAseq.
-- [ ] Get started with SRA archives.
+- Order Brown ID with Shannon.
+- Download Nemertoderma RNAseq.
+- Get started with SRA archives.
 
 ### Friday 24 January
 
@@ -49,7 +49,7 @@ Week 05 2014
 
 ### Thursday 30 January
 
-- [ ] Presentation for lab meeting.
+- Presentation for lab meeting.
 
 ### Friday 31 January
 
@@ -70,7 +70,7 @@ Week 06 2014
 
 ### Tuesday 04 February
 
-- [ ] Agalma Workshop at 1pm.
+- Agalma Workshop at 1pm.
 
 
 ### Wednesday 05 February
@@ -106,5 +106,5 @@ Week 07 2014
 
 
 ### Friday 14 February
-- [ ] Leaving Providence.
+- Leaving Providence.
 
