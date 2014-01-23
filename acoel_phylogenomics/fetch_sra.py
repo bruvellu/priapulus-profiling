@@ -1,3 +1,4 @@
+import re
 from Bio import Entrez
 
 '''Utility to filter and download SRA records.'''
@@ -9,7 +10,7 @@ Entrez.email = 'organelas@gmail.com'
 search_terms = '((((("strategy rna seq"[Properties]) AND "platform illumina"[Properties]) AND metazoa[Organism]) NOT vertebrata[Organism]) NOT insects[Organism]) AND ("2000/01/01"[Modification Date] : "3000"[Modification Date])'
 
 # First search for records matching the terms.
-search_handle = Entrez.esearch(db='sra', term=search_terms, retmax=3)
+search_handle = Entrez.esearch(db='sra', term=search_terms, retmax=20)
 search_records = Entrez.read(search_handle)
 
 # Print some information for the records.
@@ -27,11 +28,27 @@ for sra_id in sra_ids:
     summary_handle = Entrez.esummary(db='sra', id=sra_id)
     summary_record = Entrez.read(summary_handle)
     sra_summaries[sra_id] = summary_record
-    print(sra_id)
 
+# Create list for selected IDs.
+sra_selected_ids = []
+
+# Iterate through summaries and pick paired end datasets.
+print('\nID\tREAD LENGTH')
 for k, v in sra_summaries.iteritems():
-    print(k, v)
-    print()
+    summary_string = v[0]['ExpXml']
+    # Pattern to match: <PAIRED NOMINAL_LENGTH="200"
+    re_search = re.search('<(?P<reads>PAIRED)\sNOMINAL_LENGTH="(?P<length>\d+)"', summary_string)
+    try:
+        reads = re_search.group('reads')
+        # TODO Set minimum limit to 80 bp?
+        reads_length = int(re_search.group('length'))
+        print('%s\t%d' % (k, reads_length))
+        sra_selected_ids.append(k)
+    except:
+        print('%s\tdoes no satisfy parameters.' % k)
+        print('\n%s\n' % summary_string)
+
+print('\nTotal of %d selected IDs.' % len(sra_selected_ids))
 
 # TODO Parse read information, single or paired end and read length.
 # Probably just regex the ExpXml string, Biopython does not parse this.
