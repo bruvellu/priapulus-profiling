@@ -29,11 +29,19 @@ for sra_id in sra_ids:
     summary_record = Entrez.read(summary_handle)
     sra_summaries[sra_id] = summary_record
 
+# Paired or single reads will be parsed from the field ExpXml. Examples:
+# paired: http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=sra&id=445724
+# single: http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=sra&id=423751
+
 # Create list for selected IDs.
 sra_selected_ids = []
 
+# Write IDs and READ LENGTH to CSV file.
+paired_sra = open('paired_sra.csv', 'w')
+
 # Iterate through summaries and pick paired end datasets.
-print('\nID\tREAD LENGTH')
+paired_sra.write('ID,READ_LENGTH\n')
+print('\nID\tREAD_LENGTH')
 for k, v in sra_summaries.iteritems():
     summary_string = v[0]['ExpXml']
     # Pattern to match: <PAIRED NOMINAL_LENGTH="200"
@@ -42,24 +50,22 @@ for k, v in sra_summaries.iteritems():
         reads = re_search.group('reads')
         # TODO Set minimum limit to 80 bp?
         reads_length = int(re_search.group('length'))
-        print('%s\t%d' % (k, reads_length))
         sra_selected_ids.append(k)
+        paired_sra.write('%s,%d\n' % (k, reads_length))
+        print('%s\t%d' % (k, reads_length))
     except:
         print('%s\tdoes no satisfy parameters.' % k)
-        print('\n%s\n' % summary_string)
+        #print('\n%s\n' % summary_string)
 
-print('\nTotal of %d selected IDs.' % len(sra_selected_ids))
+# Closes CSV file.
+paired_sra.close()
 
-# TODO Parse read information, single or paired end and read length.
-# Probably just regex the ExpXml string, Biopython does not parse this.
-# Examples for:
-# paired: http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=sra&id=445724
-# single: http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=sra&id=423751
+# Just count selected IDs.
+count_sra_selected_ids = len(sra_selected_ids)
 
-# TODO Select only archives with paired reads.
+print('\nTotal of %d selected IDs. %d%% of returned entries.' % (count_sra_selected_ids, count_sra_selected_ids / int(search_records['Count'])))
 
 # TODO Use IDs to fetch the full records of these. Apparently the only return
 # type is XML, so it needs to be parsed to get a tabular output, if needed.
 
 # TODO find out how to fetch the sequences, iteratively by ID?
-
