@@ -10,7 +10,7 @@ Entrez.email = 'organelas@gmail.com'
 search_terms = '((((("strategy rna seq"[Properties]) AND "platform illumina"[Properties]) AND metazoa[Organism]) NOT vertebrata[Organism]) NOT insects[Organism]) AND ("2000/01/01"[Modification Date] : "3000"[Modification Date])'
 
 # First search for records matching the terms.
-search_handle = Entrez.esearch(db='sra', term=search_terms, retmax=20)
+search_handle = Entrez.esearch(db='sra', term=search_terms, retmax=2000)
 search_records = Entrez.read(search_handle)
 
 # Print some information for the records.
@@ -43,13 +43,18 @@ paired_sra = open('paired_sra.csv', 'w')
 paired_sra.write('ID,READ_LENGTH\n')
 print('\nID\tREAD_LENGTH')
 for k, v in sra_summaries.iteritems():
-    summary_string = v[0]['ExpXml']
+
     # Pattern to match: <PAIRED NOMINAL_LENGTH="200"
+    summary_string = v[0]['ExpXml']
+
+    # Paired or single reads?
     re_search = re.search('<(?P<reads>PAIRED)\sNOMINAL_LENGTH="(?P<length>\d+)"', summary_string)
+
     try:
         reads = re_search.group('reads')
         # TODO Set minimum limit to 80 bp?
         reads_length = int(re_search.group('length'))
+        # TODO Include platform, species, taxonid, etc?
         sra_selected_ids.append(k)
         paired_sra.write('%s,%d\n' % (k, reads_length))
         print('%s\t%d' % (k, reads_length))
