@@ -20,11 +20,15 @@ Week 04 2014
 
 ### Thursday 23 January
 
-- Order Brown ID with Shannon.
-- Download Nemertoderma RNAseq.
-- Get started with SRA archives.
+- ~~Order Brown ID with Shannon.~~ surname issue, try again
+- ~~Download Nemertoderma RNAseq.~~
+- ~~Get started with SRA archives.~~
 
 ### Friday 24 January
+
+- Improve and finish fetch_sra.py script.
+- Define strategy for taxon sampling.
+- 
 
 
 ### Saturday 25 January
