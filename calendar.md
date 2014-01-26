@@ -1,6 +1,7 @@
 Calendar
 ========
 
+
 Week 04 2014
 ------------
 19 January to 25 January
@@ -26,24 +27,29 @@ Week 04 2014
 
 ### Friday 24 January
 
-- Improve and finish fetch_sra.py script.
-- Define strategy for taxon sampling.
-- 
-
+- ~~Improve fetch_sra.py script.~~ added more fields to output
+- ~~Fix some fritzen program versions.~~
 
 ### Saturday 25 January
+
+- ~~Reference assembly for Priapulus profiling done.~~
+- ~~Begin major refactoring of SRA script.~~ mostly done, needs efetch and
+  output
 
 
 Week 05 2014
 ------------
 26 January to 01 February
 
-
 ### Sunday 26 January
 
+- Continue work on SRA.
+- Sketch presentation.
 
 ### Monday 27 January
 
+- Discuss calendar.
+- Taxon sampling strategy to acoel phylogenomics.
 
 ### Tuesday 28 January
 
@@ -61,10 +67,10 @@ Week 05 2014
 ### Saturday 01 February
 
 
+
 Week 06 2014
 ------------
 02 February to 08 February
-
 
 ### Sunday 02 February
 
@@ -76,7 +82,6 @@ Week 06 2014
 
 - Agalma Workshop at 1pm.
 
-
 ### Wednesday 05 February
 
 
@@ -85,17 +90,20 @@ Week 06 2014
 
 ### Friday 07 February
 
+- @NYC
 
 ### Saturday 08 February
+
+- @NYC
 
 
 Week 07 2014
 ------------
 09 February to 15 February
 
-
 ### Sunday 09 February
 
+- @NYC
 
 ### Monday 10 February
 
