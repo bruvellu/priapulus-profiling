@@ -7,7 +7,7 @@ Example:
 
 Right now filtering is hard-coded to select paired ends libraries with read
 length equal or greater than 70 bp. Accomplished by simple manipulation of
-Pandas data frame. Check line 254.
+Pandas data frame. Check line 257.
 
 '''
 
