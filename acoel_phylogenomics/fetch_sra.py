@@ -1,71 +1,10 @@
 #!/usr/bin/env python
-'''Utility to filter and download SRA records.'''
+'''Search & Fetch records from NCBI\'s Sequence Read Archive.'''
 
 import argparse
 import re
-import sys
 
 from Bio import Entrez
-
-
-# TODO Adapt this function to full record inside SRAPackage class.
-def extract_summary(summary_string):
-    '''Use regex to parse summary fields.
-    <Summary>
-        <Title>Transcriptome Analysis of house mouse</Title>
-        <Platform instrument_model="Illumina HiSeq 2000">ILLUMINA</Platform>
-        <Statistics total_runs="1" total_spots="12891427" total_bases="1933714050" total_size="1062140634" load_done="true" cluster_name="public"/>
-    </Summary>
-
-    <Submitter acc="ERA237533" center_name="SC" contact_name="" lab_name=""/>
-    <Experiment acc="ERX284729" ver="1" status="public" name=""/>
-    <Study acc="ERP002100" name="Global_gene_expression_profiles_during_differentiation_of_mouse_embryonic_stem_cells_to_macrophages_"/>
-    <Organism taxid="10090" CommonName="mus musculus"/>
-    <Sample acc="ERS222189" name="mus musculus"/>
-    <Instrument ILLUMINA="Illumina HiSeq 2000"/>
-
-    <Library_descriptor>
-        <LIBRARY_NAME>6884103</LIBRARY_NAME>
-        <LIBRARY_STRATEGY>RNA-Seq</LIBRARY_STRATEGY>
-        <LIBRARY_SOURCE>TRANSCRIPTOMIC</LIBRARY_SOURCE>
-        <LIBRARY_SELECTION>cDNA</LIBRARY_SELECTION>
-        <LIBRARY_LAYOUT>
-            <PAIRED NOMINAL_LENGTH="300"/>
-        </LIBRARY_LAYOUT>
-        <LIBRARY_CONSTRUCTION_PROTOCOL>Illumina cDNA protocol</LIBRARY_CONSTRUCTION_PROTOCOL>
-    </Library_descriptor>
-
-    <Biosample id="2229746" acc="SAMEA2058346" sample_id="556692" sample_acc="ERS222189"/>
-    <Bioproject>ERP002100</Bioproject>
-    '''
-
-    # Store fields in dictionary.
-    summary_fields = {}
-
-    # Fields to be parsed.
-    fields_regexes = {
-        'type'       : '<LIBRARY_LAYOUT>\s*<(?P<type>SINGLE|PAIRED)',
-        'length'     : 'NOMINAL_LENGTH="(?P<length>\d+)"',
-        'strategy'   : '<LIBRARY_STRATEGY>(?P<strategy>.*)</LIBRARY_STRATEGY>',
-        'platform'   : 'instrument_model="(?P<platform>[\w\s]*)"',
-        'spots'      : 'total_spots="(?P<spots>\d+)"',
-        'bases'      : 'total_bases="(?P<bases>\d+)"',
-        'reads'      : 'total_size="(?P<reads>\d+)"',
-        'ncbi_taxid' : 'taxid="(?P<ncbi_taxid>\d+)"',
-        'organism'   : 'ScientificName="(?P<organism>[\w\s]*)"',
-    }
-
-    for field, regex in fields_regexes.iteritems():
-        re_search = re.search(regex, summary_string)
-        if re_search and re_search.groups(0):
-            #print(re_search.groups(0))
-            summary_fields[field] = re_search.groups(0)[0]
-        else:
-            summary_fields[field] = ''
-
-    #print(summary_fields)
-
-    return summary_fields
 
 
 class SRADatabase:
@@ -141,26 +80,58 @@ class SRAPackage:
 
     def __init__(self, sra_id):
         self.id = sra_id
-        self.summary = None
-        self.fields = None
+        self.record = None
+
+        self.accession = None
+        self.library_strategy = None
+        self.library_layout = None
+        self.instrument_model = None
+        self.taxon_id = None
+        self.scientific_name = None
+        self.runs = None
+        self.nreads = None
+        self.average = None
+
+        self.ncbi_taxid = None
 
         self.efetch()
 
     def efetch(self):
         '''Fetch package metadata from Entrez'''
-        # TODO Use efetch instead of esummary to get read_length correctly.
-        handle = Entrez.esummary(db='sra', id=self.id)
-        self.summary = Entrez.read(handle)
+        handle = Entrez.efetch(db='sra', id=self.id)
+        self.record = handle.read()
         self.extract()
 
     def extract(self):
         '''Extract relevant fields from summary.'''
-        # TODO Make a real function and define attribute fields individually
-        # from full record metadata.
-        string = self.summary[0]['ExpXml']
-        self.fields = extract_summary(string)
 
-        #print(self.fields)
+        # Fields with attributes.
+        fields = {}
+
+        # Fields to be parsed.
+        regexes = {
+            'accession': '<EXPERIMENT\s+.*?accession="(?P<accession>.*?)"\s+.*?>',
+            'library_strategy': '<LIBRARY_STRATEGY>(?P<library_strategy>.*?)<\/LIBRARY_STRATEGY>',
+            'library_layout': '<LIBRARY_LAYOUT>\s*<(?P<type>SINGLE|PAIRED)',
+            'instrument_model': '<INSTRUMENT_MODEL>(?P<instrument_model>.*?)<\/INSTRUMENT_MODEL>',
+            'taxon_id': '<TAXON_ID>(?P<taxon_id>.*?)<\/TAXON_ID>',
+            'scientific_name': '<SCIENTIFIC_NAME>(?P<scientific_name>.*?)<\/SCIENTIFIC_NAME>',
+            'runs': '<RUN\s+.*?accession="(?P<accession>.*?)"\s+.*?total_spots="(?P<total_spots>.*?)"\s+.*?total_bases="(?P<total_bases>.*?)"\s+.*?size="(?P<size>.*?)"\s+.*?published="(?P<published>.*?)"\s+.*?>',
+            'nreads': '<Statistics\s+.*?nreads="(?P<nreads>.*?)"\s+.*?>',
+            'average': '<Read\s+.*?average="(?P<average>.*?)"\s+.*?\/>',
+        }
+
+        # Iterate over regexes to parse attributes.
+        # TODO handle multiple matches like "runs", "nreads", and "average".
+        for field, regex in regexes.iteritems():
+            re_search = re.search(regex, self.record)
+            if re_search and re_search.groups(0):
+                fields[field] = re_search.groups(0)[0]
+            else:
+                fields[field] = ''
+
+        print('')
+        print(fields)
 
 
 class FilterPackages:
