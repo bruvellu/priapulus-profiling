@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-'''Search & Fetch records from NCBI\'s Sequence Read Archive.
+'''Search & Fetch records from NCBI's Sequence Read Archive.
 
 Example:
 
