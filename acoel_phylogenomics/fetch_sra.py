@@ -91,14 +91,18 @@ class SRAPackage:
         self.run_accession = None
         self.nreads = None
         self.read_average = None
-
-        self.ncbi_taxid = None
+        self.total_spots = None
+        self.total_bases = None
+        self.size = None
+        self.published = None
 
         self.efetch()
 
-        print(self.id, self.accession, self.library_strategy, self.library_layout,
-              self.instrument_model, self.taxon_id, self.scientific_name,
-              self.run_accession, self.nreads, self.read_average)
+        print(self.id, self.accession, self.library_strategy,
+              self.library_layout, self.instrument_model, self.taxon_id,
+              self.scientific_name, self.run_accession, self.nreads,
+              self.read_average, self.read_average, self.total_spots,
+              self.total_bases, self.size, self.published,)
 
     def efetch(self):
         '''Fetch package metadata from Entrez'''
@@ -116,7 +120,7 @@ class SRAPackage:
         regexes = {
             'accession': '<EXPERIMENT\s+.*?accession="(?P<accession>.*?)".*?>',
             'library_strategy': '<LIBRARY_STRATEGY>(?P<library_strategy>.*?)<\/LIBRARY_STRATEGY>',
-            'library_layout': '<LIBRARY_LAYOUT>\s*<(?P<type>SINGLE|PAIRED)',
+            'library_layout': '<LIBRARY_LAYOUT>\s*<(?P<library_layout>SINGLE|PAIRED)',
             'instrument_model': '<INSTRUMENT_MODEL>(?P<instrument_model>.*?)<\/INSTRUMENT_MODEL>',
             'taxon_id': '<TAXON_ID>(?P<taxon_id>.*?)<\/TAXON_ID>',
             'scientific_name': '<SCIENTIFIC_NAME>(?P<scientific_name>.*?)<\/SCIENTIFIC_NAME>',
@@ -131,8 +135,13 @@ class SRAPackage:
         # read_average. This is OK for now, since it is only a primary filter.
         for field, regex in regexes.iteritems():
             re_search = re.search(regex, self.record)
-            if re_search and re_search.groups(0):
-                fields[field] = re_search.groups(0)[0]
+            if re_search:
+                re_groups = re_search.groupdict()
+                if re_groups:
+                    for k, v in re_groups.iteritems():
+                        fields[k] = v
+                else:
+                    fields[field] = ''
             else:
                 fields[field] = ''
 
@@ -145,6 +154,10 @@ class SRAPackage:
         self.run_accession = fields['run_accession']
         self.nreads = fields['nreads']
         self.read_average = fields['read_average']
+        self.total_spots = fields['total_spots']
+        self.total_bases = fields['total_bases']
+        self.size = fields['size']
+        self.published = fields['published']
 
 
 class FilterPackages:
@@ -189,6 +202,11 @@ def main():
 
     # Fetch metadata from packages.
     packages = [SRAPackage(sra_id) for sra_id in sra_search.idlist]
+
+    print(packages)
+
+    # Store packages in data frame for filtering.
+    filtered_packages = FilterPackages(packages)
 
 if __name__ == '__main__':
     main()
