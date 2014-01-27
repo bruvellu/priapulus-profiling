@@ -88,13 +88,17 @@ class SRAPackage:
         self.instrument_model = None
         self.taxon_id = None
         self.scientific_name = None
-        self.runs = None
+        self.run_accession = None
         self.nreads = None
-        self.average = None
+        self.read_average = None
 
         self.ncbi_taxid = None
 
         self.efetch()
+
+        print(self.id, self.accession, self.library_strategy, self.library_layout,
+              self.instrument_model, self.taxon_id, self.scientific_name,
+              self.run_accession, self.nreads, self.read_average)
 
     def efetch(self):
         '''Fetch package metadata from Entrez'''
@@ -116,13 +120,15 @@ class SRAPackage:
             'instrument_model': '<INSTRUMENT_MODEL>(?P<instrument_model>.*?)<\/INSTRUMENT_MODEL>',
             'taxon_id': '<TAXON_ID>(?P<taxon_id>.*?)<\/TAXON_ID>',
             'scientific_name': '<SCIENTIFIC_NAME>(?P<scientific_name>.*?)<\/SCIENTIFIC_NAME>',
-            'runs': '<RUN\s+.*?accession="(?P<accession>.*?)"\s+.*?total_spots="(?P<total_spots>.*?)"\s+.*?total_bases="(?P<total_bases>.*?)"\s+.*?size="(?P<size>.*?)"\s+.*?published="(?P<published>.*?)"\s+.*?>',
+            'run_accession': '<RUN\s+.*?accession="(?P<run_accession>.*?)"\s+.*?total_spots="(?P<total_spots>.*?)"\s+.*?total_bases="(?P<total_bases>.*?)"\s+.*?size="(?P<size>.*?)"\s+.*?published="(?P<published>.*?)"\s+.*?>',
             'nreads': '<Statistics\s+.*?nreads="(?P<nreads>.*?)"\s+.*?>',
-            'average': '<Read\s+.*?average="(?P<average>.*?)"\s+.*?\/>',
+            'read_average': '<Read\s+.*?average="(?P<read_average>.*?)"\s+.*?\/>',
         }
 
         # Iterate over regexes to parse attributes.
-        # TODO handle multiple matches like "runs", "nreads", and "average".
+        # TODO handle multiple matches like "runs", "nreads", and "average"?
+        # Right now it only gets the first run accession, nreads and
+        # read_average. This is OK for now, since it is only a primary filter.
         for field, regex in regexes.iteritems():
             re_search = re.search(regex, self.record)
             if re_search and re_search.groups(0):
@@ -130,8 +136,15 @@ class SRAPackage:
             else:
                 fields[field] = ''
 
-        print('')
-        print(fields)
+        self.accession = fields['accession']
+        self.library_strategy = fields['library_strategy']
+        self.library_layout = fields['library_layout']
+        self.instrument_model = fields['instrument_model']
+        self.taxon_id = fields['taxon_id']
+        self.scientific_name = fields['scientific_name']
+        self.run_accession = fields['run_accession']
+        self.nreads = fields['nreads']
+        self.read_average = fields['read_average']
 
 
 class FilterPackages:
