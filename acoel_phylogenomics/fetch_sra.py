@@ -110,7 +110,7 @@ class SRAPackage:
 
         # Fields to be parsed.
         regexes = {
-            'accession': '<EXPERIMENT\s+.*?accession="(?P<accession>.*?)"\s+.*?>',
+            'accession': '<EXPERIMENT\s+.*?accession="(?P<accession>.*?)".*?>',
             'library_strategy': '<LIBRARY_STRATEGY>(?P<library_strategy>.*?)<\/LIBRARY_STRATEGY>',
             'library_layout': '<LIBRARY_LAYOUT>\s*<(?P<type>SINGLE|PAIRED)',
             'instrument_model': '<INSTRUMENT_MODEL>(?P<instrument_model>.*?)<\/INSTRUMENT_MODEL>',
