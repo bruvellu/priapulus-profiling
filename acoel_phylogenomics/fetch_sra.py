@@ -29,6 +29,7 @@ class SRADatabase:
 
     # TODO Use def __unicode__ or __str__ to identify class objects.
 
+
 class SRASearch:
     '''Perform search and keep IDs of SRA packages.
 
@@ -75,6 +76,7 @@ class SRASearch:
         self.idlist = self.results['IdList']
 
         #print(self.count, self.retstart, self.query_translation, self.idlist)
+
 
 class SRAPackage:
     '''Fetch and store metadata from a SRA package.'''
@@ -177,6 +179,7 @@ class FilterPackages:
         self.packages = packages
         self.data_frame = None
         self.build_data_frame()
+        self.filtered_data_frame = self.data_frame
 
     def build_data_frame(self):
         '''Get metadata from each package and save to data frame'''
@@ -187,14 +190,11 @@ class FilterPackages:
             data.append(package.metadata)
             index_ids.append(package.metadata[0])
             header = package.header
-        self.data_frame = pd.DataFrame(data,index=index_ids,columns=header)
-        print(self.data_frame)
+        self.data_frame = pd.DataFrame(data, index=index_ids, columns=header)
 
     def write_csv(self, filename):
         '''Write CSV file from data frame.'''
-        self.data_frame.to_csv(filename, index=False)
-
-
+        self.filtered_data_frame.to_csv(filename, index=False)
 
 
 def main():
@@ -232,10 +232,13 @@ def main():
     packages = [SRAPackage(sra_id) for sra_id in sra_search.idlist]
 
     # Store packages in data frame for filtering.
-    filtered_packages = FilterPackages(packages)
+    packages_to_filter = FilterPackages(packages)
+
+    # Filter for paired ends only and read length > 70 bp.
+    packages_to_filter.filtered_data_frame = packages_to_filter.data_frame[packages_to_filter.data_frame.read_average > '70'][packages_to_filter.data_frame.library_layout == 'PAIRED']
 
     # Write CSV out.
-    filtered_packages.write_csv('sra_results.csv')
+    packages_to_filter.write_csv('sra_results.csv')
 
 if __name__ == '__main__':
     main()
