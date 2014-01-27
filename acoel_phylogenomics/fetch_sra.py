@@ -24,8 +24,11 @@ class SRADatabase:
         self.field_list = einfo['DbInfo']['FieldList']
         self.einfo = einfo
 
-        #print(self.count, self.last_update, self.menu_name, self.description,
-              #self.link_list, self.field_list, self.einfo)
+        print('\n' + self.description + ' (%s)' % self.menu_name)
+        print(self.count + ' entries, last updated in ' + self.last_update)
+        print('Available search fields: ')
+        for field in self.field_list:
+            print('\t[%s] %s | %s (%s terms)' % (field['Name'], field['FullName'], field['Description'], field['TermCount']))
 
     # TODO Use def __unicode__ or __str__ to identify class objects.
 
