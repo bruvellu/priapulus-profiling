@@ -1,5 +1,15 @@
 #!/usr/bin/env python
-'''Search & Fetch records from NCBI\'s Sequence Read Archive.'''
+'''Search & Fetch records from NCBI\'s Sequence Read Archive.
+
+Example:
+
+./fetch_sra.py -s 'agalma[Organism]' -m 3 -o sra_output.csv -e your@email.com
+
+Right now filtering is hard-coded to select paired ends libraries with read
+length equal or greater than 70 bp. Accomplished by simple manipulation of
+Pandas data frame. Check line 254.
+
+'''
 
 import argparse
 import pandas as pd
@@ -45,6 +55,7 @@ class SRASearch:
 
     def __init__(self, query, retmax, email):
         # Required arguments.
+        # TODO Cache search based on query. Store list of IDs!
         self.query = query
         if int(retmax) > 100000:
             # Limit defined by Entrez.
@@ -69,6 +80,9 @@ class SRASearch:
         handle = Entrez.esearch(db='sra', term=self.query, retmax=self.retmax)
         self.results = Entrez.read(handle)
         self.parse_results()
+        print('\nSuccess! %s results found.' % self.count)
+        print('Your query was: %s' % self.query_translation)
+        print('Returned IDs (max=%s): %s' % (self.retmax, ', '.join(self.idlist)))
         return self.results
 
     def parse_results(self):
@@ -102,6 +116,8 @@ class SRAPackage:
         self.size = None
         self.published = None
 
+        # TODO Optionally fetch taxonomical hierarchy using itis.py
+
         self.header = ['id', 'accession', 'library_strategy', 'library_layout',
                        'instrument_model', 'taxon_id', 'scientific_name',
                        'run_accession', 'nreads', 'read_average',
@@ -116,7 +132,7 @@ class SRAPackage:
                          self.total_spots, self.total_bases, self.size,
                          self.published,)
 
-        print(self.metadata)
+        print('\tID %s, done!' % self.id)
 
     def efetch(self):
         '''Fetch package metadata from Entrez'''
@@ -176,7 +192,6 @@ class SRAPackage:
 
 class FilterPackages:
     '''Build data frame with package metadata for filtering.'''
-    # TODO Plan a way to effectively filter results. Maybe use pandas?
 
     def __init__(self, packages, filter=None):
         self.packages = packages
@@ -232,16 +247,19 @@ def main():
     sra_search.esearch()
 
     # Fetch metadata from packages.
+    print('\nFetching metadata from %d packages:' % len(sra_search.idlist))
     packages = [SRAPackage(sra_id) for sra_id in sra_search.idlist]
 
     # Store packages in data frame for filtering.
     packages_to_filter = FilterPackages(packages)
 
     # Filter for paired ends only and read length > 70 bp.
-    packages_to_filter.filtered_data_frame = packages_to_filter.data_frame[packages_to_filter.data_frame.read_average > '70'][packages_to_filter.data_frame.library_layout == 'PAIRED']
+    packages_to_filter.filtered_data_frame = packages_to_filter.data_frame[packages_to_filter.data_frame.read_average >= '70'][packages_to_filter.data_frame.library_layout == 'PAIRED']
 
     # Write CSV out.
-    packages_to_filter.write_csv('sra_results.csv')
+    packages_to_filter.write_csv(args.output)
+
+    print('\n%d of %d packages written to "%s" after filtering.\n' % (packages_to_filter.filtered_data_frame.index.size, packages_to_filter.data_frame.index.size, args.output))
 
 if __name__ == '__main__':
     main()
