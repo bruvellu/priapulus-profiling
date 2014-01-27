@@ -2,6 +2,7 @@
 '''Search & Fetch records from NCBI\'s Sequence Read Archive.'''
 
 import argparse
+import pandas as pd
 import re
 
 from Bio import Entrez
@@ -96,13 +97,21 @@ class SRAPackage:
         self.size = None
         self.published = None
 
+        self.header = ['id', 'accession', 'library_strategy', 'library_layout',
+                       'instrument_model', 'taxon_id', 'scientific_name',
+                       'run_accession', 'nreads', 'read_average',
+                       'total_spots', 'total_bases', 'size', 'published',]
+
         self.efetch()
 
-        print(self.id, self.accession, self.library_strategy,
-              self.library_layout, self.instrument_model, self.taxon_id,
-              self.scientific_name, self.run_accession, self.nreads,
-              self.read_average, self.read_average, self.total_spots,
-              self.total_bases, self.size, self.published,)
+        self.metadata = (self.id, self.accession, self.library_strategy,
+                         self.library_layout, self.instrument_model,
+                         self.taxon_id, self.scientific_name,
+                         self.run_accession, self.nreads, self.read_average,
+                         self.total_spots, self.total_bases, self.size,
+                         self.published,)
+
+        print(self.metadata)
 
     def efetch(self):
         '''Fetch package metadata from Entrez'''
@@ -161,12 +170,31 @@ class SRAPackage:
 
 
 class FilterPackages:
-    '''Filter results based on package metadata.'''
-    # TODO Plan a way to effectively filter results. Maybe get scipy or pandas
-    # help?
+    '''Build data frame with package metadata for filtering.'''
+    # TODO Plan a way to effectively filter results. Maybe use pandas?
 
-    def __init__(self, packages):
+    def __init__(self, packages, filter=None):
         self.packages = packages
+        self.data_frame = None
+        self.build_data_frame()
+
+    def build_data_frame(self):
+        '''Get metadata from each package and save to data frame'''
+        data = []
+        index_ids = []
+        header = []
+        for package in self.packages:
+            data.append(package.metadata)
+            index_ids.append(package.metadata[0])
+            header = package.header
+        self.data_frame = pd.DataFrame(data,index=index_ids,columns=header)
+        print(self.data_frame)
+
+    def write_csv(self, filename):
+        '''Write CSV file from data frame.'''
+        self.data_frame.to_csv(filename, index=False)
+
+
 
 
 def main():
@@ -203,10 +231,11 @@ def main():
     # Fetch metadata from packages.
     packages = [SRAPackage(sra_id) for sra_id in sra_search.idlist]
 
-    print(packages)
-
     # Store packages in data frame for filtering.
     filtered_packages = FilterPackages(packages)
+
+    # Write CSV out.
+    filtered_packages.write_csv('sra_results.csv')
 
 if __name__ == '__main__':
     main()
