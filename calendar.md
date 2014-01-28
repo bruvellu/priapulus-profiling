@@ -36,25 +36,28 @@ Week 04 2014
 - ~~Begin major refactoring of SRA script.~~ mostly done, needs efetch and
   output
 
-
 Week 05 2014
 ------------
 26 January to 01 February
 
 ### Sunday 26 January
 
-- Continue work on SRA.
-- Sketch presentation.
+- ~~Continue work on SRA.~~
+- ~~Outline presentation.~~
 
 ### Monday 27 January
 
-- Discuss calendar.
-- Taxon sampling strategy to acoel phylogenomics.
+- ~~Working version for SRA.~~
+- ~~Some talk work.~~
 
 ### Tuesday 28 January
 
+- Study gene expression papers.
+- Generate stem profiles for Priapulus data.
+- Search TSA for assemblies.
 
 ### Wednesday 29 January
+
 
 
 ### Thursday 30 January
@@ -63,6 +66,8 @@ Week 05 2014
 
 ### Friday 31 January
 
+- Have a selection of datasets for acoels.
+- Have a good idea of how the data looks like.
 
 ### Saturday 01 February
 
