@@ -1,7 +1,7 @@
 Analyses
 ========
 
-Based on Helm et al. 2013
+Based on [Helm et al. 2013](http://www.biomedcentral.com/1471-2164/14/266)
 
 ---
 
@@ -14,7 +14,7 @@ Mapping reads
 
 Build reference index:
 
-    /usr/local/src/bowtie2-2.0.0-beta7/bowtie2-build reference/Pc_ref.fa reference/Pc_ref
+    /usr/local/src/bowtie2-2.0.0-beta7/bowtie2-build reference/Pc_ref.fa reference/Pc_ref > reference/bowtie2-build.log 2>&1 &
 
 Map each sample to reference:
 
@@ -77,4 +77,127 @@ Ran with these commands:
     ./bowtie_map_to_counts.py ../mapped_reads/Pc2_5d_bowtie.map > Pc2_5d.counts &
     ./bowtie_map_to_counts.py ../mapped_reads/Pc2_7d_bowtie.map > Pc2_7d.counts &
     ./bowtie_map_to_counts.py ../mapped_reads/Pc2_9d_bowtie.map > Pc2_9d.counts &
+
+Importing data to R
+-------------------
+
+Following steps from: http://www.biomedcentral.com/content/supplementary/1471-2164-14-266-s9.r
+
+Create a table for each sample using read counts per transcript as input.
+
+    Pc1_0d <- read.table("read_count_per_transcript/Pc1_0d.counts", header=TRUE)
+    Pc1_1d <- read.table("read_count_per_transcript/Pc1_1d.counts", header=TRUE)
+    Pc1_3d <- read.table("read_count_per_transcript/Pc1_3d.counts", header=TRUE)
+    Pc1_5d <- read.table("read_count_per_transcript/Pc1_5d.counts", header=TRUE)
+    Pc1_9d <- read.table("read_count_per_transcript/Pc1_9d.counts", header=TRUE)
+    Pc2_0d <- read.table("read_count_per_transcript/Pc2_0d.counts", header=TRUE)
+    Pc2_1d <- read.table("read_count_per_transcript/Pc2_1d.counts", header=TRUE)
+    Pc2_3d <- read.table("read_count_per_transcript/Pc2_3d.counts", header=TRUE)
+    Pc2_5d <- read.table("read_count_per_transcript/Pc2_5d.counts", header=TRUE)
+    Pc2_7d <- read.table("read_count_per_transcript/Pc2_7d.counts", header=TRUE)
+    Pc2_9d <- read.table("read_count_per_transcript/Pc2_9d.counts", header=TRUE)
+
+Merge data into matrix by common row names (transcripts).
+
+    merged_data <- merge(Pc1_0d, Pc2_0d, by.x="reference", by.y="reference", all=TRUE)
+    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d")
+    merged_data <- merge(merged_data, Pc1_1d, by.x="reference", by.y="reference", all=TRUE)
+    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d")
+    merged_data <- merge(merged_data, Pc2_1d, by.x="reference", by.y="reference", all=TRUE)
+    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d")
+    merged_data <- merge(merged_data, Pc1_3d, by.x="reference", by.y="reference", all=TRUE)
+    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d")
+    merged_data <- merge(merged_data, Pc2_3d, by.x="reference", by.y="reference", all=TRUE)
+    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d")
+    merged_data <- merge(merged_data, Pc1_5d, by.x="reference", by.y="reference", all=TRUE)
+    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d", "count_Pc1_5d")
+    merged_data <- merge(merged_data, Pc2_5d, by.x="reference", by.y="reference", all=TRUE)
+    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d", "count_Pc1_5d", "count_Pc2_5d")
+    merged_data <- merge(merged_data, Pc2_7d, by.x="reference", by.y="reference", all=TRUE)
+    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d", "count_Pc1_5d", "count_Pc2_5d", "count_Pc2_7d")
+    merged_data <- merge(merged_data, Pc1_9d, by.x="reference", by.y="reference", all=TRUE)
+    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d", "count_Pc1_5d", "count_Pc2_5d", "count_Pc2_7d", "count_Pc1_9d")
+    merged_data <- merge(merged_data, Pc2_9d, by.x="reference", by.y="reference", all=TRUE)
+    names(merged_data) <- c("transcript", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d", "count_Pc1_5d", "count_Pc2_5d", "count_Pc2_7d", "count_Pc1_9d", "count_Pc2_9d")
+
+Name rows with transcript name.
+
+    rownames(merged_data) <- merged_data[,1]
+
+Keep only numeric columns.
+
+    n <- data.matrix(merged_data[,2:12])
+
+Set NA values to 0:
+
+    n[is.na(n)] <- 0
+
+Prepare data with edgeR
+-----------------------
+
+Calculate normalization factor for each column. Read more about normalization methods [here](http://www.biomedcentral.com/1471-2105/11/94).
+
+    # TODO Which normalization method is the default???
+    nf <- calcNormFactors(n)
+
+Get sum of each column.
+
+    lib.size <- colSums(n)
+
+Get effective size by multiplying size by normalization factor.
+
+    lib.effective.size <- lib.size * nf
+
+Get normalization multiplier to be applied into original counts.
+
+    norm.multiplier <- 1000000 / lib.effective.size
+
+Create normalized matrix by multiplying normalization factor to counts.
+
+    q <- n * norm.multiplier
+
+Rename columns.
+
+    colnames(q) <- c("norm_count_Pc1_0d", "norm_count_Pc2_0d", "norm_count_Pc1_1d", "norm_count_Pc2_1d", "norm_count_Pc1_3d", "norm_count_Pc2_3d", "norm_count_Pc1_5d", "norm_count_Pc2_5d", "norm_count_Pc2_7d", "norm_count_Pc1_9d", "norm_count_Pc2_9d")
+
+Bind counts and normalize data.
+
+    merged_data_norm <- cbind(merged_data, q)
+
+Remove NAs again.
+
+    merged_data_norm[is.na(merged_data_norm)] <- 0
+
+STEM analysis
+-------------
+
+Calculate the average between replicates.
+
+    avg_norm_count_0d <- (merged_data_norm$norm_count_Pc1_0d + merged_data_norm$norm_count_Pc2_0d) / 2
+    avg_norm_count_1d <- (merged_data_norm$norm_count_Pc1_1d + merged_data_norm$norm_count_Pc2_1d) / 2
+    avg_norm_count_3d <- (merged_data_norm$norm_count_Pc1_3d + merged_data_norm$norm_count_Pc2_3d) / 2
+    avg_norm_count_5d <- (merged_data_norm$norm_count_Pc1_5d + merged_data_norm$norm_count_Pc2_5d) / 2
+    avg_norm_count_7d <- merged_data_norm$norm_count_Pc2_7d
+    avg_norm_count_9d <- (merged_data_norm$norm_count_Pc1_9d + merged_data_norm$norm_count_Pc2_9d) / 2
+
+Build data frame for average values.
+
+    avg_merged_data_norm <- cbind(avg_norm_count_0d, avg_norm_count_1d, avg_norm_count_3d, avg_norm_count_5d, avg_norm_count_7d, avg_norm_count_9d)
+
+Put names on rows.
+
+    rownames(avg_merged_data_norm) <- merged_data_norm[,1]
+
+Write file with average data for STEM input.
+
+    write.table(avg_merged_data_norm, "average")
+
+Edit the file `average` to run STEM.
+
+    cp average avg_stem_input
+    vim avg_stem_input
+
+1. Manually add `"transcript"` as the first column name.
+2. Remove quotes with `:%s:"::g`.
+3. Substitute white space for tabs `:%s:\s\+:\t:g`.
 
