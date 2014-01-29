@@ -37,7 +37,7 @@ Kristineberg, Sweden. Two large females with ripe gonads were selected for the
 experiment. We shaked dissected gonads to obtain eggs which we then fertilized
 using a sperm mix of different males. Cultures were kept at 10 °C.
 
-Every day we picked at least 100 good-looking embryos (usually more) and added
+Every day we picked at least 1000 good-looking embryos (usually more) and added
 directly to a tube with RNAlater.
 
 RNA Extraction
