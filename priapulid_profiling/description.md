@@ -81,6 +81,8 @@ reads. Due to low RNA amount, one library preparation failed, female 1 7d. Only
 | introvertula    | 7d   | -                         | [17112976][Pc2_7d_fastqc] |
 | pre-hatch larva | 9d   | [17617125][Pc1_9d_fastqc] | [14976016][Pc2_9d_fastqc] |
 
+Average number of reads per sample: 19.8 million
+
 [Pc1_0d_fastqc]: https://dl.dropboxusercontent.com/u/203439/priapulus_caudatus/Pc1_0d_fastqc/fastqc_report.html
 [Pc1_1d_fastqc]: https://dl.dropboxusercontent.com/u/203439/priapulus_caudatus/Pc1_1d_fastqc/fastqc_report.html
 [Pc1_3d_fastqc]: https://dl.dropboxusercontent.com/u/203439/priapulus_caudatus/Pc1_3d_fastqc/fastqc_report.html
