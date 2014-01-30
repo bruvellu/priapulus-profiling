@@ -30,8 +30,6 @@ Map each sample to reference:
     /usr/local/src/bowtie2-2.0.0-beta7/bowtie2 --phred33 --very-sensitive-local -a -p 10 -x reference/Pc_ref -U data/Pc2_7d.txt.gz -S mapped_reads/Pc2_7d_bowtie.map > mapped_reads/Pc2_7d.log 2>&1 &
     /usr/local/src/bowtie2-2.0.0-beta7/bowtie2 --phred33 --very-sensitive-local -a -p 10 -x reference/Pc_ref -U data/Pc2_9d.txt.gz -S mapped_reads/Pc2_9d_bowtie.map > mapped_reads/Pc2_9d.log 2>&1 &
 
-<!--Attach report?-->
-
 Calculate read counts
 ---------------------
 
@@ -39,44 +37,46 @@ Script to calculate read counts for each reference transcript. Slightly
 modified from:
 http://www.biomedcentral.com/content/supplementary/1471-2164-14-266-s8.py
 
-    from collections import defaultdict
+```python
+from collections import defaultdict
 
-    map_file = open('mapped_reads/Pc1_1d_bowtie.map')
-    map = defaultdict(set)
+map_file = open('mapped_reads/Pc1_1d_bowtie.map')
+map = defaultdict(set)
 
-    for line in map_file:
-        if not line.startswith('@'):
-            line = line.strip()
-            fields = line.split('\t')
-            read = fields[0]
-            ref = fields[2]
-            map[read].add(ref)
+for line in map_file:
+    if not line.startswith('@'):
+        line = line.strip()
+        fields = line.split('\t')
+        read = fields[0]
+        ref = fields[2]
+        map[read].add(ref)
 
-    counts = defaultdict(int)
+counts = defaultdict(int)
 
-    for key, hits in map.iteritems():
-        if len(hits) > 1:
-            continue
-        ref = list(hits)[0]
-        counts[ref] = counts[ref] + 1
+for key, hits in map.iteritems():
+    if len(hits) > 1:
+        continue
+    ref = list(hits)[0]
+    counts[ref] = counts[ref] + 1
 
-    print "reference\tcount"
-    for ref, count in counts.iteritems():
-        print ref + "\t" + str(count)
+print "reference\tcount"
+for ref, count in counts.iteritems():
+    print ref + "\t" + str(count)
+```
 
 Ran with these commands:
 
-    ./bowtie_map_to_counts.py ../mapped_reads/Pc1_0d_bowtie.map > Pc1_0d.counts &
-    ./bowtie_map_to_counts.py ../mapped_reads/Pc1_1d_bowtie.map > Pc1_1d.counts &
-    ./bowtie_map_to_counts.py ../mapped_reads/Pc1_3d_bowtie.map > Pc1_3d.counts &
-    ./bowtie_map_to_counts.py ../mapped_reads/Pc1_5d_bowtie.map > Pc1_5d.counts &
-    ./bowtie_map_to_counts.py ../mapped_reads/Pc1_9d_bowtie.map > Pc1_9d.counts &
-    ./bowtie_map_to_counts.py ../mapped_reads/Pc2_0d_bowtie.map > Pc2_0d.counts &
-    ./bowtie_map_to_counts.py ../mapped_reads/Pc2_1d_bowtie.map > Pc2_1d.counts &
-    ./bowtie_map_to_counts.py ../mapped_reads/Pc2_3d_bowtie.map > Pc2_3d.counts &
-    ./bowtie_map_to_counts.py ../mapped_reads/Pc2_5d_bowtie.map > Pc2_5d.counts &
-    ./bowtie_map_to_counts.py ../mapped_reads/Pc2_7d_bowtie.map > Pc2_7d.counts &
-    ./bowtie_map_to_counts.py ../mapped_reads/Pc2_9d_bowtie.map > Pc2_9d.counts &
+    ./bowtie_map_to_counts.py mapped_reads/Pc1_0d_bowtie.map > read_count_per_transcript/Pc1_0d.counts &
+    ./bowtie_map_to_counts.py mapped_reads/Pc1_1d_bowtie.map > read_count_per_transcript/Pc1_1d.counts &
+    ./bowtie_map_to_counts.py mapped_reads/Pc1_3d_bowtie.map > read_count_per_transcript/Pc1_3d.counts &
+    ./bowtie_map_to_counts.py mapped_reads/Pc1_5d_bowtie.map > read_count_per_transcript/Pc1_5d.counts &
+    ./bowtie_map_to_counts.py mapped_reads/Pc1_9d_bowtie.map > read_count_per_transcript/Pc1_9d.counts &
+    ./bowtie_map_to_counts.py mapped_reads/Pc2_0d_bowtie.map > read_count_per_transcript/Pc2_0d.counts &
+    ./bowtie_map_to_counts.py mapped_reads/Pc2_1d_bowtie.map > read_count_per_transcript/Pc2_1d.counts &
+    ./bowtie_map_to_counts.py mapped_reads/Pc2_3d_bowtie.map > read_count_per_transcript/Pc2_3d.counts &
+    ./bowtie_map_to_counts.py mapped_reads/Pc2_5d_bowtie.map > read_count_per_transcript/Pc2_5d.counts &
+    ./bowtie_map_to_counts.py mapped_reads/Pc2_7d_bowtie.map > read_count_per_transcript/Pc2_7d.counts &
+    ./bowtie_map_to_counts.py mapped_reads/Pc2_9d_bowtie.map > read_count_per_transcript/Pc2_9d.counts &
 
 Importing data to R
 -------------------
@@ -197,7 +197,8 @@ Edit the file `average` to run STEM.
     cp average avg_stem_input
     vim avg_stem_input
 
-1. Manually add `"transcript"` as the first column name.
+1. Manually add `"transcript" ` as the first column name (note the white space).
 2. Remove quotes with `:%s:"::g`.
 3. Substitute white space for tabs `:%s:\s\+:\t:g`.
+
 
