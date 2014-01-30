@@ -52,17 +52,23 @@ Week 05 2014
 
 ### Tuesday 28 January
 
-- Study gene expression papers.
-- Generate stem profiles for Priapulus data.
-- Search TSA for assemblies.
+- ~~Study gene expression papers.~~
+- ~~Prepare Priapulus data following papers.~~
+- ~~Search TSA for assemblies.~~
 
 ### Wednesday 29 January
 
-
+- ~~Generate stem profiles for Priapulus data.~~
+- ~~Finish presentation.~~
 
 ### Thursday 30 January
 
-- Presentation for lab meeting.
+- ~~Presentation for lab meeting.~~
+- Continue with expression analysis.
+    - Scatter plots between replicates.
+    - Calculate dispersion.
+    - Read about GO annotations.
+- Select datasets for acoels.
 
 ### Friday 31 January
 
