@@ -5,10 +5,10 @@ Example:
 
 ./fetch_sra.py -s 'agalma[Organism]' -m 3 -o sra_output.csv -e your@email.com
 
-Right now filtering is hard-coded to select paired ends libraries with read
-length equal or greater than 70 bp. Accomplished by simple manipulation of
-Pandas data frame. Check line 257.
-
+Right now filtering needs to be done on a separate script. Either importing the
+unfiltered CSV file elsewhere or importing this program as a module and
+hard-coding the filter booleans. An example of how to filter is below the CSV
+writing line in the main() function.
 '''
 
 import argparse
@@ -91,8 +91,7 @@ class SRASearch:
         self.retstart = self.results['RetStart']
         self.query_translation = self.results['QueryTranslation']
         self.idlist = self.results['IdList']
-
-        #print(self.count, self.retstart, self.query_translation, self.idlist)
+        print('\nFetched %d package IDs.' % len(self.idlist))
 
 
 class SRAPackage:
@@ -133,8 +132,6 @@ class SRAPackage:
                          self.run_accession, self.nreads, self.read_average,
                          self.total_spots, self.total_bases, self.size,
                          self.published,)
-
-        print(self.metadata)
 
         print('\tID %s, done!' % self.id)
 
@@ -187,7 +184,7 @@ class SRAPackage:
         self.scientific_name = fields['scientific_name']
         self.run_accession = fields['run_accession']
         self.nreads = int(fields['nreads'])
-        self.read_average = int(fields['read_average'])
+        self.read_average = int(float(fields['read_average']))
         self.total_spots = int(fields['total_spots'])
         self.total_bases = int(fields['total_bases'])
         self.size = int(fields['size'])
@@ -224,6 +221,7 @@ class FilterPackages:
     def write_csv(self, filename):
         '''Write CSV file from data frame.'''
         self.filtered_data_frame.to_csv(filename, index=False)
+        print('\n%d of %d packages written to "%s" after filtering.\n' % (self.filtered_data_frame.index.size, self.data_frame.index.size, filename))
 
 
 def main():
@@ -258,22 +256,18 @@ def main():
     sra_search.esearch()
 
     # Fetch metadata from packages.
-    print('\nFetching metadata from %d packages:' % len(sra_search.idlist))
     packages = [SRAPackage(sra_id) for sra_id in sra_search.idlist]
 
     # Store packages in data frame for filtering.
     packages_to_filter = FilterPackages(packages)
 
+    # Example of filter booleans using Pandas data frame.
+    # Only get rows whose 'library_layout' column equals 'PAIRED', 'nreads' is
+    # greater than 1, and 'read_average' is greater or equal than 70.
+    filtered_df = df[df.library_layout == 'PAIRED'][df.nreads > 1][df.read_average >= 70]
+
     # Write CSV out.
     packages_to_filter.write_csv(args.output)
-
-    # Filter for paired ends only and read length > 70 bp.
-    #packages_to_filter.filtered_data_frame = packages_to_filter.data_frame[packages_to_filter.data_frame.read_average >= '70'][packages_to_filter.data_frame.library_layout == 'PAIRED']
-
-    # Write CSV out.
-    #packages_to_filter.write_csv(args.output)
-
-    print('\n%d of %d packages written to "%s" after filtering.\n' % (packages_to_filter.filtered_data_frame.index.size, packages_to_filter.data_frame.index.size, args.output))
 
 if __name__ == '__main__':
     main()
