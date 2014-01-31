@@ -108,6 +108,7 @@ class SRAPackage:
         self.instrument_model = None
         self.taxon_id = None
         self.scientific_name = None
+        self.lineage = None
         self.run_accession = None
         self.nreads = None
         self.read_average = None
@@ -120,17 +121,20 @@ class SRAPackage:
 
         self.header = ['id', 'accession', 'library_strategy', 'library_layout',
                        'instrument_model', 'taxon_id', 'scientific_name',
-                       'run_accession', 'nreads', 'read_average',
-                       'total_spots', 'total_bases', 'size', 'published',]
+                       'lineage', 'run_accession', 'nreads', 'read_average',
+                       'total_spots', 'total_bases', 'size', 'published']
 
         self.efetch()
+        self.get_lineage()
 
         self.metadata = (self.id, self.accession, self.library_strategy,
                          self.library_layout, self.instrument_model,
-                         self.taxon_id, self.scientific_name,
+                         self.taxon_id, self.scientific_name, self.lineage,
                          self.run_accession, self.nreads, self.read_average,
                          self.total_spots, self.total_bases, self.size,
                          self.published,)
+
+        print(self.metadata)
 
         print('\tID %s, done!' % self.id)
 
@@ -179,15 +183,22 @@ class SRAPackage:
         self.library_strategy = fields['library_strategy']
         self.library_layout = fields['library_layout']
         self.instrument_model = fields['instrument_model']
-        self.taxon_id = fields['taxon_id']
+        self.taxon_id = int(fields['taxon_id'])
         self.scientific_name = fields['scientific_name']
         self.run_accession = fields['run_accession']
-        self.nreads = fields['nreads']
-        self.read_average = fields['read_average']
-        self.total_spots = fields['total_spots']
-        self.total_bases = fields['total_bases']
-        self.size = fields['size']
+        self.nreads = int(fields['nreads'])
+        self.read_average = int(fields['read_average'])
+        self.total_spots = int(fields['total_spots'])
+        self.total_bases = int(fields['total_bases'])
+        self.size = int(fields['size'])
         self.published = fields['published']
+
+    def get_lineage(self):
+        '''Fetch hierarchy from NCBI's Taxonomy database.'''
+        handle = Entrez.efetch(db='taxonomy', id=self.taxon_id)
+        taxon = Entrez.read(handle)
+        self.scientific_name = taxon[0]['ScientificName']
+        self.lineage = taxon[0]['Lineage']
 
 
 class FilterPackages:
@@ -253,11 +264,14 @@ def main():
     # Store packages in data frame for filtering.
     packages_to_filter = FilterPackages(packages)
 
-    # Filter for paired ends only and read length > 70 bp.
-    packages_to_filter.filtered_data_frame = packages_to_filter.data_frame[packages_to_filter.data_frame.read_average >= '70'][packages_to_filter.data_frame.library_layout == 'PAIRED']
-
     # Write CSV out.
     packages_to_filter.write_csv(args.output)
+
+    # Filter for paired ends only and read length > 70 bp.
+    #packages_to_filter.filtered_data_frame = packages_to_filter.data_frame[packages_to_filter.data_frame.read_average >= '70'][packages_to_filter.data_frame.library_layout == 'PAIRED']
+
+    # Write CSV out.
+    #packages_to_filter.write_csv(args.output)
 
     print('\n%d of %d packages written to "%s" after filtering.\n' % (packages_to_filter.filtered_data_frame.index.size, packages_to_filter.data_frame.index.size, args.output))
 
