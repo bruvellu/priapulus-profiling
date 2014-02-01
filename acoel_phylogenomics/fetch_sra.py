@@ -172,9 +172,17 @@ class SRAPackage:
                     for k, v in re_groups.iteritems():
                         fields[k] = v
                 else:
-                    fields[field] = ''
+                    if field in ['taxon_id', 'nreads', 'read_average',
+                                 'total_spots', 'total_bases', 'size']:
+                        fields[field] = 0
+                    else:
+                        fields[field] = ''
             else:
-                fields[field] = ''
+                if field in ['taxon_id', 'nreads', 'read_average',
+                                'total_spots', 'total_bases', 'size']:
+                    fields[field] = 0
+                else:
+                    fields[field] = ''
 
         self.accession = fields['accession']
         self.library_strategy = fields['library_strategy']
