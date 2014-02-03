@@ -102,6 +102,7 @@ class SRAPackage:
         self.record = None
 
         self.accession = None
+        self.title = None
         self.library_strategy = None
         self.library_layout = None
         self.instrument_model = None
@@ -116,22 +117,27 @@ class SRAPackage:
         self.size = None
         self.published = None
 
-        # TODO Optionally fetch taxonomical hierarchy using itis.py
+        # Define header section for CSV. Must match self.metadata.
+        self.header = ['id', 'accession', 'title', 'lineage',
+                       'taxon_id', 'scientific_name',
+                       'library_strategy', 'library_layout',
+                       'instrument_model', 'run_accession',
+                       'nreads', 'read_average', 'total_spots',
+                       'total_bases', 'size', 'published']
 
-        self.header = ['id', 'accession', 'library_strategy', 'library_layout',
-                       'instrument_model', 'taxon_id', 'scientific_name',
-                       'lineage', 'run_accession', 'nreads', 'read_average',
-                       'total_spots', 'total_bases', 'size', 'published']
-
+        # Do the actual metadata fetching.
         self.efetch()
+
+        # Retrieve whole lineage by taxon ID.
         self.get_lineage()
 
-        self.metadata = (self.id, self.accession, self.library_strategy,
-                         self.library_layout, self.instrument_model,
-                         self.taxon_id, self.scientific_name, self.lineage,
-                         self.run_accession, self.nreads, self.read_average,
-                         self.total_spots, self.total_bases, self.size,
-                         self.published,)
+        # Fill metadata set for later processing.
+        self.metadata = (self.id, self.accession, self.title, self.lineage,
+                         self.taxon_id, self.scientific_name,
+                         self.library_strategy, self.library_layout,
+                         self.instrument_model, self.run_accession,
+                         self.nreads, self.read_average, self.total_spots,
+                         self.total_bases, self.size, self.published,)
 
         print('\tID %s, done!' % self.id)
 
@@ -150,6 +156,7 @@ class SRAPackage:
         # Fields to be parsed.
         regexes = {
             'accession': '<EXPERIMENT\s+.*?accession="(?P<accession>.*?)".*?>',
+            'title': '<EXPERIMENT\s+.*?>.*?<TITLE>(?P<title>.*?)<\/TITLE>',
             'library_strategy': '<LIBRARY_STRATEGY>(?P<library_strategy>.*?)<\/LIBRARY_STRATEGY>',
             'library_layout': '<LIBRARY_LAYOUT>\s*<(?P<library_layout>SINGLE|PAIRED)',
             'instrument_model': '<INSTRUMENT_MODEL>(?P<instrument_model>.*?)<\/INSTRUMENT_MODEL>',
@@ -185,6 +192,7 @@ class SRAPackage:
                     fields[field] = ''
 
         self.accession = fields['accession']
+        self.title = fields['title']
         self.library_strategy = fields['library_strategy']
         self.library_layout = fields['library_layout']
         self.instrument_model = fields['instrument_model']
@@ -203,7 +211,7 @@ class SRAPackage:
         handle = Entrez.efetch(db='taxonomy', id=self.taxon_id)
         taxon = Entrez.read(handle)
         self.scientific_name = taxon[0]['ScientificName']
-        self.lineage = taxon[0]['Lineage'] + '; ' self.scientific_name
+        self.lineage = taxon[0]['Lineage'] + '; ' + self.scientific_name
 
 
 class FilterPackages:
