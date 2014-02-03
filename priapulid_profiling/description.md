@@ -43,7 +43,7 @@ directly to a tube with RNAlater.
 RNA Extraction
 --------------
 
-I extracted the total RNA with phenol/chloroform protocol for female 1 and
+I extracted the total RNA with TriReagent protocol for female 1 and
 female 2, separately. Later stages of female 1 were not collected.
 
 | stage           | time  | F1 ng/µL  | F2 ng/µL  |
