@@ -31,7 +31,8 @@ Post-search filter criteria:
 My initial search yield 3117 packages and 736 met our post-search filter
 requirements. The packages were written to
 [sra_paired_gte70bp.csv](sra_paired_gte70bp.csv). These packages cover 91
-unique organisms.
+unique organisms, shown in
+[unique_sra_paired_gte70bp.csv](unique_sra_paired_gte70bp.csv).
 
 Package curation
 ----------------
