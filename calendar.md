@@ -64,20 +64,17 @@ Week 05 2014
 ### Thursday 30 January
 
 - ~~Presentation for lab meeting.~~
-- Continue with expression analysis.
-    - Scatter plots between replicates.
-    - Calculate dispersion.
-    - Read about GO annotations.
-- Select datasets for acoels.
+- ~~Scatter plots between replicates.~~
 
 ### Friday 31 January
 
-- Have a selection of datasets for acoels.
-- Have a good idea of how the data looks like.
+- ~~Select datasets for acoels.~~ ongoing, fixed critical bug and ran search
+  again with proper script
+- ~~Read about GO annotations.~~
 
 ### Saturday 01 February
 
-
+- ~~Segmentation and logistics.~~
 
 Week 06 2014
 ------------
@@ -85,9 +82,14 @@ Week 06 2014
 
 ### Sunday 02 February
 
+- ~~Parsed, sorted, and selected taxa for acoels.~~
+- Organize repository files again.
 
 ### Monday 03 February
 
+- Start GO analysis.
+- Calculate dispersion.
+- Continue with differential expression.
 
 ### Tuesday 04 February
 
