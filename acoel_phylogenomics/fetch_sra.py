@@ -12,6 +12,7 @@ writing line in the main() function.
 '''
 
 import argparse
+import os
 import pandas as pd
 import re
 
@@ -100,6 +101,7 @@ class SRAPackage:
     def __init__(self, sra_id):
         self.id = sra_id
         self.record = None
+        self.cached_filepath = os.path.join('.cache', self.id)
 
         self.accession = None
         self.title = None
@@ -144,9 +146,34 @@ class SRAPackage:
 
     def efetch(self):
         '''Fetch package metadata from Entrez'''
-        handle = Entrez.efetch(db='sra', id=self.id)
-        self.record = handle.read()
+        cached_file = self.cache()
+        if cached_file:
+            self.record = cached_file.read()
+            cached_file.close()
+            print('\nRecord in cache!')
+        else:
+            print('\nRecord not in cache. Fetching...')
+            handle = Entrez.efetch(db='sra', id=self.id)
+            self.record = handle.read()
+            # Write cache file.
+            new_cache = open(self.cached_filepath, 'w')
+            new_cache.write(self.record)
+            new_cache.close()
         self.extract()
+
+    def cache(self):
+        '''Write and read cache files.'''
+        # Make sure folder exists.
+        cache_folder = '.cache'
+        if not os.path.isdir(cache_folder):
+            os.mkdir(cache_folder)
+
+        # Try to get cache file.
+        try:
+            cached = open(self.cached_filepath)
+            return cached
+        except:
+            return None
 
     def extract(self):
         '''Extract relevant fields from summary.'''
