@@ -203,7 +203,7 @@ class SRAPackage:
         handle = Entrez.efetch(db='taxonomy', id=self.taxon_id)
         taxon = Entrez.read(handle)
         self.scientific_name = taxon[0]['ScientificName']
-        self.lineage = taxon[0]['Lineage']
+        self.lineage = taxon[0]['Lineage'] + '; ' self.scientific_name
 
 
 class FilterPackages:
