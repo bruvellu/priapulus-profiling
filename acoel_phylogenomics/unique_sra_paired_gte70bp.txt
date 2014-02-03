@@ -1,0 +1,91 @@
+Metazoa; Eumetazoa; Bilateria; Deuterostomia; Chordata; Cephalochordata; Branchiostomidae; Branchiostoma; Branchiostoma belcheri
+Metazoa; Eumetazoa; Bilateria; Deuterostomia; Chordata; Tunicata; Ascidiacea; Stolidobranchia; Styelidae; Botryllus; Botryllus schlosseri
+Metazoa; Eumetazoa; Bilateria; Deuterostomia; Echinodermata; Eleutherozoa; Asterozoa; Asteroidea; Valvatacea; Valvatida; Asterinidae; Patiria; Patiria miniata
+Metazoa; Eumetazoa; Bilateria; Deuterostomia; Echinodermata; Eleutherozoa; Echinozoa; Echinoidea; Euechinoidea; Echinacea; Echinoida; Echinometridae; Evechinus; Evechinus chloroticus
+Metazoa; Eumetazoa; Bilateria; Deuterostomia; Echinodermata; Eleutherozoa; Echinozoa; Echinoidea; Euechinoidea; Echinacea; Echinoida; Strongylocentrotidae; Strongylocentrotus; Strongylocentrotus purpuratus
+Metazoa; Eumetazoa; Bilateria; Deuterostomia; Echinodermata; Eleutherozoa; Echinozoa; Holothuroidea; Aspidochirotacea; Aspidochirotida; Stichopodidae; Apostichopus; Apostichopus japonicus
+Metazoa; Eumetazoa; Bilateria; Deuterostomia; Echinodermata; Eleutherozoa; Echinozoa; Holothuroidea; Aspidochirotacea; Aspidochirotida; Stichopodidae; Parastichopus; Parastichopus parvimensis
+Metazoa; Eumetazoa; Bilateria; Platyhelminthes; Cestoda; Eucestoda; Cyclophyllidea; Hymenolepididae; Hymenolepis; Hymenolepis microstoma
+Metazoa; Eumetazoa; Bilateria; Platyhelminthes; Cestoda; Eucestoda; Cyclophyllidea; Taeniidae; Echinococcus
+Metazoa; Eumetazoa; Bilateria; Platyhelminthes; Cestoda; Eucestoda; Cyclophyllidea; Taeniidae; Echinococcus; Echinococcus granulosus
+Metazoa; Eumetazoa; Bilateria; Platyhelminthes; Cestoda; Eucestoda; Cyclophyllidea; Taeniidae; Echinococcus; Echinococcus multilocularis
+Metazoa; Eumetazoa; Bilateria; Platyhelminthes; Cestoda; Eucestoda; Cyclophyllidea; Taeniidae; Taenia; Taenia multiceps
+Metazoa; Eumetazoa; Bilateria; Platyhelminthes; Rhabditophora; Seriata; Tricladida; Continenticola; Geoplanoidea; Dugesiidae; Dugesia; Dugesia japonica
+Metazoa; Eumetazoa; Bilateria; Platyhelminthes; Rhabditophora; Seriata; Tricladida; Continenticola; Geoplanoidea; Dugesiidae; Schmidtea; Schmidtea mediterranea
+Metazoa; Eumetazoa; Bilateria; Platyhelminthes; Trematoda; Digenea; Echinostomida; Echinostomata; Echinostomatoidea; Fasciolidae; Fascioloides; Fascioloides magna
+Metazoa; Eumetazoa; Bilateria; Platyhelminthes; Trematoda; Digenea; Opisthorchiida; Opisthorchiata; Opisthorchiidae; Clonorchis; Clonorchis sinensis
+Metazoa; Eumetazoa; Bilateria; Platyhelminthes; Trematoda; Digenea; Strigeidida; Schistosomatoidea; Schistosomatidae; Schistosoma; Schistosoma mansoni
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Ascaridida; Ascaridoidea; Ascarididae; Ascaris; Ascaris suum
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Rhabditida; Panagrolaimoidea; Panagrolaimidae; Panagrellus; Panagrellus redivivus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Rhabditida; Panagrolaimoidea; Strongyloididae; Strongyloides; Strongyloides ratti
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Rhabditida; Panagrolaimoidea; Strongyloididae; Strongyloides; Strongyloides stercoralis
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Rhabditida; Rhabditoidea; Rhabditidae; Peloderinae; Caenorhabditis; Caenorhabditis angaria
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Rhabditida; Rhabditoidea; Rhabditidae; Peloderinae; Caenorhabditis; Caenorhabditis briggsae
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Rhabditida; Rhabditoidea; Rhabditidae; Peloderinae; Caenorhabditis; Caenorhabditis elegans
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Rhabditida; Strongylida; Ancylostomatoidea; Ancylostomatidae; Bunostominae; Necator; Necator americanus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Rhabditida; Strongylida; Strongyloidea; Chabertiidae; Oesophagostomum; Oesophagostomum dentatum
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Rhabditida; Strongylida; Trichostrongyloidea; Dictyocaulidae; Dictyocaulinae; Dictyocaulus; Dictyocaulus filaria
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Rhabditida; Strongylida; Trichostrongyloidea; Dictyocaulidae; Dictyocaulinae; Dictyocaulus; Dictyocaulus viviparus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Rhabditida; Strongylida; Trichostrongyloidea; Haemonchidae; Haemonchinae; Haemonchus; Haemonchus contortus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Spirurida; Filarioidea; Onchocercidae; Brugia; Brugia pahangi
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Spirurida; Filarioidea; Onchocercidae; Dirofilaria; Dirofilaria immitis
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Spirurida; Filarioidea; Onchocercidae; Loa; Loa loa
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Spirurida; Filarioidea; Onchocercidae; Onchocerca; Onchocerca ochengi
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Spirurida; Filarioidea; Onchocercidae; Onchocerca; Onchocerca volvulus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Tylenchida; Aphelenchina; Aphelenchoidea; Aphelenchoididae; Bursaphelenchus; Bursaphelenchus mucronatus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Tylenchida; Aphelenchina; Aphelenchoidea; Aphelenchoididae; Bursaphelenchus; Bursaphelenchus xylophilus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Tylenchida; Tylenchina; Tylenchoidea; Heteroderidae; Heteroderinae; Globodera; Globodera pallida
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Tylenchida; Tylenchina; Tylenchoidea; Heteroderidae; Heteroderinae; Globodera; Globodera rostochiensis
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Enoplea; Dorylaimia; Trichocephalida; Trichinellidae; Trichinella; Trichinella spiralis
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Enoplea; Dorylaimia; Trichocephalida; Trichuridae; Trichuris; Trichuris muris
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Chelicerata; Arachnida; Acari; Acariformes; Sarcoptiformes; Astigmata; Acaroidea; Acaridae; Rhizoglyphinae; Rhizoglyphus; Rhizoglyphus robini
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Chelicerata; Arachnida; Acari; Acariformes; Trombidiformes; Prostigmata; Eleutherengona; Raphignathae; Tetranychoidea; Tetranychidae; Tetranychus; Tetranychus cinnabarinus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Chelicerata; Arachnida; Acari; Parasitiformes; Ixodida; Ixodoidea; Ixodidae; Amblyomminae; Amblyomma; Amblyomma maculatum
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Chelicerata; Arachnida; Acari; Parasitiformes; Ixodida; Ixodoidea; Ixodidae; Ixodinae; Ixodes; Ixodes ricinus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Chelicerata; Arachnida; Acari; Parasitiformes; Ixodida; Ixodoidea; Ixodidae; Rhipicephalinae; Dermacentor; Dermacentor reticulatus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Chelicerata; Arachnida; Acari; Parasitiformes; Ixodida; Ixodoidea; Ixodidae; Rhipicephalinae; Rhipicephalus; Rhipicephalus; Rhipicephalus pulchellus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Chelicerata; Arachnida; Araneae; Araneomorphae; Entelegynae; Orbiculariae; Araneoidea; Araneidae; Gasteracantha; Gasteracantha hasselti
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Chelicerata; Arachnida; Araneae; Araneomorphae; Entelegynae; Orbiculariae; Araneoidea; Araneidae; Macracantha; Macracantha arcuata
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Chelicerata; Arachnida; Araneae; Araneomorphae; Entelegynae; Orbiculariae; Araneoidea; Linyphiidae; Erigoninae; Nasoonaria; Nasoonaria sinensis
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Chelicerata; Arachnida; Araneae; Araneomorphae; Entelegynae; Orbiculariae; Araneoidea; Theridiidae; Latrodectus; Latrodectus tredecimguttatus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Chelicerata; Arachnida; Araneae; Araneomorphae; Entelegynae; Orbiculariae; Araneoidea; Theridiidae; Theridion; Theridion californicum
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Chelicerata; Arachnida; Araneae; Araneomorphae; Entelegynae; Orbiculariae; Araneoidea; Theridiidae; Theridion; Theridion grallator
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Chelicerata; Arachnida; Opiliones; Cyphophthalmi; Tropicophthalmi; Ogoveoidea; Neogoveidae; Metasiro; Metasiro americanus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Mandibulata; Myriapoda; Chilopoda; Pleurostigmophora; Epimorpha; Scolopendromorpha; Scolopendridae; Alipes; Alipes grandidieri
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Mandibulata; Myriapoda; Chilopoda; Pleurostigmophora; Lithobiomorpha; Lithobiidae; Eupolybothrus; Eupolybothrus cavernicolus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Mandibulata; Pancrustacea; Crustacea; Malacostraca; Eumalacostraca; Eucarida; Decapoda; Dendrobranchiata; Penaeoidea; Penaeidae; Litopenaeus; Litopenaeus vannamei
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Mandibulata; Pancrustacea; Crustacea; Malacostraca; Eumalacostraca; Eucarida; Decapoda; Dendrobranchiata; Penaeoidea; Penaeidae; Penaeus; Penaeus monodon
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Mandibulata; Pancrustacea; Crustacea; Malacostraca; Eumalacostraca; Eucarida; Decapoda; Pleocyemata; Brachyura; Eubrachyura; Heterotremata; Portunoidea; Portunidae; Portunus; Portunus trituberculatus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Mandibulata; Pancrustacea; Crustacea; Malacostraca; Eumalacostraca; Eucarida; Decapoda; Pleocyemata; Brachyura; Eubrachyura; Thoracotremata; Grapsoidea; Varunidae; Eriocheir; Eriocheir sinensis
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Mandibulata; Pancrustacea; Crustacea; Malacostraca; Eumalacostraca; Eucarida; Decapoda; Pleocyemata; Caridea; Palaemonoidea; Palaemonidae; Macrobrachium; Macrobrachium rosenbergii
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Mandibulata; Pancrustacea; Crustacea; Malacostraca; Eumalacostraca; Eucarida; Decapoda; Pleocyemata; Caridea; Pandaloidea; Pandalidae; Pandalus; Pandalus latirostris
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Mandibulata; Pancrustacea; Crustacea; Maxillopoda; Branchiura; Arguloida; Argulidae; Argulus; Argulus siamensis
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Mandibulata; Pancrustacea; Crustacea; Maxillopoda; Thecostraca; Cirripedia; Thoracica; Sessilia; Tetraclitidae; Tetraclita; Tetraclita japonica
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Annelida; Clitellata; Oligochaeta; Haplotaxida; Lumbricina; Hormogastridae; Hormogaster; Hormogaster elisae
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Annelida; Clitellata; Oligochaeta; Haplotaxida; Lumbricina; Hormogastridae; Hormogaster; Hormogaster samnitica
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Mollusca; Bivalvia; Heteroconchia; Veneroida; Veneroidea; Veneridae; Ruditapes; Ruditapes philippinarum
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Mollusca; Bivalvia; Pteriomorphia; Mytiloida; Mytiloidea; Mytilidae; Mytilinae; Mytilus; Mytilus galloprovincialis
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Mollusca; Bivalvia; Pteriomorphia; Mytiloida; Mytiloidea; Mytilidae; Mytilinae; Perna; Perna viridis
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Mollusca; Bivalvia; Pteriomorphia; Ostreoida; Ostreoidea; Ostreidae; Crassostrea; Crassostrea gigas
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Mollusca; Bivalvia; Pteriomorphia; Ostreoida; Ostreoidea; Ostreidae; Crassostrea; Crassostrea virginica
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Mollusca; Bivalvia; Pteriomorphia; Pectinoida; Pectinoidea; Pectinidae; Mizuhopecten; Mizuhopecten yessoensis
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Mollusca; Gastropoda; Caenogastropoda; Hypsogastropoda; Neogastropoda; Buccinoidea; Melongenidae; Pugilina; Pugilina cochlidium
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Mollusca; Gastropoda; Heterobranchia; Euthyneura; Euopisthobranchia; Aplysiomorpha; Aplysioidea; Aplysiidae; Aplysia; Aplysia californica
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Mollusca; Gastropoda; Vetigastropoda; Haliotoidea; Haliotidae; Haliotis; Haliotis rufescens
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Mollusca; Polyplacophora; Neoloricata; Chitonida; Chitonina; Chitonidae; Chitoninae; Rhyssoplax; Rhyssoplax olivacea
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Nemertea; Anopla; Heteronemertea; Cerebratulidae; Cerebratulus; Cerebratulus marginatus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Nemertea; Anopla; Paleonemertea; Cephalothricidae; Cephalothrix; Cephalothrix hongkongiensis
+Metazoa; Eumetazoa; Cnidaria; Anthozoa; Hexacorallia; Actiniaria; Aiptasiidae; Aiptasia
+Metazoa; Eumetazoa; Cnidaria; Anthozoa; Hexacorallia; Actiniaria; Edwardsiidae; Nematostella; Nematostella vectensis
+Metazoa; Eumetazoa; Cnidaria; Anthozoa; Hexacorallia; Scleractinia; Astrocoeniina; Acroporidae; Acropora; Acropora hyacinthus
+Metazoa; Eumetazoa; Cnidaria; Anthozoa; Hexacorallia; Scleractinia; Astrocoeniina; Pocilloporidae; Pocillopora; Pocillopora damicornis
+Metazoa; Eumetazoa; Cnidaria; Hydrozoa; Hydroida; Anthomedusae; Hydridae; Hydra; Hydra vulgaris
+Metazoa; Eumetazoa; Cnidaria; Hydrozoa; Siphonophora; Calycophorae; Abylidae; Abylopsis; Abylopsis tetragona
+Metazoa; Eumetazoa; Cnidaria; Hydrozoa; Siphonophora; Calycophorae; Prayidae; Craseoa; Craseoa lathetica
+Metazoa; Eumetazoa; Cnidaria; Hydrozoa; Siphonophora; Cystonectae; Physaliidae; Physalia; Physalia physalis
+Metazoa; Eumetazoa; Cnidaria; Hydrozoa; Siphonophora; Physonectae; Agalmatidae; Agalma; Agalma elegans
+Metazoa; Eumetazoa; Cnidaria; Hydrozoa; Siphonophora; Physonectae; Agalmatidae; Nanomia; Nanomia bijuga
+Metazoa; Porifera; Demospongiae; Ceractinomorpha; Haplosclerida; Spongillidae; Ephydatia; Ephydatia muelleri
+Metazoa; Porifera; Demospongiae; Ceractinomorpha; Poecilosclerida
+Metazoa; Porifera; Demospongiae; Ceractinomorpha; Poecilosclerida; Myxillina; Crellidae; Crella; Crella elegans
+Metazoa; Porifera; Demospongiae; Homoscleromorpha; Homosclerophorida; Plakinidae; Oscarella; Oscarella carmela
