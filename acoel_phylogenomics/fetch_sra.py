@@ -103,6 +103,7 @@ class SRAPackage:
 
         self.accession = None
         self.title = None
+        self.study_title = None
         self.library_strategy = None
         self.library_layout = None
         self.instrument_model = None
@@ -157,6 +158,7 @@ class SRAPackage:
         regexes = {
             'accession': '<EXPERIMENT\s+.*?accession="(?P<accession>.*?)".*?>',
             'title': '<EXPERIMENT\s+.*?>.*?<TITLE>(?P<title>.*?)<\/TITLE>',
+            'study_title': '<STUDY_TITLE>(?P<study_title>.*?)<\/STUDY_TITLE>',
             'library_strategy': '<LIBRARY_STRATEGY>(?P<library_strategy>.*?)<\/LIBRARY_STRATEGY>',
             'library_layout': '<LIBRARY_LAYOUT>\s*<(?P<library_layout>SINGLE|PAIRED)',
             'instrument_model': '<INSTRUMENT_MODEL>(?P<instrument_model>.*?)<\/INSTRUMENT_MODEL>',
@@ -193,6 +195,8 @@ class SRAPackage:
 
         self.accession = fields['accession']
         self.title = fields['title']
+        if not self.title:
+            self.title = fields['study_title']
         self.library_strategy = fields['library_strategy']
         self.library_layout = fields['library_layout']
         self.instrument_model = fields['instrument_model']
