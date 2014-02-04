@@ -231,22 +231,22 @@ Relevant profiles:
 
 | profile                                        | description                               |
 | :------:                                       | :----------                               |
-| [profile 8](profile_8)                         | constant decrease from initial oocytes.   |
-| [profile 39](profile_39)                       | constant increase from initial oocytes.   |
-| [profile 31](profile_31)                       | peak at 3d coincident with gastrulation.  |
-| [profile 25](profile_25)                       | peak at 3d but drastically downregulated. |
-| [profile 22](profile_22)                       | peak at 7d coincident with introvertula.  |
-| [profiles 17](profile_17) and [18](profile_18) | low during cleavage, then up.             |
-| [profile 1](profile_1)                         | low expression since cleavage.            |
+| [profile 8][profile_8]                         | constant decrease from initial oocytes.   |
+| [profile 39][profile_39]                       | constant increase from initial oocytes.   |
+| [profile 31][profile_31]                       | peak at 3d coincident with gastrulation.  |
+| [profile 25][profile_25]                       | peak at 3d but drastically downregulated. |
+| [profile 22][profile_22]                       | peak at 7d coincident with introvertula.  |
+| [profiles 17][profile_17] and [18][profile_18] | low during cleavage, then up.             |
+| [profile 1][profile_1]                         | low expression since cleavage.            |
 
-[profile 8]: stem/profile_8
-[profile 39]: stem/profile_39
-[profile 31]: stem/profile_31
-[profile 25]: stem/profile_25
-[profile 22]: stem/profile_22
-[profiles 17]: stem/profile_17
+[profile_8]: stem/profile_8
+[profile_39]: stem/profile_39
+[profile_31]: stem/profile_31
+[profile_25]: stem/profile_25
+[profile_22]: stem/profile_22
+[profiles_17]: stem/profile_17
 [profile_18]: stem/profile_18
-[profile 1]: stem/profile_1
+[profile_1]: stem/profile_1
 
 Replicate plots
 ---------------
@@ -255,5 +255,5 @@ Plotting the normalized average count between replicates, except for 7d sample.
 
 ![Scatter plots between replicates](plots/rep_plots.png)
 
-**Source:** [build_scatter_plots](build_scatter_plots)
+**Source:** [build_scatter_plots.r](build_scatter_plots.r)
 
