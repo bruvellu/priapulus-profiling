@@ -236,7 +236,7 @@ Relevant profiles:
 | [profile 31][profile_31]                       | peak at 3d coincident with gastrulation.  |
 | [profile 25][profile_25]                       | peak at 3d but drastically downregulated. |
 | [profile 22][profile_22]                       | peak at 7d coincident with introvertula.  |
-| [profiles 17][profile_17] and [18][profile_18] | low during cleavage, then up.             |
+| [profile 17][profile_17] and [18][profile_18] | low during cleavage, then up.             |
 | [profile 1][profile_1]                         | low expression since cleavage.            |
 
 [profile_8]: stem/profile_8
@@ -257,3 +257,14 @@ Plotting the normalized average count between replicates, except for 7d sample.
 
 **Source:** [build_scatter_plots.r](build_scatter_plots.r)
 
+Differential expression
+-----------------------
+
+Gene ontology
+-------------
+
+1. Parse accession numbers from annotated assembly.
+2. Use Entrez to fetch list of GO ids associated with the protein. (should I fetch InterPro?)
+3. For each GO id fetch hierarchy, terms, and evidence codes.
+4. Associate terms with contigs.
+5. Done.
