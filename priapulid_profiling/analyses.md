@@ -231,13 +231,13 @@ Relevant profiles:
 
 | profile                                        | description                               |
 | :------:                                       | :----------                               |
-| [profile 8][profile_8]                         | constant decrease from initial oocytes.   |
-| [profile 39][profile_39]                       | constant increase from initial oocytes.   |
-| [profile 31][profile_31]                       | peak at 3d coincident with gastrulation.  |
-| [profile 25][profile_25]                       | peak at 3d but drastically downregulated. |
-| [profile 22][profile_22]                       | peak at 7d coincident with introvertula.  |
-| [profile 17][profile_17] and [18][profile_18] | low during cleavage, then up.             |
-| [profile 1][profile_1]                         | low expression since cleavage.            |
+| [profile 8][profile_8]                         | constant decrease from initial oocytes    |
+| [profile 39][profile_39]                       | constant increase from initial oocytes    |
+| [profile 31][profile_31]                       | peak at 3d coincident with gastrulation   |
+| [profile 25][profile_25]                       | peak at 3d but drastically downregulated  |
+| [profile 22][profile_22]                       | peak at 7d coincident with introvertula   |
+| [profile 17][profile_17] and [18][profile_18]  | low during cleavage, then up              |
+| [profile 1][profile_1]                         | low expression since cleavage             |
 
 [profile_8]: stem/profile_8
 [profile_39]: stem/profile_39
