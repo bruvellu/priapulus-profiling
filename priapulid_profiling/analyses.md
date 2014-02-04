@@ -247,3 +247,13 @@ Relevant profiles:
 [profiles 17]: stem/profile_17
 [profile_18]: stem/profile_18
 [profile 1]: stem/profile_1
+
+Replicate plots
+---------------
+
+Plotting the normalized average count between replicates, except for 7d sample.
+
+![Scatter plots between replicates](plots/rep_plots.png)
+
+**Source:** [build_scatter_plots](build_scatter_plots)
+
