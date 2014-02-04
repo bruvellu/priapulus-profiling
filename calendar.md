@@ -83,19 +83,22 @@ Week 06 2014
 ### Sunday 02 February
 
 - ~~Parsed, sorted, and selected taxa for acoels.~~
-- Organize repository files again.
+- ~~Organize repository files again.~~
 
 ### Monday 03 February
 
-- Start GO analysis.
-- Calculate dispersion.
-- Continue with differential expression.
+- ~~Write cache functions for SRA.~~
+- ~~Begin curation of packages.~~
+- ~~Start GO analysis.~~ did a test on blast2go online
 
 ### Tuesday 04 February
 
+- Continue with differential expression.
+- Calculate dispersion.
 - Agalma Workshop at 1pm.
 
 ### Wednesday 05 February
+
 
 
 ### Thursday 06 February
