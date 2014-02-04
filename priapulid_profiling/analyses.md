@@ -244,7 +244,7 @@ Relevant profiles:
 [profile_31]: stem/profile_31
 [profile_25]: stem/profile_25
 [profile_22]: stem/profile_22
-[profiles_17]: stem/profile_17
+[profile_17]: stem/profile_17
 [profile_18]: stem/profile_18
 [profile_1]: stem/profile_1
 
