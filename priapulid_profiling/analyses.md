@@ -197,8 +197,53 @@ Edit the file `average` to run STEM.
     cp average avg_stem_input
     vim avg_stem_input
 
-1. Manually add `"transcript" ` as the first column name (note the white space).
+1. Manually add `'"transcript" '` as the first column name (without single quotes, note the white space).
 2. Remove quotes with `:%s:"::g`.
 3. Substitute white space for tabs `:%s:\s\+:\t:g`.
 
+Ran STEM with the following command:
 
+    java -mx1024M -jar ~/src/stem/stem.jar
+
+Default settings used as shown below (see [complete output](stem/stem_output)):
+
+    #Main Input:
+    Data_File   /home/nelas/Biologia/Doutorado/Priapulus/rna/RNAseq_profiling/stem/avg_stem_input
+    Gene_Annotation_Source  No annotations
+    Gene_Annotation_File
+    Cross_Reference_Source  No cross references
+    Cross_Reference_File
+    Gene_Location_Source    No Gene Locations
+    Gene_Location_File
+    Clustering_Method[STEM Clustering Method,K-means]   STEM Clustering Method
+    Maximum_Number_of_Model_Profiles    50
+    Maximum_Unit_Change_in_Model_Profiles_between_Time_Points   2
+    Normalize_Data[Log normalize data,Normalize data,No normalization/add 0]    Normalize data
+    Spot_IDs_included_in_the_data_file  false
+
+From the initial 58133 transcripts, STEM filtered out 33023 while 25110 passed
+the filter. Below are the profiles found ordered by transcript abundance and
+significance:
+
+![Priapulus caudatus STEM Profiles](stem/Pcau_stem.png)
+
+Relevant profiles:
+
+| profile                                        | description                               |
+| :------:                                       | :----------                               |
+| [profile 8](profile_8)                         | constant decrease from initial oocytes.   |
+| [profile 39](profile_39)                       | constant increase from initial oocytes.   |
+| [profile 31](profile_31)                       | peak at 3d coincident with gastrulation.  |
+| [profile 25](profile_25)                       | peak at 3d but drastically downregulated. |
+| [profile 22](profile_22)                       | peak at 7d coincident with introvertula.  |
+| [profiles 17](profile_17) and [18](profile_18) | low during cleavage, then up.             |
+| [profile 1](profile_1)                         | low expression since cleavage.            |
+
+[profile 8]: stem/profile_8
+[profile 39]: stem/profile_39
+[profile 31]: stem/profile_31
+[profile 25]: stem/profile_25
+[profile 22]: stem/profile_22
+[profiles 17]: stem/profile_17
+[profile_18]: stem/profile_18
+[profile 1]: stem/profile_1
