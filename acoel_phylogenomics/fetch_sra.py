@@ -142,17 +142,17 @@ class SRAPackage:
                          self.nreads, self.read_average, self.total_spots,
                          self.total_bases, self.size, self.published,)
 
-        print('\tID %s, done!' % self.id)
+        print('Done!')
 
     def efetch(self):
         '''Fetch package metadata from Entrez'''
+        print('\nProcessing ID=%s' % self.id)
         cached_file = self.cache()
         if cached_file:
             self.record = cached_file.read()
             cached_file.close()
-            print('\nRecord in cache!')
         else:
-            print('\nRecord not in cache. Fetching...')
+            print('Record not in cache. Fetching...')
             handle = Entrez.efetch(db='sra', id=self.id)
             self.record = handle.read()
             # Write cache file.
@@ -239,10 +239,31 @@ class SRAPackage:
 
     def get_lineage(self):
         '''Fetch hierarchy from NCBI's Taxonomy database.'''
-        handle = Entrez.efetch(db='taxonomy', id=self.taxon_id)
-        taxon = Entrez.read(handle)
-        self.scientific_name = taxon[0]['ScientificName']
-        self.lineage = taxon[0]['Lineage'] + '; ' + self.scientific_name
+        # Open taxa cache file.
+        try:
+            cached_taxa = pd.DataFrame.from_csv('.cache/taxa.csv')
+        except:
+            cached_taxa = pd.DataFrame(columns=['taxon_id', 'lineage', 'scientific_name'])
+
+        # Fetch row with taxon_id.
+        taxon_row = cached_taxa[cached_taxa.taxon_id == self.taxon_id]
+        if taxon_row:
+            self.scientific_name = taxon_row.scientific_name.values[0]
+            self.lineage = taxon_row.lineage.values[0]
+        else:
+            print('Taxon %d not in cache. Fetching...' % self.taxon_id)
+            handle = Entrez.efetch(db='taxonomy', id=self.taxon_id)
+            taxon = Entrez.read(handle)
+            self.scientific_name = taxon[0]['ScientificName']
+            self.lineage = taxon[0]['Lineage'] + '; ' + self.scientific_name
+            new_cache = cached_taxa.append([{'taxon_id': self.taxon_id,
+                                             'lineage': self.lineage,
+                                             'scientific_name': self.scientific_name}])
+            new_cache.to_csv('.cache/taxa.csv')
+
+#grouped_sra = sorted_sra.groupby('taxon_id')
+#index = [gp_keys[0] for gp_keys in grouped_sra.groups.values()]
+#unique_taxa = sorted_sra.reindex(index, ['taxon_id', 'lineage', 'scientific_name'])
 
 
 class FilterPackages:
@@ -267,6 +288,7 @@ class FilterPackages:
 
     def write_csv(self, filename):
         '''Write CSV file from data frame.'''
+        self.data_frame.to_csv('unfiltered_' + filename, index=False)
         self.filtered_data_frame.to_csv(filename, index=False)
         print('\n%d of %d packages written to "%s" after filtering.\n' % (self.filtered_data_frame.index.size, self.data_frame.index.size, filename))
 
