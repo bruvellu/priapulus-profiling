@@ -12,23 +12,16 @@ with Agalma 0.3.5.
 Mapping reads
 -------------
 
-Build reference index:
+Build reference index using `bowtie2-build`:
 
     /usr/local/src/bowtie2-2.0.0-beta7/bowtie2-build reference/Pc_ref.fa reference/Pc_ref > reference/bowtie2-build.log 2>&1 &
 
-Map each sample to reference:
+Map each sample to reference. Example below:
 
     /usr/local/src/bowtie2-2.0.0-beta7/bowtie2 --phred33 --very-sensitive-local -a -p 10 -x reference/Pc_ref -U data/Pc1_0d.txt.gz -S mapped_reads/Pc1_0d_bowtie.map > mapped_reads/Pc1_0d.log 2>&1 &
-    /usr/local/src/bowtie2-2.0.0-beta7/bowtie2 --phred33 --very-sensitive-local -a -p 10 -x reference/Pc_ref -U data/Pc1_1d.txt.gz -S mapped_reads/Pc1_1d_bowtie.map > mapped_reads/Pc1_1d.log 2>&1 &
-    /usr/local/src/bowtie2-2.0.0-beta7/bowtie2 --phred33 --very-sensitive-local -a -p 10 -x reference/Pc_ref -U data/Pc1_3d.txt.gz -S mapped_reads/Pc1_3d_bowtie.map > mapped_reads/Pc1_3d.log 2>&1 &
-    /usr/local/src/bowtie2-2.0.0-beta7/bowtie2 --phred33 --very-sensitive-local -a -p 10 -x reference/Pc_ref -U data/Pc1_5d.txt.gz -S mapped_reads/Pc1_5d_bowtie.map > mapped_reads/Pc1_5d.log 2>&1 &
-    /usr/local/src/bowtie2-2.0.0-beta7/bowtie2 --phred33 --very-sensitive-local -a -p 10 -x reference/Pc_ref -U data/Pc1_9d.txt.gz -S mapped_reads/Pc1_9d_bowtie.map > mapped_reads/Pc1_9d.log 2>&1 &
-    /usr/local/src/bowtie2-2.0.0-beta7/bowtie2 --phred33 --very-sensitive-local -a -p 10 -x reference/Pc_ref -U data/Pc2_0d.txt.gz -S mapped_reads/Pc2_0d_bowtie.map > mapped_reads/Pc2_0d.log 2>&1 &
-    /usr/local/src/bowtie2-2.0.0-beta7/bowtie2 --phred33 --very-sensitive-local -a -p 10 -x reference/Pc_ref -U data/Pc2_1d.txt.gz -S mapped_reads/Pc2_1d_bowtie.map > mapped_reads/Pc2_1d.log 2>&1 &
-    /usr/local/src/bowtie2-2.0.0-beta7/bowtie2 --phred33 --very-sensitive-local -a -p 10 -x reference/Pc_ref -U data/Pc2_3d.txt.gz -S mapped_reads/Pc2_3d_bowtie.map > mapped_reads/Pc2_3d.log 2>&1 &
-    /usr/local/src/bowtie2-2.0.0-beta7/bowtie2 --phred33 --very-sensitive-local -a -p 10 -x reference/Pc_ref -U data/Pc2_5d.txt.gz -S mapped_reads/Pc2_5d_bowtie.map > mapped_reads/Pc2_5d.log 2>&1 &
-    /usr/local/src/bowtie2-2.0.0-beta7/bowtie2 --phred33 --very-sensitive-local -a -p 10 -x reference/Pc_ref -U data/Pc2_7d.txt.gz -S mapped_reads/Pc2_7d_bowtie.map > mapped_reads/Pc2_7d.log 2>&1 &
-    /usr/local/src/bowtie2-2.0.0-beta7/bowtie2 --phred33 --very-sensitive-local -a -p 10 -x reference/Pc_ref -U data/Pc2_9d.txt.gz -S mapped_reads/Pc2_9d_bowtie.map > mapped_reads/Pc2_9d.log 2>&1 &
+    ...
+
+**Source:** [00_map_to_reference.sh](00_map_to_ref.sh)
 
 Calculate read counts
 ---------------------
@@ -64,19 +57,14 @@ for ref, count in counts.iteritems():
     print ref + "\t" + str(count)
 ```
 
-Ran with these commands:
+**Source:** [bowtie_map_to_counts.py](bowtie_map_to_counts.py)
+
+Ran command for each sample:
 
     ./bowtie_map_to_counts.py mapped_reads/Pc1_0d_bowtie.map > read_count_per_transcript/Pc1_0d.counts &
-    ./bowtie_map_to_counts.py mapped_reads/Pc1_1d_bowtie.map > read_count_per_transcript/Pc1_1d.counts &
-    ./bowtie_map_to_counts.py mapped_reads/Pc1_3d_bowtie.map > read_count_per_transcript/Pc1_3d.counts &
-    ./bowtie_map_to_counts.py mapped_reads/Pc1_5d_bowtie.map > read_count_per_transcript/Pc1_5d.counts &
-    ./bowtie_map_to_counts.py mapped_reads/Pc1_9d_bowtie.map > read_count_per_transcript/Pc1_9d.counts &
-    ./bowtie_map_to_counts.py mapped_reads/Pc2_0d_bowtie.map > read_count_per_transcript/Pc2_0d.counts &
-    ./bowtie_map_to_counts.py mapped_reads/Pc2_1d_bowtie.map > read_count_per_transcript/Pc2_1d.counts &
-    ./bowtie_map_to_counts.py mapped_reads/Pc2_3d_bowtie.map > read_count_per_transcript/Pc2_3d.counts &
-    ./bowtie_map_to_counts.py mapped_reads/Pc2_5d_bowtie.map > read_count_per_transcript/Pc2_5d.counts &
-    ./bowtie_map_to_counts.py mapped_reads/Pc2_7d_bowtie.map > read_count_per_transcript/Pc2_7d.counts &
-    ./bowtie_map_to_counts.py mapped_reads/Pc2_9d_bowtie.map > read_count_per_transcript/Pc2_9d.counts &
+    ...
+
+**Source:** [01_calculate_read_count.sh](01_calculate_read_count.sh)
 
 Importing data to R
 -------------------
@@ -86,16 +74,7 @@ Following steps from: http://www.biomedcentral.com/content/supplementary/1471-21
 Create a table for each sample using read counts per transcript as input.
 
     Pc1_0d <- read.table("read_count_per_transcript/Pc1_0d.counts", header=TRUE)
-    Pc1_1d <- read.table("read_count_per_transcript/Pc1_1d.counts", header=TRUE)
-    Pc1_3d <- read.table("read_count_per_transcript/Pc1_3d.counts", header=TRUE)
-    Pc1_5d <- read.table("read_count_per_transcript/Pc1_5d.counts", header=TRUE)
-    Pc1_9d <- read.table("read_count_per_transcript/Pc1_9d.counts", header=TRUE)
-    Pc2_0d <- read.table("read_count_per_transcript/Pc2_0d.counts", header=TRUE)
-    Pc2_1d <- read.table("read_count_per_transcript/Pc2_1d.counts", header=TRUE)
-    Pc2_3d <- read.table("read_count_per_transcript/Pc2_3d.counts", header=TRUE)
-    Pc2_5d <- read.table("read_count_per_transcript/Pc2_5d.counts", header=TRUE)
-    Pc2_7d <- read.table("read_count_per_transcript/Pc2_7d.counts", header=TRUE)
-    Pc2_9d <- read.table("read_count_per_transcript/Pc2_9d.counts", header=TRUE)
+    ...
 
 Merge data into matrix by common row names (transcripts).
 
@@ -103,22 +82,7 @@ Merge data into matrix by common row names (transcripts).
     names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d")
     merged_data <- merge(merged_data, Pc1_1d, by.x="reference", by.y="reference", all=TRUE)
     names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d")
-    merged_data <- merge(merged_data, Pc2_1d, by.x="reference", by.y="reference", all=TRUE)
-    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d")
-    merged_data <- merge(merged_data, Pc1_3d, by.x="reference", by.y="reference", all=TRUE)
-    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d")
-    merged_data <- merge(merged_data, Pc2_3d, by.x="reference", by.y="reference", all=TRUE)
-    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d")
-    merged_data <- merge(merged_data, Pc1_5d, by.x="reference", by.y="reference", all=TRUE)
-    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d", "count_Pc1_5d")
-    merged_data <- merge(merged_data, Pc2_5d, by.x="reference", by.y="reference", all=TRUE)
-    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d", "count_Pc1_5d", "count_Pc2_5d")
-    merged_data <- merge(merged_data, Pc2_7d, by.x="reference", by.y="reference", all=TRUE)
-    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d", "count_Pc1_5d", "count_Pc2_5d", "count_Pc2_7d")
-    merged_data <- merge(merged_data, Pc1_9d, by.x="reference", by.y="reference", all=TRUE)
-    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d", "count_Pc1_5d", "count_Pc2_5d", "count_Pc2_7d", "count_Pc1_9d")
-    merged_data <- merge(merged_data, Pc2_9d, by.x="reference", by.y="reference", all=TRUE)
-    names(merged_data) <- c("transcript", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d", "count_Pc1_5d", "count_Pc2_5d", "count_Pc2_7d", "count_Pc1_9d", "count_Pc2_9d")
+    ...
 
 Name rows with transcript name.
 
@@ -132,12 +96,13 @@ Set NA values to 0:
 
     n[is.na(n)] <- 0
 
+**Source:** [02_import_to_r.sh](02_import_to_r.sh) and [load_read_counts.r](load_read_counts.r)
+
 Prepare data with edgeR
 -----------------------
 
 Calculate normalization factor for each column. Read more about normalization methods [here](http://www.biomedcentral.com/1471-2105/11/94).
 
-    # TODO Which normalization method is the default???
     nf <- calcNormFactors(n)
 
 Get sum of each column.
@@ -168,6 +133,8 @@ Remove NAs again.
 
     merged_data_norm[is.na(merged_data_norm)] <- 0
 
+**Source:** [03_normalize.sh](03_normalize.sh) and [edger_normalize.r](edger_normalize.r)
+
 STEM analysis
 -------------
 
@@ -192,6 +159,8 @@ Write file with average data for STEM input.
 
     write.table(avg_merged_data_norm, "average")
 
+**Source:** [04_stem_profiles.sh](04_stem_profiles.sh) and [stem.r](stem.r)
+
 Edit the file `average` to run STEM.
 
     cp average avg_stem_input
@@ -201,7 +170,7 @@ Edit the file `average` to run STEM.
 2. Remove quotes with `:%s:"::g`.
 3. Substitute white space for tabs `:%s:\s\+:\t:g`.
 
-Ran STEM with the following command:
+Run STEM with the following command:
 
     java -mx1024M -jar ~/src/stem/stem.jar
 
@@ -255,7 +224,7 @@ Plotting the normalized average count between replicates, except for 7d sample.
 
 ![Scatter plots between replicates](plots/rep_plots.png)
 
-**Source:** [build_scatter_plots.r](build_scatter_plots.r)
+**Source:** [05_plot_replicates.sh](05_plot_replicates.sh) and [build_scatter_plots.r](build_scatter_plots.r)
 
 Differential expression
 -----------------------
