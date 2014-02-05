@@ -244,8 +244,9 @@ back into R.
 6. Lowercase everything with: `ggVGu`
 7. Uppercase locus and transcript on deflines with `:%s:locus_:Locus_:g` and `:%s:transcript_:Transcript_:g`
 
-### Getting STEM data into matrix with R ###
 
+```R
+# Put STEM data into matrix with R
 stem <- read.table("stem_plot_data", header = TRUE)
 
 Zlower <- tolower(Z$transcript)
@@ -259,6 +260,7 @@ Zs <- merge(Z, stem, by.x= "row.names", by.y = "lowercase_transcript", all=TRUE)
 # Saving full database in R:
 
 write.table(Zs, "matrix.R")
+```
 
 Replicate plots
 ---------------
