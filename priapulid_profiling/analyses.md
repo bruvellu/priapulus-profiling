@@ -71,95 +71,108 @@ Importing data to R
 
 Following steps from: http://www.biomedcentral.com/content/supplementary/1471-2164-14-266-s9.r
 
-Create a table for each sample using read counts per transcript as input.
+```R
+# Load read counts.
+Pc1_0d <- read.table("read_count_per_transcript/Pc1_0d.counts", header=TRUE)
+Pc1_1d <- read.table("read_count_per_transcript/Pc1_1d.counts", header=TRUE)
+Pc1_3d <- read.table("read_count_per_transcript/Pc1_3d.counts", header=TRUE)
+Pc1_5d <- read.table("read_count_per_transcript/Pc1_5d.counts", header=TRUE)
+Pc1_9d <- read.table("read_count_per_transcript/Pc1_9d.counts", header=TRUE)
+Pc2_0d <- read.table("read_count_per_transcript/Pc2_0d.counts", header=TRUE)
+Pc2_1d <- read.table("read_count_per_transcript/Pc2_1d.counts", header=TRUE)
+Pc2_3d <- read.table("read_count_per_transcript/Pc2_3d.counts", header=TRUE)
+Pc2_5d <- read.table("read_count_per_transcript/Pc2_5d.counts", header=TRUE)
+Pc2_7d <- read.table("read_count_per_transcript/Pc2_7d.counts", header=TRUE)
+Pc2_9d <- read.table("read_count_per_transcript/Pc2_9d.counts", header=TRUE)
 
-    Pc1_0d <- read.table("read_count_per_transcript/Pc1_0d.counts", header=TRUE)
-    ...
+# Merge read counts intersecting by transcript.
+merged_data <- merge(Pc1_0d, Pc2_0d, by.x="reference", by.y="reference", all=TRUE)
+names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d")
+merged_data <- merge(merged_data, Pc1_1d, by.x="reference", by.y="reference", all=TRUE)
+names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d")
+merged_data <- merge(merged_data, Pc2_1d, by.x="reference", by.y="reference", all=TRUE)
+names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d")
+merged_data <- merge(merged_data, Pc1_3d, by.x="reference", by.y="reference", all=TRUE)
+names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d")
+merged_data <- merge(merged_data, Pc2_3d, by.x="reference", by.y="reference", all=TRUE)
+names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d")
+merged_data <- merge(merged_data, Pc1_5d, by.x="reference", by.y="reference", all=TRUE)
+names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d", "count_Pc1_5d")
+merged_data <- merge(merged_data, Pc2_5d, by.x="reference", by.y="reference", all=TRUE)
+names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d", "count_Pc1_5d", "count_Pc2_5d")
+merged_data <- merge(merged_data, Pc2_7d, by.x="reference", by.y="reference", all=TRUE)
+names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d", "count_Pc1_5d", "count_Pc2_5d", "count_Pc2_7d")
+merged_data <- merge(merged_data, Pc1_9d, by.x="reference", by.y="reference", all=TRUE)
+names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d", "count_Pc1_5d", "count_Pc2_5d", "count_Pc2_7d", "count_Pc1_9d")
+merged_data <- merge(merged_data, Pc2_9d, by.x="reference", by.y="reference", all=TRUE)
+names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d", "count_Pc2_1d", "count_Pc1_3d", "count_Pc2_3d", "count_Pc1_5d", "count_Pc2_5d", "count_Pc2_7d", "count_Pc1_9d", "count_Pc2_9d")
 
-Merge data into matrix by common row names (transcripts).
-
-    merged_data <- merge(Pc1_0d, Pc2_0d, by.x="reference", by.y="reference", all=TRUE)
-    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d")
-    merged_data <- merge(merged_data, Pc1_1d, by.x="reference", by.y="reference", all=TRUE)
-    names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_1d")
-    ...
-
-Name rows with transcript name.
-
-    rownames(merged_data) <- merged_data[,1]
-
-Keep only numeric columns.
-
-    n <- data.matrix(merged_data[,2:12])
-
-Set NA values to 0:
-
-    n[is.na(n)] <- 0
+# Name rows with transcript name.
+rownames(merged_data) <- merged_data[,1]
+```
 
 **Source:** [02_import_to_r.sh](02_import_to_r.sh) and [load_read_counts.r](load_read_counts.r)
 
-Prepare data with edgeR
------------------------
+Normalize data with edgeR
+-------------------------
 
-Calculate normalization factor for each column. Read more about normalization methods [here](http://www.biomedcentral.com/1471-2105/11/94).
+```R
+# Keep only numeric columns.
+num_data <- data.matrix(merged_data[,2:12])
 
-    nf <- calcNormFactors(n)
+# Set NA values to 0:
+num_data[is.na(num_data)] <- 0
 
-Get sum of each column.
+# Calculate normalization factor for each column.
+norm_factors <- calcNormFactors(num_data)
 
-    lib.size <- colSums(n)
+# Get sum of each column.
+lib.size <- colSums(num_data)
 
-Get effective size by multiplying size by normalization factor.
+# Get effective size by multiplying size by normalization factor.
+lib.effective.size <- lib.size * norm_factors
 
-    lib.effective.size <- lib.size * nf
+# Get normalization multiplier to be applied into original counts.
+norm.multiplier <- 1000000 / lib.effective.size
 
-Get normalization multiplier to be applied into original counts.
+# Create normalized matrix by multiplying normalization factor to counts.
+norm_data <- num_data * norm.multiplier
 
-    norm.multiplier <- 1000000 / lib.effective.size
+# Rename columns.
+colnames(norm_data) <- c("norm_count_Pc1_0d", "norm_count_Pc2_0d", "norm_count_Pc1_1d", "norm_count_Pc2_1d", "norm_count_Pc1_3d", "norm_count_Pc2_3d", "norm_count_Pc1_5d", "norm_count_Pc2_5d", "norm_count_Pc2_7d", "norm_count_Pc1_9d", "norm_count_Pc2_9d")
 
-Create normalized matrix by multiplying normalization factor to counts.
+# Bind counts and normalize data.
+merged_data <- cbind(merged_data, norm_data)
 
-    q <- n * norm.multiplier
-
-Rename columns.
-
-    colnames(q) <- c("norm_count_Pc1_0d", "norm_count_Pc2_0d", "norm_count_Pc1_1d", "norm_count_Pc2_1d", "norm_count_Pc1_3d", "norm_count_Pc2_3d", "norm_count_Pc1_5d", "norm_count_Pc2_5d", "norm_count_Pc2_7d", "norm_count_Pc1_9d", "norm_count_Pc2_9d")
-
-Bind counts and normalize data.
-
-    merged_data_norm <- cbind(merged_data, q)
-
-Remove NAs again.
-
-    merged_data_norm[is.na(merged_data_norm)] <- 0
+# Remove NAs again.
+merged_data[is.na(merged_data)] <- 0
+```
 
 **Source:** [03_normalize.sh](03_normalize.sh) and [edger_normalize.r](edger_normalize.r)
 
 STEM analysis
 -------------
 
-Calculate the average between replicates.
+```R
+# Calculate the average between replicates.
+avg_norm_count_0d <- (merged_data$norm_count_Pc1_0d + merged_data$norm_count_Pc2_0d) / 2
+avg_norm_count_1d <- (merged_data$norm_count_Pc1_1d + merged_data$norm_count_Pc2_1d) / 2
+avg_norm_count_3d <- (merged_data$norm_count_Pc1_3d + merged_data$norm_count_Pc2_3d) / 2
+avg_norm_count_5d <- (merged_data$norm_count_Pc1_5d + merged_data$norm_count_Pc2_5d) / 2
+avg_norm_count_7d <- merged_data$norm_count_Pc2_7d
+avg_norm_count_9d <- (merged_data$norm_count_Pc1_9d + merged_data$norm_count_Pc2_9d) / 2
 
-    avg_norm_count_0d <- (merged_data_norm$norm_count_Pc1_0d + merged_data_norm$norm_count_Pc2_0d) / 2
-    avg_norm_count_1d <- (merged_data_norm$norm_count_Pc1_1d + merged_data_norm$norm_count_Pc2_1d) / 2
-    avg_norm_count_3d <- (merged_data_norm$norm_count_Pc1_3d + merged_data_norm$norm_count_Pc2_3d) / 2
-    avg_norm_count_5d <- (merged_data_norm$norm_count_Pc1_5d + merged_data_norm$norm_count_Pc2_5d) / 2
-    avg_norm_count_7d <- merged_data_norm$norm_count_Pc2_7d
-    avg_norm_count_9d <- (merged_data_norm$norm_count_Pc1_9d + merged_data_norm$norm_count_Pc2_9d) / 2
+# Build data frame for average values.
+avg_data_norm <- cbind(avg_norm_count_0d, avg_norm_count_1d, avg_norm_count_3d, avg_norm_count_5d, avg_norm_count_7d, avg_norm_count_9d)
 
-Build data frame for average values.
+# Put names on rows.
+rownames(avg_data_norm) <- merged_data[,1]
 
-    avg_merged_data_norm <- cbind(avg_norm_count_0d, avg_norm_count_1d, avg_norm_count_3d, avg_norm_count_5d, avg_norm_count_7d, avg_norm_count_9d)
+# Write file with average data for STEM input.
+write.table(avg_data_norm, "average")
+```
 
-Put names on rows.
-
-    rownames(avg_merged_data_norm) <- merged_data_norm[,1]
-
-Write file with average data for STEM input.
-
-    write.table(avg_merged_data_norm, "average")
-
-**Source:** [04_stem_profiles.sh](04_stem_profiles.sh) and [stem.r](stem.r)
+**Source:** [04_stem_profiles.sh](04_stem_profiles.sh) and [stem_prepare.r](stem_prepare.r)
 
 Edit the file `average` to run STEM.
 
@@ -216,6 +229,36 @@ Relevant profiles:
 [profile_17]: stem/profile_17
 [profile_18]: stem/profile_18
 [profile_1]: stem/profile_1
+
+Output file was created manually by saving the Main Table for Genes Passing
+Filter as `genes_passing_filter`. This file needs to be edited to be imported
+back into R.
+
+    cp stem_output stem_profiles_to_r
+
+1. Remove tab from beginning of the line with `:%s:^\t::g`
+2. Remove initial header with `:%s:^Selected\t::g`
+3. Remove SPOT column with `%s:\tID_\d\+\t\(\d\+\):\t\1:g`
+4. Remove SPOT header with `:%s:SPOT\t::g`
+5. Remove first line: `Table of Genes Passing Filter`
+6. Lowercase everything with: `ggVGu`
+7. Uppercase locus and transcript on deflines with `:%s:locus_:Locus_:g` and `:%s:transcript_:Transcript_:g`
+
+### Getting STEM data into matrix with R ###
+
+stem <- read.table("stem_plot_data", header = TRUE)
+
+Zlower <- tolower(Z$transcript)
+Zlower <- as.data.frame(Zlower)
+rownames(Z) <- Zlower[,1]
+colnames(Zs)[1] <- "lowercase_transcript"
+Zs <- merge(Z, stem, by.x= "row.names", by.y = "lowercase_transcript", all=TRUE)
+
+#lowercase_transcript was a temporary column to merge STEM data.
+
+# Saving full database in R:
+
+write.table(Zs, "matrix.R")
 
 Replicate plots
 ---------------
