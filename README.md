@@ -15,3 +15,15 @@ Phylogenomics of Acoelomorpha
 
 **Objective:** solve the phylogenetic position of acoels. [Read
 more.](acoel_phylogenomics/description.md)
+
+R example syntax highlighting
+-----------------------------
+
+```R
+hello <- function() {
+    print("hello, world!")
+}
+hello()
+```
+
+R syntax highlighting is not being displayed correctly with fenced blocks. Should look like [this](https://github.com/github/linguist/blob/master/samples/R/hello-r.R).
