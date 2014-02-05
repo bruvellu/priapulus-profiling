@@ -168,6 +168,9 @@ avg_data_norm <- cbind(avg_norm_count_0d, avg_norm_count_1d, avg_norm_count_3d, 
 # Put names on rows.
 rownames(avg_data_norm) <- merged_data[,1]
 
+# Bind average counts with matrix.
+merged_data <- cbind(merged_data, avg_data_norm)
+
 # Write file with average data for STEM input.
 write.table(avg_data_norm, "average")
 ```
@@ -240,10 +243,10 @@ back into R.
 2. Remove initial header with `:%s:^Selected\t::g`
 3. Remove SPOT column with `%s:\tID_\d\+\t\(\d\+\):\t\1:g`
 4. Remove SPOT header with `:%s:SPOT\t::g`
-5. Remove first line: `Table of Genes Passing Filter`
-6. Lowercase everything with: `ggVGu`
-7. Uppercase locus and transcript on deflines with `:%s:locus_:Locus_:g` and `:%s:transcript_:Transcript_:g`
-
+5. Change count to delta in header: `:%s:avg_norm_count:avg_norm_delta:g`
+6. Remove first line: `Table of Genes Passing Filter`
+7. Lowercase everything with: `ggVGu`
+8. Uppercase locus and transcript on deflines with `:%s:locus_:Locus_:g` and `:%s:transcript_:Transcript_:g`
 
 ```s
 # Put STEM data into matrix with R
