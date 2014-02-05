@@ -93,16 +93,18 @@ Week 06 2014
 
 ### Tuesday 04 February
 
-- Continue with differential expression.
-- Calculate dispersion.
-- Agalma Workshop at 1pm.
+- ~~Continue with differential expression.~~ organized and fixed initial code
+- ~~Agalma Workshop at 1pm.~~
 
 ### Wednesday 05 February
 
-
+- Pairwise comparison of expression.
+- Select SRA for a test run.
 
 ### Thursday 06 February
 
+- Start SRA test run.
+- Differential gene expression should be running.
 
 ### Friday 07 February
 
