@@ -269,6 +269,13 @@ Plotting the normalized average count between replicates, except for 7d sample.
 Differential expression
 -----------------------
 
+This scripts runs step-by-step the test for differential gene expression as follows:
+
+1. Subset read counts by interval and define available time points.
+2. Create DGEList object for running the test.
+3. Calculate the normalization factor and dispersion.
+4. Run test and output a table with counts of significant genes.
+
 ```s
 # Load edgeR.
 library(edgeR)
@@ -316,7 +323,7 @@ names(table_0d1d)[names(table_0d1d) == "rownames(table_0d1d)"] = "transcript"
 
 # Adjust p-values with bonferroni.
 table_0d1d <- cbind(table_0d1d, p.adjust(table_0d1d$PValue, method="bonferroni"))
-names(table_0d1d)[names(table_0d1d)=="p.adjust(table_0d1d$PValue, method = \"bonferroni\")"] = "P_adjust_0d_1d"
+names(table_0d1d)[names(table_0d1d)=="p.adjust(table_0d1d$PValue, method = \"bonferroni\")"] = "PAdjust_0d_1d"
 names(table_0d1d)[names(table_0d1d)=="logFC"] = "logFC_0d_1d"
 names(table_0d1d)[names(table_0d1d)=="logCPM"] = "logCPM_0d_1d"
 names(table_0d1d)[names(table_0d1d)=="PValue"] = "PValue_0d_1d"
@@ -361,7 +368,7 @@ names(table_1d3d)[names(table_1d3d) == "rownames(table_1d3d)"] = "transcript"
 
 # Adjust p-values with bonferroni.
 table_1d3d <- cbind(table_1d3d, p.adjust(table_1d3d$PValue, method="bonferroni"))
-names(table_1d3d)[names(table_1d3d)=="p.adjust(table_1d3d$PValue, method = \"bonferroni\")"] = "P_adjust_1d_3d"
+names(table_1d3d)[names(table_1d3d)=="p.adjust(table_1d3d$PValue, method = \"bonferroni\")"] = "PAdjust_1d_3d"
 names(table_1d3d)[names(table_1d3d)=="logFC"] = "logFC_1d_3d"
 names(table_1d3d)[names(table_1d3d)=="logCPM"] = "logCPM_1d_3d"
 names(table_1d3d)[names(table_1d3d)=="PValue"] = "PValue_1d_3d"
@@ -406,7 +413,7 @@ names(table_3d5d)[names(table_3d5d) == "rownames(table_3d5d)"] = "transcript"
 
 # Adjust p-values with bonferroni.
 table_3d5d <- cbind(table_3d5d, p.adjust(table_3d5d$PValue, method="bonferroni"))
-names(table_3d5d)[names(table_3d5d)=="p.adjust(table_3d5d$PValue, method = \"bonferroni\")"] = "P_adjust_3d_5d"
+names(table_3d5d)[names(table_3d5d)=="p.adjust(table_3d5d$PValue, method = \"bonferroni\")"] = "PAdjust_3d_5d"
 names(table_3d5d)[names(table_3d5d)=="logFC"] = "logFC_3d_5d"
 names(table_3d5d)[names(table_3d5d)=="logCPM"] = "logCPM_3d_5d"
 names(table_3d5d)[names(table_3d5d)=="PValue"] = "PValue_3d_5d"
@@ -451,7 +458,7 @@ names(table_5d7d)[names(table_5d7d) == "rownames(table_5d7d)"] = "transcript"
 
 # Adjust p-values with bonferroni.
 table_5d7d <- cbind(table_5d7d, p.adjust(table_5d7d$PValue, method="bonferroni"))
-names(table_5d7d)[names(table_5d7d)=="p.adjust(table_5d7d$PValue, method = \"bonferroni\")"] = "P_adjust_5d_7d"
+names(table_5d7d)[names(table_5d7d)=="p.adjust(table_5d7d$PValue, method = \"bonferroni\")"] = "PAdjust_5d_7d"
 names(table_5d7d)[names(table_5d7d)=="logFC"] = "logFC_5d_7d"
 names(table_5d7d)[names(table_5d7d)=="logCPM"] = "logCPM_5d_7d"
 names(table_5d7d)[names(table_5d7d)=="PValue"] = "PValue_5d_7d"
@@ -496,7 +503,7 @@ names(table_7d9d)[names(table_7d9d) == "rownames(table_7d9d)"] = "transcript"
 
 # Adjust p-values with bonferroni.
 table_7d9d <- cbind(table_7d9d, p.adjust(table_7d9d$PValue, method="bonferroni"))
-names(table_7d9d)[names(table_7d9d)=="p.adjust(table_7d9d$PValue, method = \"bonferroni\")"] = "P_adjust_7d_9d"
+names(table_7d9d)[names(table_7d9d)=="p.adjust(table_7d9d$PValue, method = \"bonferroni\")"] = "PAdjust_7d_9d"
 names(table_7d9d)[names(table_7d9d)=="logFC"] = "logFC_7d_9d"
 names(table_7d9d)[names(table_7d9d)=="logCPM"] = "logCPM_7d_9d"
 names(table_7d9d)[names(table_7d9d)=="PValue"] = "PValue_7d_9d"
@@ -507,12 +514,66 @@ merged_dge <- merge(merged_dge, table_3d5d, by.x="transcript", by.y="transcript"
 merged_dge <- merge(merged_dge, table_5d7d, by.x="transcript", by.y="transcript", all=TRUE)
 merged_dge <- merge(merged_dge, table_7d9d, by.x="transcript", by.y="transcript", all=TRUE)
 
+# Exclude previous edgeR values (if it is a re-run).
+merged_data$PValue_0d_1d <- NULL
+merged_data$PAdjust_0d_1d <- NULL
+merged_data$logFC_0d_1d <- NULL
+merged_data$logCPM_0d_1d <- NULL
+merged_data$PValue_1d_3d <- NULL
+merged_data$PAdjust_1d_3d <- NULL
+merged_data$logFC_1d_3d <- NULL
+merged_data$logCPM_1d_3d <- NULL
+merged_data$PValue_3d_5d <- NULL
+merged_data$PAdjust_3d_5d <- NULL
+merged_data$logFC_3d_5d <- NULL
+merged_data$logCPM_3d_5d <- NULL
+merged_data$PValue_5d_7d <- NULL
+merged_data$PAdjust_5d_7d <- NULL
+merged_data$logFC_5d_7d <- NULL
+merged_data$logCPM_5d_7d <- NULL
+merged_data$PValue_7d_9d <- NULL
+merged_data$PAdjust_7d_9d <- NULL
+merged_data$logFC_7d_9d <- NULL
+merged_data$logCPM_7d_9d <- NULL
+
 # Merge differential expression into matrix.
 merged_data <- merge(merged_data, merged_dge, by.x="reference", by.y="transcript", all=TRUE)
 # TODO Is there a need to sort?
 
+# Select differentially expressed genes for each interval.
 
+# 0d - 1d; increasing (logFC>0), significant (PAdjust<0.05), excluding NA.
+i1 <- merged_data[(merged_data$logFC_0d_1d > 0) & (merged_data$PAdjust_0d_1d < 0.05) & (!is.na(merged_data$PAdjust_0d_1d)),]
+d1 <- merged_data[(merged_data$logFC_0d_1d < 0) & (merged_data$PAdjust_0d_1d < 0.05) & (!is.na(merged_data$PAdjust_0d_1d)),]
+
+# 1d - 3d; increasing (logFC>0), significant (PAdjust<0.05), excluding NA.
+i2 <- merged_data[(merged_data$logFC_1d_3d > 0) & (merged_data$PAdjust_1d_3d < 0.05) & (!is.na(merged_data$PAdjust_1d_3d)),]
+d2 <- merged_data[(merged_data$logFC_1d_3d < 0) & (merged_data$PAdjust_1d_3d < 0.05) & (!is.na(merged_data$PAdjust_1d_3d)),]
+
+# 3d - 5d; increasing (logFC>0), significant (PAdjust<0.05), excluding NA.
+i3 <- merged_data[(merged_data$logFC_3d_5d > 0) & (merged_data$PAdjust_3d_5d < 0.05) & (!is.na(merged_data$PAdjust_3d_5d)),]
+d3 <- merged_data[(merged_data$logFC_3d_5d < 0) & (merged_data$PAdjust_3d_5d < 0.05) & (!is.na(merged_data$PAdjust_3d_5d)),]
+
+# 5d - 7d; increasing (logFC>0), significant (PAdjust<0.05), excluding NA.
+i4 <- merged_data[(merged_data$logFC_5d_7d > 0) & (merged_data$PAdjust_5d_7d < 0.05) & (!is.na(merged_data$PAdjust_5d_7d)),]
+d4 <- merged_data[(merged_data$logFC_5d_7d < 0) & (merged_data$PAdjust_5d_7d < 0.05) & (!is.na(merged_data$PAdjust_5d_7d)),]
+
+# 7d - 9d; increasing (logFC>0), significant (PAdjust<0.05), excluding NA.
+i5 <- merged_data[(merged_data$logFC_7d_9d > 0) & (merged_data$PAdjust_7d_9d < 0.05) & (!is.na(merged_data$PAdjust_7d_9d)),]
+d5 <- merged_data[(merged_data$logFC_7d_9d < 0) & (merged_data$PAdjust_7d_9d < 0.05) & (!is.na(merged_data$PAdjust_7d_9d)),]
+
+# Count increasing and decreasing genes per interval.
+I1 <- c(nrow(i1),-(nrow(d1)))
+I2 <- c(nrow(i2),-(nrow(d2)))
+I3 <- c(nrow(i3),-(nrow(d3)))
+I4 <- c(nrow(i4),-(nrow(d4)))
+I5 <- c(nrow(i5),-(nrow(d5)))
+
+# Save counts into a data frame.
+de_counts <- data.frame(I1, I2, I3, I4, I5)
 ```
+
+**Source:** [test_dge.r](test_dge.r)
 
 
 Gene ontology
