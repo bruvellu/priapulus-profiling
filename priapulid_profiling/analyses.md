@@ -71,7 +71,7 @@ Importing data to R
 
 Following steps from: http://www.biomedcentral.com/content/supplementary/1471-2164-14-266-s9.r
 
-```R
+```s
 # Load read counts.
 Pc1_0d <- read.table("read_count_per_transcript/Pc1_0d.counts", header=TRUE)
 Pc1_1d <- read.table("read_count_per_transcript/Pc1_1d.counts", header=TRUE)
@@ -116,7 +116,7 @@ rownames(merged_data) <- merged_data[,1]
 Normalize data with edgeR
 -------------------------
 
-```R
+```s
 # Keep only numeric columns.
 num_data <- data.matrix(merged_data[,2:12])
 
@@ -153,7 +153,7 @@ merged_data[is.na(merged_data)] <- 0
 STEM analysis
 -------------
 
-```R
+```s
 # Calculate the average between replicates.
 avg_norm_count_0d <- (merged_data$norm_count_Pc1_0d + merged_data$norm_count_Pc2_0d) / 2
 avg_norm_count_1d <- (merged_data$norm_count_Pc1_1d + merged_data$norm_count_Pc2_1d) / 2
@@ -245,7 +245,7 @@ back into R.
 7. Uppercase locus and transcript on deflines with `:%s:locus_:Locus_:g` and `:%s:transcript_:Transcript_:g`
 
 
-```R
+```s
 # Put STEM data into matrix with R
 stem <- read.table("stem_plot_data", header = TRUE)
 
