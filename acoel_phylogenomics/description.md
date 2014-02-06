@@ -40,3 +40,25 @@ Package curation
 Due to the large variety of sampled tissues, some manual curation of packages
 is needed to selected the most representative sequencing experiments.
 
+Test run
+--------
+
+I will do a test run with Agalma's phylogenetic pipeline using 6 SRA packages.
+
+| species                   | accession | million reads |
+| :-----:                   | :-------: | :-----------: |
+| _Nanomia bijuga_          | SRX288430 | 52.5          |
+| _Apostichopus japonicus_  | SRX122622 | 26.9          |
+| _Hormogaster elisae_      | SRX251927 | 30.0          |
+| _Mizuhopecten yessoensis_ | SRX220583 | 56.1          |
+| _Haemonchus contortus_    | SRX319246 | 29.6          |
+| _Penaeus monodon_         | SRX110652 | 29.6          |
+
+```
+Metazoa; Eumetazoa; Cnidaria; Hydrozoa; Siphonophora; Physonectae; Agalmatidae; Nanomia; Nanomia bijuga
+Metazoa; Eumetazoa; Bilateria; Deuterostomia; Echinodermata; Eleutherozoa; Echinozoa; Holothuroidea; Aspidochirotacea; Aspidochirotida; Stichopodidae; Apostichopus; Apostichopus japonicus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Annelida; Clitellata; Oligochaeta; Haplotaxida; Lumbricina; Hormogastridae; Hormogaster; Hormogaster elisae
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Mollusca; Bivalvia; Pteriomorphia; Pectinoida; Pectinoidea; Pectinidae; Mizuhopecten; Mizuhopecten yessoensis
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Rhabditida; Strongylida; Trichostrongyloidea; Haemonchidae; Haemonchinae; Haemonchus; Haemonchus contortus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Mandibulata; Pancrustacea; Crustacea; Malacostraca; Eumalacostraca; Eucarida; Decapoda; Dendrobranchiata; Penaeoidea; Penaeidae; Penaeus; Penaeus monodon
+```
