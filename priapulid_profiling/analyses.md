@@ -640,7 +640,9 @@ Gene ontology
 -------------
 
 1. Parse accession numbers from annotated assembly.
-2. Use Entrez to fetch list of GO ids associated with the protein. (should I fetch InterPro?)
+2. Use [Entrez](http://www.ncbi.nlm.nih.gov/sites/gquery), [Uniprot](http://www.uniprot.org/), and [EBI
+QuickGO](http://www.ebi.ac.uk/QuickGO/) to fetch list of GO ids associated with
+the protein. (should I fetch InterPro?)
 3. For each GO id fetch hierarchy, terms, and evidence codes.
 4. Associate terms with contigs.
 5. Done.
