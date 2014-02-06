@@ -574,6 +574,7 @@ I5 <- c(nrow(i5),-(nrow(d5)))
 # Save counts into a data frame.
 de_counts <- data.frame(I1, I2, I3, I4, I5)
 ```
+
 Dispersion values for each interval:
 
 | interval | dispersion | bcv
@@ -589,6 +590,8 @@ Dispersion values for each interval:
 Plots for differentially expressed genes
 ----------------------------------------
 
+![de_genes](de_genes.png)
+
 ```s
 # Subset each interval keeping only valid p-values.
 m1 <- subset(merged_data, !is.na(merged_data$PAdjust_0d_1d))
@@ -602,7 +605,7 @@ rownames(m4)=m4[,1]
 m5 <- subset(merged_data, !is.na(merged_data$PAdjust_7d_9d))
 rownames(m5)=m5[,1]
 
-png("Fig_2.png",height = 17, width = 17, units = "cm",res = 300)
+png("dge/de_genes.png", height = 17, width = 17, units = "cm", res = 300)
 par(mfrow=c(2,3),mgp=c(2.2, 0.7, 0))
 par(mar=c(7,7, 5.5, 3.5) - 3.0)
 bl <- barplot(as.matrix(de_counts), main="A", ylab= "Number of DE transcripts", xlab= "Time intervals",ylim=c(-1200,1200), beside=TRUE, col=c("red", "blue"), names.arg=c("0d_1d","1d_3d","3d_5d","5d_7d","7d_9d"),cex.names=0.6)
@@ -630,6 +633,8 @@ points(m5[m5$PAdjust_7d_9d < .05,]$logCPM_7d_9d, m5[m5$PAdjust_7d_9d <  .05,]$lo
 abline(h=c(-1,1), col="grey")
 dev.off()
 ```
+
+**Source:** [test_dge.r](test_dge.r)
 
 Gene ontology
 -------------
