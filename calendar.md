@@ -98,13 +98,14 @@ Week 06 2014
 
 ### Wednesday 05 February
 
-- Pairwise comparison of expression.
+- ~~Pairwise comparison of expression.~~
+- ~~Build plots for observations.~~
 - Select SRA for a test run.
 
 ### Thursday 06 February
 
+- Explore the expression data.
 - Start SRA test run.
-- Differential gene expression should be running.
 
 ### Friday 07 February
 
