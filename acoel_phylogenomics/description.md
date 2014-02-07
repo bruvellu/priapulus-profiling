@@ -45,20 +45,59 @@ Test run
 
 I will do a test run with Agalma's phylogenetic pipeline using 6 SRA packages.
 
-| species                   | accession | million reads |
-| :-----:                   | :-------: | :-----------: |
-| _Nanomia bijuga_          | SRX288430 | 52.5          |
-| _Apostichopus japonicus_  | SRX122622 | 26.9          |
-| _Hormogaster elisae_      | SRX251927 | 30.0          |
-| _Mizuhopecten yessoensis_ | SRX220583 | 56.1          |
-| _Haemonchus contortus_    | SRX319246 | 29.6          |
-| _Penaeus monodon_         | SRX110652 | 29.6          |
+| species                   | accession | run       | million reads | offset |
+| :-----:                   | :-------: | :-:       | :-----------: | :----: |
+| _Penaeus monodon_         | SRX110652 | SRR388222 | 29.6          | 33     |
+| _Onchocerca volvulus_     | ERX200391 | ERR225731 | 39.2          |        |
+| _Crassostrea virginica_   | SRX118365 | SRR404226 | 26.4          |        |
+| _Hormogaster elisae_      | SRX251927 | SRR786599 | 30.0          | 33     |
+| _Apostichopus japonicus_  | SRX122622 | SRR414930 | 26.9          | 33     |
+| _Nanomia bijuga_          | SRX288430 | SRR871527 | 52.5          | 33     |
+|                           |           |           |               |        |
+| To be excluded?           |           |           |               |        |
+| _Haemonchus contortus_    | SRX319246 | SRR928056 | 29.6          | 64     |
+| _Mizuhopecten yessoensis_ | SRX220583 | SRR653778 | 56.1          | 64     |
 
 ```
-Metazoa; Eumetazoa; Cnidaria; Hydrozoa; Siphonophora; Physonectae; Agalmatidae; Nanomia; Nanomia bijuga
-Metazoa; Eumetazoa; Bilateria; Deuterostomia; Echinodermata; Eleutherozoa; Echinozoa; Holothuroidea; Aspidochirotacea; Aspidochirotida; Stichopodidae; Apostichopus; Apostichopus japonicus
-Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Annelida; Clitellata; Oligochaeta; Haplotaxida; Lumbricina; Hormogastridae; Hormogaster; Hormogaster elisae
-Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Mollusca; Bivalvia; Pteriomorphia; Pectinoida; Pectinoidea; Pectinidae; Mizuhopecten; Mizuhopecten yessoensis
-Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Rhabditida; Strongylida; Trichostrongyloidea; Haemonchidae; Haemonchinae; Haemonchus; Haemonchus contortus
 Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Panarthropoda; Arthropoda; Mandibulata; Pancrustacea; Crustacea; Malacostraca; Eumalacostraca; Eucarida; Decapoda; Dendrobranchiata; Penaeoidea; Penaeidae; Penaeus; Penaeus monodon
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Spirurida; Filarioidea; Onchocercidae; Onchocerca; Onchocerca volvulus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Mollusca; Bivalvia; Pteriomorphia; Ostreoida; Ostreoidea; Ostreidae; Crassostrea; Crassostrea virginica
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Annelida; Clitellata; Oligochaeta; Haplotaxida; Lumbricina; Hormogastridae; Hormogaster; Hormogaster elisae
+Metazoa; Eumetazoa; Bilateria; Deuterostomia; Echinodermata; Eleutherozoa; Echinozoa; Holothuroidea; Aspidochirotacea; Aspidochirotida; Stichopodidae; Apostichopus; Apostichopus japonicus
+Metazoa; Eumetazoa; Cnidaria; Hydrozoa; Siphonophora; Physonectae; Agalmatidae; Nanomia; Nanomia bijuga
+
+To be excluded?
+
+Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Rhabditida; Strongylida; Trichostrongyloidea; Haemonchidae; Haemonchinae; Haemonchus; Haemonchus contortus
+Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Mollusca; Bivalvia; Pteriomorphia; Pectinoida; Pectinoidea; Pectinidae; Mizuhopecten; Mizuhopecten yessoensis
+```
+
+```sh
+# Set resources.
+export BIOLITE_RESOURCES="database=/sysdev/s9/bruno/acoel_phylo/biolite.sqlite,threads=24,memory=800G,outdir=/sysdev/s9/bruno/acoel_phylo/analyses"
+
+cd /sysdev/s9/bruno/acoel_phylo/data/
+
+sra import --clean --email organelas@gmail.com --gzip --metadata SRX110652
+sra import --clean --email organelas@gmail.com --gzip --metadata ERX200391
+sra import --clean --email organelas@gmail.com --gzip --metadata SRX118365
+sra import --clean --email organelas@gmail.com --gzip --metadata SRX251927
+sra import --clean --email organelas@gmail.com --gzip --metadata SRX122622
+sra import --clean --email organelas@gmail.com --gzip --metadata SRX288430
+
+catalog insert --id SRX110652 --paths SRR388222_1.fastq.gz SRR388222_2.fastq.gz
+catalog insert --id ERX200391 --paths ERR225731_1.fastq.gz ERR225731_2.fastq.gz
+catalog insert --id SRX118365 --paths SRR404226_1.fastq.gz SRR404226_2.fastq.gz
+catalog insert --id SRX251927 --paths SRR786599_1.fastq.gz SRR786599_2.fastq.gz
+catalog insert --id SRX122622 --paths SRR414930_1.fastq.gz SRR414930_2.fastq.gz
+catalog insert --id SRX288430 --paths SRR871527_1.fastq.gz SRR871527_2.fastq.gz
+
+cd /sysdev/s9/bruno/acoel_phylo/scratch/
+
+agalma transcriptome --id SRX110652 > Pmon.out 2>&1 &
+agalma transcriptome --id ERX200391 > Ovol.out 2>&1 &
+agalma transcriptome --id SRX118365 > Cvir.out 2>&1 &
+agalma transcriptome --id SRX251927 > Heli.out 2>&1 &
+agalma transcriptome --id SRX122622 > Ajap.out 2>&1 &
+agalma transcriptome --id SRX288430 > Nbij.out 2>&1 &
 ```
