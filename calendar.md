@@ -100,12 +100,11 @@ Week 06 2014
 
 - ~~Pairwise comparison of expression.~~
 - ~~Build plots for observations.~~
-- Select SRA for a test run.
+- ~~Select SRA for a test run.~~
 
 ### Thursday 06 February
 
-- Explore the expression data.
-- Start SRA test run.
+- ~~Start SRA phylogeny test.~~ running, it will take a while
 
 ### Friday 07 February
 
@@ -126,12 +125,17 @@ Week 07 2014
 
 ### Monday 10 February
 
+- Plot DE expression per profile.
+- Study descriptive statistics to get familiar with data.
+- Run Agalma phylogeny with assembled test.
 
 ### Tuesday 11 February
 
+- Play with Gene Ontology workflow.
 
 ### Wednesday 12 February
 
+- Wrap and organize data and results.
 
 ### Thursday 13 February
 
