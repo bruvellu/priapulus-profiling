@@ -118,4 +118,9 @@ agalma treeprune --id PhyloTest
 agalma multalign --id PhyloTest
 agalma supermatrix --id PhyloTest
 agalma genetree --id PhyloTest --raxml_flags="-o Nanomia_bijuga"
+
+# Reports
+agalma report --id PhyloTest --outdir reports/PhyloTest
+agalma resource_report --id PhyloTest --outdir reports/PhyloTest
+agalma phylogeny_report --id PhyloTest --outdir reports/PhyloTest
 ```
