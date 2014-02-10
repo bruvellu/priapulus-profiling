@@ -44,7 +44,11 @@ TODO
 ----
 
 - Deal with previous Illumina ascii offset of 64.
+- Deal with reads that lack rrna (blast_rrna returns empty).
+    - SRX096027, SRX096026.
 - Merge representative samples into single FASTQ pair.
+    - `cat runa_1.fastq.gz runb_1.fastq.gz > runa-runb_1.fastq.gz`
+    - `cat runa_2.fastq.gz runb_2.fastq.gz > runa-runb_2.fastq.gz`
 - Import previous Agalma assemblies from other databases.
 - Import other assemblies.
 - Import Genomes.
