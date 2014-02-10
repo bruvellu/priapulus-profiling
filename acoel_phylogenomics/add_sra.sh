@@ -9,7 +9,7 @@
 set -e
 
 # Load biolite resources.
-sh biolite_env.sh
+source biolite_env.sh
 
 # Get SRA ID from argument.
 ID=$1
@@ -32,6 +32,8 @@ echo -n "Done? Proceed to assembly? [y/n]: "
 read assembly
 
 if [ $assembly == "y" ]; then
+    # Go back to root.
+    cd /sysdev/s9/bruno/acoel_phylo/
     # Run assembly script.
     sh assemble_sra.sh $ID
 else

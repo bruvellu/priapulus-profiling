@@ -9,7 +9,8 @@
 set -e
 
 # Load biolite resources.
-sh biolite_env.sh
+source biolite_env.sh
+echo $BIOLITE_RESOURCES
 
 # Get SRA ID from argument.
 ID=$1
@@ -20,7 +21,4 @@ echo "Assembling transcriptome for $ID..."
 cd /sysdev/s9/bruno/acoel_phylo/scratch/
 
 # Initiate assembly.
-agalma transcriptome --id $ID > $ID.out 2>&1
-
-# Load sample for phylogeny.
-agalma load --id $ID --previous $ID >> $ID.out 2>&1
+agalma transcriptome --id $ID > $ID.out 2>&1 &
