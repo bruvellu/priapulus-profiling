@@ -117,5 +117,5 @@ agalma genetree --id PhyloTest
 agalma treeprune --id PhyloTest
 agalma multalign --id PhyloTest
 agalma supermatrix --id PhyloTest
-agalma genetree --id PhyloTest --raxml_flags="-o FirstTest"
+agalma genetree --id PhyloTest --raxml_flags="-o Nanomia_bijuga"
 ```
