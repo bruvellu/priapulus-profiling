@@ -113,6 +113,7 @@ Week 06 2014
 ### Saturday 08 February
 
 - @NYC
+- ~~Assemblies done, begin homologize.~~
 
 
 Week 07 2014
@@ -122,12 +123,13 @@ Week 07 2014
 ### Sunday 09 February
 
 - @NYC
+- ~~Finish phylogeny.~~ no output for raxml..?
 
 ### Monday 10 February
 
+- Fix phylogeny for assembled test.
 - Plot DE expression per profile.
 - Study descriptive statistics to get familiar with data.
-- Run Agalma phylogeny with assembled test.
 
 ### Tuesday 11 February
 
