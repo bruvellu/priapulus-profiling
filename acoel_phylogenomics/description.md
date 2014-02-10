@@ -40,6 +40,15 @@ Package curation
 Due to the large variety of sampled tissues, some manual curation of packages
 is needed to selected the most representative sequencing experiments.
 
+TODO
+----
+
+- Deal with previous Illumina ascii offset of 64.
+- Merge representative samples into single FASTQ pair.
+- Import previous Agalma assemblies from other databases.
+- Import other assemblies.
+- Import Genomes.
+
 Test run
 --------
 
@@ -54,7 +63,6 @@ I will do a test run with Agalma's phylogenetic pipeline using 6 SRA packages.
 | _Apostichopus japonicus_  | SRX122622 | SRR414930 | 26.9          | 33     |
 | _Nanomia bijuga_          | SRX288430 | SRR871527 | 52.5          | 33     |
 |                           |           |           |               |        |
-| To be excluded?           |           |           |               |        |
 | _Haemonchus contortus_    | SRX319246 | SRR928056 | 29.6          | 64     |
 | _Mizuhopecten yessoensis_ | SRX220583 | SRR653778 | 56.1          | 64     |
 
@@ -65,8 +73,6 @@ Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Mollusca; Bivalvia; 
 Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Annelida; Clitellata; Oligochaeta; Haplotaxida; Lumbricina; Hormogastridae; Hormogaster; Hormogaster elisae
 Metazoa; Eumetazoa; Bilateria; Deuterostomia; Echinodermata; Eleutherozoa; Echinozoa; Holothuroidea; Aspidochirotacea; Aspidochirotida; Stichopodidae; Apostichopus; Apostichopus japonicus
 Metazoa; Eumetazoa; Cnidaria; Hydrozoa; Siphonophora; Physonectae; Agalmatidae; Nanomia; Nanomia bijuga
-
-To be excluded?
 
 Metazoa; Eumetazoa; Bilateria; Protostomia; Ecdysozoa; Nematoda; Chromadorea; Rhabditida; Strongylida; Trichostrongyloidea; Haemonchidae; Haemonchinae; Haemonchus; Haemonchus contortus
 Metazoa; Eumetazoa; Bilateria; Protostomia; Lophotrochozoa; Mollusca; Bivalvia; Pteriomorphia; Pectinoida; Pectinoidea; Pectinidae; Mizuhopecten; Mizuhopecten yessoensis
