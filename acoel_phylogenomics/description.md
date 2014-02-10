@@ -100,22 +100,4 @@ agalma transcriptome --id SRX118365 > Cvir.out 2>&1 &
 agalma transcriptome --id SRX251927 > Heli.out 2>&1 &
 agalma transcriptome --id SRX122622 > Ajap.out 2>&1 &
 agalma transcriptome --id SRX288430 > Nbij.out 2>&1 &
-
-# Load.
-agalma load --id SRX110652 --previous SRX110652
-agalma load --id ERX200391 --previous ERX200391
-agalma load --id SRX118365 --previous SRX118365
-agalma load --id SRX251927 --previous SRX251927
-agalma load --id SRX122622 --previous SRX122622
-agalma load --id SRX288430 --previous SRX288430
-
-# Homologize
-agalma homologize 7 8 9 10 11 12 --restart homologize.chk --id PhyloTest > PhyloTest.out 2>&1 &
-
-agalma multalign --id PhyloTest
-agalma genetree --id PhyloTest
-agalma treeprune --id PhyloTest
-agalma multalign --id PhyloTest
-agalma supermatrix --id PhyloTest
-agalma genetree --id PhyloTest --raxml_flags="-o FirstTest"
 ```
