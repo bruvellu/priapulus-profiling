@@ -34,8 +34,8 @@ Calculate read counts
 ---------------------
 
 Calculate the number of reads mapping to each reference transcript. I used a
-slightly modified version of [Helm et al. 2013
-bowtie_map_to_counts][Helm2013_bowtie]
+slightly modified version of the `bowtie_map_to_counts.py` script from [Helm et
+al. 2013][Helm2013_bowtie]
 
 **Source:** [bowtie_map_to_counts.py](bowtie_map_to_counts.py)
 
