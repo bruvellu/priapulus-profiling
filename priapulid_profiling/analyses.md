@@ -19,6 +19,7 @@ and map reads to it with Bowtie2.
 counts for each transcript of every sample.
 3. [02_import_to_r.sh](02_import_to_r.sh) Load read counts and build main data
 frame in R.
+4. [03_normalize.sh](03_normalize.sh) Normalize data with edgeR.
 
 Mapping reads
 -------------
@@ -64,39 +65,14 @@ TODO: Build matrix on Python with Pandas.
 Normalize data with edgeR
 -------------------------
 
-```s
-# Keep only numeric columns.
-num_data <- data.matrix(merged_data[,2:12])
+Use [edgeR][edgeR_url] to calculate the normalization factor between samples.
+Get the effective size of each column by multiplying the actual size (sum of
+counts) against the normalization factor. Generate a multiplier for "counts per
+million" dividing 1 million by the effective size. Use multiplier against counts.
 
-# Set NA values to 0:
-num_data[is.na(num_data)] <- 0
+**Source:** [edger_normalize.r](edger_normalize.r)
 
-# Calculate normalization factor for each column.
-norm_factors <- calcNormFactors(num_data)
-
-# Get sum of each column.
-lib.size <- colSums(num_data)
-
-# Get effective size by multiplying size by normalization factor.
-lib.effective.size <- lib.size * norm_factors
-
-# Get normalization multiplier to be applied into original counts.
-norm.multiplier <- 1000000 / lib.effective.size
-
-# Create normalized matrix by multiplying normalization factor to counts.
-norm_data <- num_data * norm.multiplier
-
-# Rename columns.
-colnames(norm_data) <- c("norm_count_Pc1_0d", "norm_count_Pc2_0d", "norm_count_Pc1_1d", "norm_count_Pc2_1d", "norm_count_Pc1_3d", "norm_count_Pc2_3d", "norm_count_Pc1_5d", "norm_count_Pc2_5d", "norm_count_Pc2_7d", "norm_count_Pc1_9d", "norm_count_Pc2_9d")
-
-# Bind counts and normalize data.
-merged_data <- cbind(merged_data, norm_data)
-
-# Remove NAs again.
-merged_data[is.na(merged_data)] <- 0
-```
-
-**Source:** [03_normalize.sh](03_normalize.sh) and [edger_normalize.r](edger_normalize.r)
+[edgeR_url]: http://www.bioconductor.org/packages/release/bioc/html/edgeR.html
 
 STEM analysis
 -------------

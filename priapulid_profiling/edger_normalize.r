@@ -1,3 +1,6 @@
+# Load edgeR
+library(edgeR)
+
 # Keep only numeric columns.
 num_data <- data.matrix(merged_data[,2:12])
 
