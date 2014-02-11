@@ -127,12 +127,13 @@ Week 07 2014
 
 ### Monday 10 February
 
-- Fix phylogeny for assembled test.
-- Plot DE expression per profile.
-- Study descriptive statistics to get familiar with data.
+- ~~Fix phylogeny for assembled test.~~
+- ~~Select and continue assemblies.~~ had some trouble, took the whole day
 
 ### Tuesday 11 February
 
+- Plot DE expression per profile.
+- Study descriptive statistics to get familiar with data.
 - Play with Gene Ontology workflow.
 
 ### Wednesday 12 February
