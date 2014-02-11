@@ -8,6 +8,9 @@
 # Terminate script if a command fails.
 set -e
 
+# Go to root again.
+cd /sysdev/s9/bruno/acoel_phylo/
+
 # Load biolite resources.
 source biolite_env.sh
 echo $BIOLITE_RESOURCES
