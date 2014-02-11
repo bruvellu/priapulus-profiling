@@ -1,5 +1,6 @@
-# input file: average
-# output file: avg_stem_input
+# Input/Output files.
+INPUT=average
+OUTPUT=stem/avg_stem_input
 
 # This script will automatically formats average counts for STEM analysis. Note
 # that you can also edit the file manually before running STEM using these Vim
@@ -19,4 +20,4 @@ TRANSCRIPT='s:avg_norm_count_0d:transcript avg_norm_count_0d:'
 TABS='s:\s+:\t:g'
 
 # Execute regular expressions and write output.
-sed "$RM_QUOTES" average | sed "$TRANSCRIPT" | sed -r "$TABS" > avg_stem_input
+sed "$RM_QUOTES" $INPUT | sed "$TRANSCRIPT" | sed -r "$TABS" > $OUTPUT
