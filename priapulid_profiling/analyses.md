@@ -20,6 +20,8 @@ counts for each transcript of every sample.
 3. [02_import_to_r.sh](02_import_to_r.sh) Load read counts and build main data
 frame in R.
 4. [03_normalize.sh](03_normalize.sh) Normalize data with edgeR.
+5. [04_stem_profiles.sh](04_stem_profiles.sh) Calculate average for STEM
+analysis.
 
 Mapping reads
 -------------
@@ -74,41 +76,20 @@ million" dividing 1 million by the effective size. Use multiplier against counts
 
 [edgeR_url]: http://www.bioconductor.org/packages/release/bioc/html/edgeR.html
 
+TODO: Is there a way to do it on Python? Check function for calculating the
+normalization factor.
+
 STEM analysis
 -------------
 
-```s
-# Calculate the average between replicates.
-avg_norm_count_0d <- (merged_data$norm_count_Pc1_0d + merged_data$norm_count_Pc2_0d) / 2
-avg_norm_count_1d <- (merged_data$norm_count_Pc1_1d + merged_data$norm_count_Pc2_1d) / 2
-avg_norm_count_3d <- (merged_data$norm_count_Pc1_3d + merged_data$norm_count_Pc2_3d) / 2
-avg_norm_count_5d <- (merged_data$norm_count_Pc1_5d + merged_data$norm_count_Pc2_5d) / 2
-avg_norm_count_7d <- merged_data$norm_count_Pc2_7d
-avg_norm_count_9d <- (merged_data$norm_count_Pc1_9d + merged_data$norm_count_Pc2_9d) / 2
+Calculate the average for read counts between replicates. Bind data to main
+data frame and write table to be used for the STEM analysis.
 
-# Build data frame for average values.
-avg_data_norm <- cbind(avg_norm_count_0d, avg_norm_count_1d, avg_norm_count_3d, avg_norm_count_5d, avg_norm_count_7d, avg_norm_count_9d)
+**Source:** [stem_prepare.r](stem_prepare.r)
 
-# Put names on rows.
-rownames(avg_data_norm) <- merged_data[,1]
+Format of the output average file needs to be adjusted using regular expressions.
 
-# Bind average counts with matrix.
-merged_data <- cbind(merged_data, avg_data_norm)
-
-# Write file with average data for STEM input.
-write.table(avg_data_norm, "average")
-```
-
-**Source:** [04_stem_profiles.sh](04_stem_profiles.sh) and [stem_prepare.r](stem_prepare.r)
-
-Edit the file `average` to run STEM.
-
-    cp average avg_stem_input
-    vim avg_stem_input
-
-1. Manually add `'"transcript" '` as the first column name (without single quotes, note the white space).
-2. Remove quotes with `:%s:"::g`.
-3. Substitute white space for tabs `:%s:\s\+:\t:g`.
+**Source:** [format_to_stem.sh](format_to_stem.sh)
 
 Run STEM with the following command:
 
@@ -157,8 +138,8 @@ Relevant profiles:
 [profile_18]: stem/profile_18
 [profile_1]: stem/profile_1
 
-Output file was created manually by saving the Main Table for Genes Passing
-Filter as `genes_passing_filter`. This file needs to be edited to be imported
+Output file was created manually by saving the **Main Table for Genes Passing
+Filter** as `genes_passing_filter`. This file needs to be edited to be imported
 back into R.
 
     cp stem_output stem_profiles_to_r
@@ -180,6 +161,8 @@ merged_data <- merge(merged_data, stem, by.x="reference", by.y="transcript", all
 # Save matrix in R:
 write.table(merged_data, "matrix.r")
 ```
+
+**Sources:** [stem_prepare.r](stem_prepare.r) and [stem_import.r](stem_import.r)
 
 Replicate plots
 ---------------
