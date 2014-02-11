@@ -13,8 +13,10 @@ with Agalma 0.3.5.
 Summary
 -------
 
-**Source:** [00_map_to_reference.sh](00_map_to_ref.sh)
-**Source:** [01_calculate_read_count.sh](01_calculate_read_count.sh)
+1. [00_map_to_reference.sh](00_map_to_ref.sh) Build reference assembly index
+and map reads to it with Bowtie2.
+2. [01_calculate_read_count.sh](01_calculate_read_count.sh) Calculate read
+counts for each transcript of every sample.
 
 Mapping reads
 -------------
