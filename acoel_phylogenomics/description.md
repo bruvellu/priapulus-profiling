@@ -56,7 +56,7 @@ TODO
 Test run
 --------
 
-I will do a test run with Agalma's phylogenetic pipeline using 6 SRA packages.
+Test with Agalma's phylogenetic pipeline using 6 SRA packages.
 
 | species                   | accession | run       | million reads | offset |
 | :-----:                   | :-------: | :-:       | :-----------: | :----: |
