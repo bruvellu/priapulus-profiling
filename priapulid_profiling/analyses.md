@@ -187,7 +187,8 @@ Dispersion values for each interval:
 Plots for differentially expressed genes
 ----------------------------------------
 
-![de_genes](de_genes.png)
+![de_genes](plots/de_genes.png)
+![de_genes](plots/de_genes_stem_8.png)
 
 **Source:** [build_de_plots.r](build_de_plots.r)
 
