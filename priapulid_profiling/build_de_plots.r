@@ -46,3 +46,7 @@ de_plots <- function(df, filepath) {
 # Plots with all data.
 de_plots(merged_data, "plots/de_genes.png")
 
+# Plot Profile 8 genes.
+profile8 <- read.table("stem/profile_8_to_r", header=TRUE)
+stem8 <- merged_data[merged_data$reference %in% profile8$transcript,]
+de_plots(stem8, "plots/de_genes_stem_8.png")

@@ -184,7 +184,6 @@ Dispersion values for each interval:
 | 5d_7d    | 0.21773    | 0.4666
 | 7d_9d    | 0.15213    | 0.39
 
-
 Plots for differentially expressed genes
 ----------------------------------------
 
