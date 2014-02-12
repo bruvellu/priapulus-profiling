@@ -189,8 +189,17 @@ Plots for differentially expressed genes
 
 ![de_genes](plots/de_genes.png)
 ![de_genes](plots/de_genes_stem_8.png)
+![de_genes](plots/de_genes_stem_39.png)
+![de_genes](plots/de_genes_stem_22.png)
+![de_genes](plots/de_genes_stem_31.png)
+![de_genes](plots/de_genes_stem_17.png)
+![de_genes](plots/de_genes_stem_18.png)
+![de_genes](plots/de_genes_stem_1.png)
+![de_genes](plots/de_genes_stem_25.png)
 
 **Source:** [build_de_plots.r](build_de_plots.r)
+
+TODO: Think of different ways to visualize time course.
 
 Gene ontology
 -------------

@@ -50,3 +50,43 @@ de_plots(merged_data, "plots/de_genes.png")
 profile8 <- read.table("stem/profile_8_to_r", header=TRUE)
 stem8 <- merged_data[merged_data$reference %in% profile8$transcript,]
 de_plots(stem8, "plots/de_genes_stem_8.png")
+
+# Plot Profile 39
+profile39 <- read.table("stem/profile_39_to_r", header=TRUE)
+stem39 <- merged_data[merged_data$reference %in% profile39$transcript,]
+de_plots(stem39, "plots/de_genes_stem_39.png")
+
+# Plot Profile 22
+profile22 <- read.table("stem/profile_22_to_r", header=TRUE)
+stem22 <- merged_data[merged_data$reference %in% profile22$transcript,]
+de_plots(stem22, "plots/de_genes_stem_22.png")
+
+# Plot Profile 31 genes.
+profile31 <- read.table("stem/profile_31_to_r", header=TRUE)
+stem31 <- merged_data[merged_data$reference %in% profile31$transcript,]
+de_plots(stem31, "plots/de_genes_stem_31.png")
+
+# Plot Profile 17 genes.
+profile17 <- read.table("stem/profile_17_to_r", header=TRUE)
+stem17 <- merged_data[merged_data$reference %in% profile17$transcript,]
+de_plots(stem17, "plots/de_genes_stem_17.png")
+
+# Plot Profile 18 genes.
+profile18 <- read.table("stem/profile_18_to_r", header=TRUE)
+stem18 <- merged_data[merged_data$reference %in% profile18$transcript,]
+de_plots(stem18, "plots/de_genes_stem_18.png")
+
+# Plot Profile 1 genes.
+profile1 <- read.table("stem/profile_1_to_r", header=TRUE)
+stem1 <- merged_data[merged_data$reference %in% profile1$transcript,]
+de_plots(stem1, "plots/de_genes_stem_1.png")
+
+# Plot Profile 25 genes.
+profile25 <- read.table("stem/profile_25_to_r", header=TRUE)
+stem25 <- merged_data[merged_data$reference %in% profile25$transcript,]
+de_plots(stem25, "plots/de_genes_stem_25.png")
+
+#profile_6_to_r
+#profile_7_to_r
+#profile_10_to_r
+#profile_15_to_r
