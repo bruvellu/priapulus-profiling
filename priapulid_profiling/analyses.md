@@ -140,29 +140,13 @@ Relevant profiles:
 
 Output file was created manually by saving the **Main Table for Genes Passing
 Filter** as `genes_passing_filter`. This file needs to be edited to be imported
-back into R.
+back into R. The script below was made for that:
 
-    cp stem_output stem_profiles_to_r
+**Source:** [format_from_stem.sh](format_from_stem.sh)
 
-1. Remove tab from beginning of the line with `:%s:^\t::g`
-2. Remove initial header with `:%s:^Selected\t::g`
-3. Remove SPOT column with `%s:\tID_\d\+\t\(\d\+\):\t\1:g`
-4. Remove SPOT header with `:%s:SPOT\t::g`
-5. Change count to delta in header: `:%s:avg_norm_count:avg_norm_delta:g`
-6. Remove first line: `Table of Genes Passing Filter`
-7. Lowercase everything with: `ggVGu`
-8. Uppercase locus and transcript on deflines with `:%s:locus_:Locus_:g` and `:%s:transcript_:Transcript_:g`
+Put STEM profiles into R and merge with main data frame.
 
-```s
-# Put STEM data into matrix with R
-stem <- read.table("stem_profiles_to_r", header=TRUE)
-merged_data <- merge(merged_data, stem, by.x="reference", by.y="transcript", all=TRUE)
-
-# Save matrix in R:
-write.table(merged_data, "matrix.r")
-```
-
-**Sources:** [stem_prepare.r](stem_prepare.r) and [stem_import.r](stem_import.r)
+**Source:** [stem_import.r](stem_import.r)
 
 Replicate plots
 ---------------
