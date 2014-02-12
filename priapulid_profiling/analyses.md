@@ -188,21 +188,34 @@ Dispersion values for each interval:
 Plots for differentially expressed genes
 ----------------------------------------
 
+### All genes
 ![de_genes](plots/de_genes.png)
+
+To get a better idea of how each STEM profile is behaving I have plotted the
+analysis only with the subsets of genes identified by profiles.
+
+### Profile 8
 ![de_genes](plots/de_genes_stem_8.png)
+### Profile 39
 ![de_genes](plots/de_genes_stem_39.png)
+### Profile 22
 ![de_genes](plots/de_genes_stem_22.png)
+### Profile 31
 ![de_genes](plots/de_genes_stem_31.png)
+### Profile 17
 ![de_genes](plots/de_genes_stem_17.png)
+### Profile 18
 ![de_genes](plots/de_genes_stem_18.png)
+### Profile 1
 ![de_genes](plots/de_genes_stem_1.png)
+### Profile 25
 ![de_genes](plots/de_genes_stem_25.png)
 
 **Source:** [build_de_plots.r](build_de_plots.r)
 
 TODO: Think of different ways to visualize time course.
 
-Gene ontology
+Gene Ontology
 -------------
 
 1. Parse accession numbers from annotated assembly.
