@@ -25,8 +25,9 @@ analysis.
 6. [05_import_stem.sh](05_import_stem.sh) Import STEM output to R again.
 7. [06_plot_replicates.sh](06_plot_replicates.sh) Build scatter plots between
 replicates.
-8. [08_test_expression.sh](07_test_expression.sh) Use edgeR to calculate the
+8. [07_test_expression.sh](07_test_expression.sh) Use edgeR to calculate the
 confidence for differential gene expression.
+9. [08_plot_de_genes.sh](08_plot_de_genes.sh) Plot fold change per read counts.
 
 Mapping reads
 -------------
