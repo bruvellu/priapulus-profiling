@@ -2,7 +2,7 @@ Gene Table for Profile 1 (0.0,-2.0,-2.0,-1.0,-2.0,-2.0)
 Num. Genes Expected	Num. Genes Assigned	P-Value	Significant
 1,564.0	1,141.7	3.7E-34	 (significant)
 -------
-Selected	Weight	trascript	SPOT	avg_norm_count_0d	avg_norm_count_1d	avg_norm_count_3d	avg_norm_count_5d	avg_norm_count_7d	avg_norm_count_9d
+Selected	Weight	transcript	SPOT	avg_norm_count_0d	avg_norm_count_1d	avg_norm_count_3d	avg_norm_count_5d	avg_norm_count_7d	avg_norm_count_9d
 	1.00	LOCUS_10016.0_TRANSCRIPT_1	ID_5	0.00	-23.99	-27.75	-29.03	-29.36	-29.38
 	1.00	LOCUS_10070.0_TRANSCRIPT_1	ID_30	0.00	-18.60	-22.54	-23.50	-23.94	-23.63
 	1.00	LOCUS_10075.0_TRANSCRIPT_1	ID_33	0.00	-7.90	-10.59	-10.86	-10.87	-10.74

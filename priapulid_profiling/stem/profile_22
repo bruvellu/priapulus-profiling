@@ -2,7 +2,7 @@ Gene Table for Profile 22 (0.0,0.0,0.0,0.0,2.0,1.0)
 Num. Genes Expected	Num. Genes Assigned	P-Value	Significant
 1,908.0	1,433.4	3.9E-35	 (significant)
 -------
-Selected	Weight	trascript	SPOT	avg_norm_count_0d	avg_norm_count_1d	avg_norm_count_3d	avg_norm_count_5d	avg_norm_count_7d	avg_norm_count_9d
+Selected	Weight	transcript	SPOT	avg_norm_count_0d	avg_norm_count_1d	avg_norm_count_3d	avg_norm_count_5d	avg_norm_count_7d	avg_norm_count_9d
 	1.00	LOCUS_10039.0_TRANSCRIPT_1	ID_14	0.00	0.01	0.23	2.53	7.25	3.41
 	1.00	LOCUS_10046.0_TRANSCRIPT_1	ID_16	0.00	-0.31	-0.09	-0.32	7.12	0.76
 	1.00	LOCUS_10232.0_TRANSCRIPT_1	ID_103	0.00	-0.08	0.45	2.48	11.86	6.57

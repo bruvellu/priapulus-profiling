@@ -1,5 +1,5 @@
 Table of Genes Passing Filter
-Selected	trascript	SPOT	Profile	avg_norm_count_0d	avg_norm_count_1d	avg_norm_count_3d	avg_norm_count_5d	avg_norm_count_7d	avg_norm_count_9d
+Selected	transcript	SPOT	Profile	avg_norm_count_0d	avg_norm_count_1d	avg_norm_count_3d	avg_norm_count_5d	avg_norm_count_7d	avg_norm_count_9d
 	*	ID_0	26	0.00	-96,200.18	99,163.82	-94,070.05	-2,782.62	33,252.44
 	LOCUS_10006.0_TRANSCRIPT_1	ID_2	27	0.00	-0.07	0.45	0.06	0.01	1.11
 	LOCUS_10007.0_TRANSCRIPT_1	ID_3	8	0.00	-0.84	-2.27	-3.16	-2.90	-2.80
