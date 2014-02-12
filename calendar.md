@@ -132,12 +132,14 @@ Week 07 2014
 
 ### Tuesday 11 February
 
-- Plot DE expression per profile.
-- Study descriptive statistics to get familiar with data.
-- Play with Gene Ontology workflow.
+- ~~Plot DE expression per profile.~~ also organized all the workflow
+- ~~Assembling more and more SRA packages.~~
 
 ### Wednesday 12 February
 
+- Include Nemertoderma build tree.
+- Study descriptive statistics to get familiar with data.
+- Play with Gene Ontology workflow.
 - Wrap and organize data and results.
 
 ### Thursday 13 February
