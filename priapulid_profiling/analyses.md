@@ -22,6 +22,7 @@ frame in R.
 4. [03_normalize.sh](03_normalize.sh) Normalize data with edgeR.
 5. [04_stem_profiles.sh](04_stem_profiles.sh) Calculate average for STEM
 analysis.
+6. [05_import_stem.sh](05_import_stem.sh) Import STEM output to R again.
 
 Mapping reads
 -------------
@@ -155,7 +156,7 @@ Plotting the normalized average count between replicates, except for 7d sample.
 
 ![Scatter plots between replicates](plots/rep_plots.png)
 
-**Source:** [05_plot_replicates.sh](05_plot_replicates.sh) and [build_scatter_plots.r](build_scatter_plots.r)
+**Source:** [06_plot_replicates.sh](06_plot_replicates.sh) and [build_scatter_plots.r](build_scatter_plots.r)
 
 Differential expression
 -----------------------
