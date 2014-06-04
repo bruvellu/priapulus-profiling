@@ -1,14 +1,9 @@
-bcv-at-brown
-============
-
-Records of my visit to the Dunn Lab at Brown University Winter 2014.
-
 Gene expression profiling of priapulid development
---------------------------------------------------
+==================================================
 
 **Objective:** characterize differentially expressed genes during the
 development of a priapulid worm using RNAseq data. [Read
-more.](priapulid_profiling/description.md)
+more.](description.md)
 
 **Progress:**
 - Fixed Fritzen's installation quirks for Agalma.
@@ -33,24 +28,3 @@ more.](priapulid_profiling/description.md)
 - Explore the possibility of comparing with data sets of other species.
 - Think about data visualization.
 
-Phylogenomics of Acoelomorpha
------------------------------
-
-**Objective:** solve the phylogenetic position of acoels. [Read
-more.](acoel_phylogenomics/description.md)
-
-**Progress:**
-- Developed a script/module to search and filter SRA records.
-- Searched and got a list of SRA packages.
-- Tested workflow with a few organisms.
-- Defined curation criteria: if unique, yes; if multiple, pick mixed tissues; if
-  tissue specific, merge multiple until 40M reads.
-- Running assemblies.
-
-**Plan:**
-- Continue building assemblies.
-- Solve issues like quality offset, no rRNA, too large samples, multiple
-  samples.
-- Define list of additional RNAseq assemblies.
-- Define list of additional genomic assemblies.
-- Study phylogenetics.
