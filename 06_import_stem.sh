@@ -1,3 +1,7 @@
+#!/bin/bash
+
+set -e
+
 # Format STEM table of genes for R.
 sh format_from_stem.sh
 
