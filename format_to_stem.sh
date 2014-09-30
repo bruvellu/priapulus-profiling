@@ -1,5 +1,5 @@
 # Input/Output files.
-INPUT=average
+INPUT=stem/avg_data_norm.tsv
 OUTPUT=stem/avg_stem_input
 
 # This script will automatically formats average counts for STEM analysis. Note

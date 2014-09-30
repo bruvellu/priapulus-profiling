@@ -16,4 +16,4 @@ rownames(avg_data_norm) <- merged_data[,1]
 merged_data <- cbind(merged_data, avg_data_norm)
 
 # Write file with average data for STEM input.
-write.table(avg_data_norm, "average")
+write.table(avg_data_norm, "stem/avg_data_norm.tsv")
