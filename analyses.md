@@ -7,7 +7,7 @@ Based on [Helm et al. 2013](http://www.biomedcentral.com/1471-2164/14/266)
 
 All 217.8 million reads from experiment (11 samples combined) and 464.4 million
 reads from reference reads passed Illumina chastity filter. Reference assembled
-with Agalma 0.3.5.
+with [Agalma 0.3.5](https://bitbucket.org/caseywdunn/agalma/downloads/agalma-0.3.5.tar.gz).
 
 
 Summary
