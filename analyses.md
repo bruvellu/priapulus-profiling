@@ -20,11 +20,11 @@ counts for each transcript of every sample.
 3. [02_import_to_r.sh](02_import_to_r.sh) Load read counts and build main data
 frame in R.
 4. [03_normalize.sh](03_normalize.sh) Normalize data with edgeR.
-5. [04_stem_profiles.sh](04_stem_profiles.sh) Calculate average for STEM
-analysis.
-6. [05_import_stem.sh](05_import_stem.sh) Import STEM output to R again.
-7. [06_plot_replicates.sh](06_plot_replicates.sh) Build scatter plots between
+5. [04_plot_replicates.sh](04_plot_replicates.sh) Build scatter plots between
 replicates.
+6. [05_stem_profiles.sh](05_stem_profiles.sh) Calculate average for STEM
+analysis.
+7. [06_import_stem.sh](06_import_stem.sh) Import STEM output to R again.
 8. [07_test_expression.sh](07_test_expression.sh) Use edgeR to calculate the
 confidence for differential gene expression.
 9. [08_plot_de_genes.sh](08_plot_de_genes.sh) Plot fold change per read counts.
@@ -84,6 +84,15 @@ million" dividing 1 million by the effective size. Use multiplier against counts
 
 TODO: Is there a way to do it on Python? Check function for calculating the
 normalization factor.
+
+Replicate plots
+---------------
+
+Plotting the normalized average count between replicates, except for 7d sample.
+
+![Scatter plots between replicates](plots/rep_plots.png)
+
+**Source:** [build_scatter_plots.r](build_scatter_plots.r)
 
 STEM analysis
 -------------
@@ -153,15 +162,6 @@ back into R. The script below was made for that:
 Put STEM profiles into R and merge with main data frame.
 
 **Source:** [stem_import.r](stem_import.r)
-
-Replicate plots
----------------
-
-Plotting the normalized average count between replicates, except for 7d sample.
-
-![Scatter plots between replicates](plots/rep_plots.png)
-
-**Source:** [build_scatter_plots.r](build_scatter_plots.r)
 
 Differential expression
 -----------------------
