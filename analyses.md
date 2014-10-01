@@ -35,11 +35,11 @@ Mapping reads
 
 Build reference index using `bowtie2-build`:
 
-    /usr/local/src/bowtie2-2.0.0-beta7/bowtie2-build reference/Pc_ref.fa reference/Pc_ref > reference/bowtie2-build.log 2>&1 &
+    /usr/local/src/bowtie2-2.2.3/bowtie2-build reference/Pc_ref.fa reference/Pc_ref > reference/bowtie2-build.out 2>&1 &
 
 Map each sample to reference. Example below:
 
-    /usr/local/src/bowtie2-2.0.0-beta7/bowtie2 --phred33 --very-sensitive-local -a -p 10 -x reference/Pc_ref -U data/Pc1_0d.txt.gz -S mapped_reads/Pc1_0d_bowtie.map > mapped_reads/Pc1_0d.log 2>&1 &
+    /usr/local/src/bowtie2-2.2.3/bowtie2 --phred33 --very-sensitive-local -a -p 8 -x reference/Pc_ref -U data/Pc1_0d.fastq.gz -S mapped_reads/Pc1_0d.sam > mapped_reads/Pc1_0d.out 2>&1 &
     ...
 
 Calculate read counts
