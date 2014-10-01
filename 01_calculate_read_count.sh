@@ -14,3 +14,4 @@ python bowtie_map_to_counts.py mapped_reads/Pc2_3d.sam > read_counts/Pc2_3d.coun
 python bowtie_map_to_counts.py mapped_reads/Pc2_5d.sam > read_counts/Pc2_5d.counts &
 python bowtie_map_to_counts.py mapped_reads/Pc2_7d.sam > read_counts/Pc2_7d.counts &
 python bowtie_map_to_counts.py mapped_reads/Pc2_9d.sam > read_counts/Pc2_9d.counts &
+wait
