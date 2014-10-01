@@ -260,36 +260,3 @@ merged_data$logCPM_7d_9d <- NULL
 # Merge differential expression into matrix.
 merged_data <- merge(merged_data, merged_dge, by.x="reference", by.y="transcript", all=TRUE)
 # TODO Is there a need to sort?
-
-# Select differentially expressed genes for each interval.
-
-# 0d - 1d; increasing (logFC>0), significant (PAdjust<0.05), excluding NA.
-i1 <- merged_data[(merged_data$logFC_0d_1d > 0) & (merged_data$PAdjust_0d_1d < 0.05) & (!is.na(merged_data$PAdjust_0d_1d)),]
-d1 <- merged_data[(merged_data$logFC_0d_1d < 0) & (merged_data$PAdjust_0d_1d < 0.05) & (!is.na(merged_data$PAdjust_0d_1d)),]
-
-# 1d - 3d; increasing (logFC>0), significant (PAdjust<0.05), excluding NA.
-i2 <- merged_data[(merged_data$logFC_1d_3d > 0) & (merged_data$PAdjust_1d_3d < 0.05) & (!is.na(merged_data$PAdjust_1d_3d)),]
-d2 <- merged_data[(merged_data$logFC_1d_3d < 0) & (merged_data$PAdjust_1d_3d < 0.05) & (!is.na(merged_data$PAdjust_1d_3d)),]
-
-# 3d - 5d; increasing (logFC>0), significant (PAdjust<0.05), excluding NA.
-i3 <- merged_data[(merged_data$logFC_3d_5d > 0) & (merged_data$PAdjust_3d_5d < 0.05) & (!is.na(merged_data$PAdjust_3d_5d)),]
-d3 <- merged_data[(merged_data$logFC_3d_5d < 0) & (merged_data$PAdjust_3d_5d < 0.05) & (!is.na(merged_data$PAdjust_3d_5d)),]
-
-# 5d - 7d; increasing (logFC>0), significant (PAdjust<0.05), excluding NA.
-i4 <- merged_data[(merged_data$logFC_5d_7d > 0) & (merged_data$PAdjust_5d_7d < 0.05) & (!is.na(merged_data$PAdjust_5d_7d)),]
-d4 <- merged_data[(merged_data$logFC_5d_7d < 0) & (merged_data$PAdjust_5d_7d < 0.05) & (!is.na(merged_data$PAdjust_5d_7d)),]
-
-# 7d - 9d; increasing (logFC>0), significant (PAdjust<0.05), excluding NA.
-i5 <- merged_data[(merged_data$logFC_7d_9d > 0) & (merged_data$PAdjust_7d_9d < 0.05) & (!is.na(merged_data$PAdjust_7d_9d)),]
-d5 <- merged_data[(merged_data$logFC_7d_9d < 0) & (merged_data$PAdjust_7d_9d < 0.05) & (!is.na(merged_data$PAdjust_7d_9d)),]
-
-# Count increasing and decreasing genes per interval.
-I1 <- c(nrow(i1),-(nrow(d1)))
-I2 <- c(nrow(i2),-(nrow(d2)))
-I3 <- c(nrow(i3),-(nrow(d3)))
-I4 <- c(nrow(i4),-(nrow(d4)))
-I5 <- c(nrow(i5),-(nrow(d5)))
-
-# Save counts into a data frame.
-de_counts <- data.frame(I1, I2, I3, I4, I5)
-
