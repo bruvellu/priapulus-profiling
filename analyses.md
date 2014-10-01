@@ -94,6 +94,39 @@ Plotting the normalized average count between replicates, except for 7d sample.
 
 **Source:** [build_scatter_plots.r](build_scatter_plots.r)
 
+Differential expression
+-----------------------
+
+This scripts runs step-by-step the test for differential gene expression as follows:
+
+1. Subset read counts by interval and define available time points.
+2. Create DGEList object for running the test.
+3. Calculate the normalization factor and dispersion.
+4. Run test and output a table with counts of significant genes.
+
+**Source:** [test_deg.r](test_deg.r)
+
+Dispersion values and number of differentially expressed genes was calculated
+for each interval:
+
+| interval | dispersion | bcv    | genes up | genes down
+| :------: | :--------: | :-:    | :------: | :--------:
+| 0d_1d    | 0.43092    | 0.6564 | 2        | -2
+| 1d_3d    | 0.32958    | 0.5741 | 1026     | -283
+| 3d_5d    | 0.26231    | 0.5122 | 230      | -1
+| 5d_7d    | 0.21773    | 0.4666 | 440      | -7
+| 7d_9d    | 0.15213    | 0.39   | 41       | 348
+
+**Source:** [count_deg.r](count_deg.r)
+
+### Plots (full dataset)
+
+![de_genes](plots/de_genes.png)
+
+**Source:** [build_de_plots.r](build_de_plots.r)
+
+TODO: Think of different ways to visualize time course.
+
 STEM analysis
 -------------
 
@@ -163,57 +196,36 @@ Put STEM profiles into R and merge with main data frame.
 
 **Source:** [stem_import.r](stem_import.r)
 
-Differential expression
------------------------
-
-This scripts runs step-by-step the test for differential gene expression as follows:
-
-1. Subset read counts by interval and define available time points.
-2. Create DGEList object for running the test.
-3. Calculate the normalization factor and dispersion.
-4. Run test and output a table with counts of significant genes.
-
-**Source:** [test_dge.r](test_dge.r)
-
-Dispersion values for each interval:
-
-| interval | dispersion | bcv
-| :------: | :--------: | :-:
-| 0d_1d    | 0.43092    | 0.6564
-| 1d_3d    | 0.32958    | 0.5741
-| 3d_5d    | 0.26231    | 0.5122
-| 5d_7d    | 0.21773    | 0.4666
-| 7d_9d    | 0.15213    | 0.39
-
-Plots for differentially expressed genes
-----------------------------------------
-
-### All genes
-![de_genes](plots/de_genes.png)
+### Plots (by profile)
 
 To get a better idea of how each STEM profile is behaving I have plotted the
 analysis only with the subsets of genes identified by profiles.
 
-### Profile 8
+#### Profile 8
 ![de_genes](plots/de_genes_stem_8.png)
-### Profile 39
+
+#### Profile 39
 ![de_genes](plots/de_genes_stem_39.png)
-### Profile 22
+
+#### Profile 22
 ![de_genes](plots/de_genes_stem_22.png)
-### Profile 31
+
+#### Profile 31
 ![de_genes](plots/de_genes_stem_31.png)
-### Profile 17
+
+#### Profile 17
 ![de_genes](plots/de_genes_stem_17.png)
-### Profile 18
+
+#### Profile 18
 ![de_genes](plots/de_genes_stem_18.png)
-### Profile 1
+
+#### Profile 1
 ![de_genes](plots/de_genes_stem_1.png)
-### Profile 25
+
+#### Profile 25
 ![de_genes](plots/de_genes_stem_25.png)
 
-**Source:** [build_de_plots.r](build_de_plots.r)
-
-TODO: Think of different ways to visualize time course.
+**Source:** [build_profile_plots.r](build_profile_plots.r)
 
 Gene Ontology
 -------------

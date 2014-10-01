@@ -8,7 +8,7 @@
 02_import_to_r.sh
 03_normalize.sh
 04_plot_replicates.sh
-05_stem_profiles.sh
-06_import_stem.sh
-07_test_expression.sh
-08_plot_de_genes.sh
+05_test_expression.sh
+06_plot_de_genes.sh
+07_prepare_stem.sh
+08_process_stem.sh
