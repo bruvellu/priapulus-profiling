@@ -22,12 +22,13 @@ frame in R.
 4. [03_normalize.sh](03_normalize.sh) Normalize data with edgeR.
 5. [04_plot_replicates.sh](04_plot_replicates.sh) Build scatter plots between
 replicates.
-6. [05_stem_profiles.sh](05_stem_profiles.sh) Calculate average for STEM
-analysis.
-7. [06_import_stem.sh](06_import_stem.sh) Import STEM output to R again.
-8. [07_test_expression.sh](07_test_expression.sh) Use edgeR to calculate the
+8. [05_test_expression.sh](07_test_expression.sh) Use edgeR to calculate the
 confidence for differential gene expression.
-9. [08_plot_de_genes.sh](08_plot_de_genes.sh) Plot fold change per read counts.
+9. [06_plot_de_genes.sh](08_plot_de_genes.sh) Plot fold change per read counts.
+6. [07_prepare_stem.sh](05_prepare_stem.sh) Calculate average for STEM
+analysis.
+7. [08_process_stem.sh](06_process_stem.sh) Import STEM output to R again,
+   process counts, and build plots.
 
 Mapping reads
 -------------
