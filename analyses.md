@@ -13,21 +13,30 @@ with [Agalma 0.3.5](https://bitbucket.org/caseywdunn/agalma/downloads/agalma-0.3
 Summary
 -------
 
-1. [00_map_to_reference.sh](00_map_to_reference.sh) Build reference assembly index
-and map reads to it with Bowtie2.
-2. [01_calculate_read_count.sh](01_calculate_read_count.sh) Calculate read
-counts for each transcript of every sample.
-3. [02_import_to_r.sh](02_import_to_r.sh) Load read counts and build main data
-frame in R.
-4. [03_normalize.sh](03_normalize.sh) Normalize data with edgeR.
-5. [04_plot_replicates.sh](04_plot_replicates.sh) Build scatter plots between
-replicates.
-8. [05_test_expression.sh](05_test_expression.sh) Use edgeR to calculate the
-confidence for differential gene expression.
-9. [06_plot_de_genes.sh](06_plot_de_genes.sh) Plot fold change per read counts.
-6. [07_prepare_stem.sh](07_prepare_stem.sh) Calculate average for STEM
-analysis.
-7. [08_process_stem.sh](08_process_stem.sh) Import STEM output to R again,
+### edgeR differential gene expression
+
+1. [00_map_to_reference.sh](00_map_to_reference.sh) Builds reference assembly
+   index and map reads to it with Bowtie2.
+2. [01_calculate_read_count.sh](01_calculate_read_count.sh) Calculates read
+   counts for each transcript of every sample.
+3. [02_import_to_r.sh](02_import_to_r.sh) Loads read counts and build main data
+   frame in R.
+4. [03_normalize.sh](03_normalize.sh) Normalizes data with edgeR.
+5. [04_plot_replicates.sh](04_plot_replicates.sh) Builds scatter plots between
+   replicates.
+6. [05_test_expression.sh](05_test_expression.sh) Uses edgeR to calculate the
+   confidence for differential gene expression.
+7. [06_plot_de_genes.sh](06_plot_de_genes.sh) Plots fold change per read counts.
+
+### STEM analysis
+
+1. [00_prepare_stem.sh](stem_analysis/00_prepare_stem.sh) Calculates average for
+   STEM analysis.
+2. [01_format_to_stem.sh](stem_analysis/01_format_to_stem.sh) Formats R table
+   to be used as STEM input.
+3. [02_format_from_stem.sh](stem_analysis/02_format_from_stem.sh) Formats STEM
+   output to be imported back into R, including individual profiles.
+4. [03_process_stem.sh](stem_analysis/03_process_stem.sh) Import STEM output to R again,
    process counts, and build plots.
 
 Mapping reads
@@ -134,17 +143,17 @@ STEM analysis
 Calculate the average for read counts between replicates. Bind data to main
 data frame and write table to be used for the STEM analysis.
 
-**Source:** [stem_prepare.r](stem_prepare.r)
+**Source:** [stem_prepare.r](stem_analysis/stem_prepare.r)
 
 Format of the output average file needs to be adjusted using regular expressions.
 
-**Source:** [format_to_stem.sh](format_to_stem.sh)
+**Source:** [format_to_stem.sh](stem_analysis/01_format_to_stem.sh)
 
 Run STEM with the following command:
 
     java -mx1024M -jar ~/src/stem/stem.jar
 
-Default settings used as shown below (see [complete output](stem/stem_output)):
+Default settings used as shown below (see [complete output](stem_analysis/stem_output)):
 
     #Main Input:
     Data_File   /home/nelas/Biologia/Doutorado/Priapulus/rna/RNAseq_profiling/stem/avg_stem_input
@@ -164,7 +173,7 @@ From the initial 58133 transcripts, STEM filtered out 33023 while 25110 passed
 the filter. Below are the profiles found ordered by transcript abundance and
 significance:
 
-![Priapulus caudatus STEM Profiles](stem/Pcau_stem.png)
+![Priapulus caudatus STEM Profiles](stem_analysis/Pcau_stem.png)
 
 Relevant profiles:
 
@@ -178,24 +187,26 @@ Relevant profiles:
 | [profile 17][profile_17] and [18][profile_18]  | low during cleavage, then up              |
 | [profile 1][profile_1]                         | low expression since cleavage             |
 
-[profile_8]: stem/profile_8
-[profile_39]: stem/profile_39
-[profile_31]: stem/profile_31
-[profile_25]: stem/profile_25
-[profile_22]: stem/profile_22
-[profile_17]: stem/profile_17
-[profile_18]: stem/profile_18
-[profile_1]: stem/profile_1
+[profile_8]: stem_analysis/profile_8
+[profile_39]: stem_analysis/profile_39
+[profile_31]: stem_analysis/profile_31
+[profile_25]: stem_analysis/profile_25
+[profile_22]: stem_analysis/profile_22
+[profile_17]: stem_analysis/profile_17
+[profile_18]: stem_analysis/profile_18
+[profile_1]: stem_analysis/profile_1
 
 Output file was created manually by saving the **Main Table for Genes Passing
-Filter** as `genes_passing_filter`. This file needs to be edited to be imported
-back into R. The script below was made for that:
+Filter** as `genes_passing_filter`. Individual profiles were selected and save
+to the folder [stem_analysis/profiles](stem_analysis/profiles). These files
+need to be edited to be imported back into R. The script below was made for
+that:
 
-**Source:** [format_from_stem.sh](format_from_stem.sh)
+**Source:** [format_from_stem.sh](stem_analysis/02_format_from_stem.sh)
 
 Put STEM profiles into R and merge with main data frame.
 
-**Source:** [stem_import.r](stem_import.r)
+**Source:** [stem_import.r](stem_analysis/stem_import.r)
 
 ### Plots (by profile)
 
