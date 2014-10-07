@@ -18,15 +18,6 @@ tp_0d1d <- data.frame(Sample=colnames(data_0d1d), time_points)
 dge_0d1d <- DGEList(counts=data_0d1d, group=tp_0d1d$time_points)
 colnames(dge_0d1d) <- tp_0d1d$Sample
 
-# Filter counts?
-##filter read with no/low counts
-#keep <- rowSums(cpm(y)) >= 2
-#y <- y[keep,]
-#
-##update library sizes
-#y$samples$lib.size <- colSums(y$counts)
-#dim(y)
-
 # Calculate normalization factor.
 dge_0d1d <- calcNormFactors(dge_0d1d)
 
@@ -62,15 +53,6 @@ tp_1d3d <- data.frame(Sample=colnames(data_1d3d), time_points)
 # Object for running the test.
 dge_1d3d <- DGEList(counts=data_1d3d, group=tp_1d3d$time_points)
 colnames(dge_1d3d) <- tp_1d3d$Sample
-
-# Filter counts?
-##filter read with no/low counts
-#keep <- rowSums(cpm(y)) >= 2
-#y <- y[keep,]
-#
-##update library sizes
-#y$samples$lib.size <- colSums(y$counts)
-#dim(y)
 
 # Calculate normalization factor.
 dge_1d3d <- calcNormFactors(dge_1d3d)
@@ -108,15 +90,6 @@ tp_3d5d <- data.frame(Sample=colnames(data_3d5d), time_points)
 dge_3d5d <- DGEList(counts=data_3d5d, group=tp_3d5d$time_points)
 colnames(dge_3d5d) <- tp_3d5d$Sample
 
-# Filter counts?
-##filter read with no/low counts
-#keep <- rowSums(cpm(y)) >= 2
-#y <- y[keep,]
-#
-##update library sizes
-#y$samples$lib.size <- colSums(y$counts)
-#dim(y)
-
 # Calculate normalization factor.
 dge_3d5d <- calcNormFactors(dge_3d5d)
 
@@ -153,15 +126,6 @@ tp_5d7d <- data.frame(Sample=colnames(data_5d7d), time_points)
 dge_5d7d <- DGEList(counts=data_5d7d, group=tp_5d7d$time_points)
 colnames(dge_5d7d) <- tp_5d7d$Sample
 
-# Filter counts?
-##filter read with no/low counts
-#keep <- rowSums(cpm(y)) >= 2
-#y <- y[keep,]
-#
-##update library sizes
-#y$samples$lib.size <- colSums(y$counts)
-#dim(y)
-
 # Calculate normalization factor.
 dge_5d7d <- calcNormFactors(dge_5d7d)
 
@@ -197,15 +161,6 @@ tp_7d9d <- data.frame(Sample=colnames(data_7d9d), time_points)
 # Object for running the test.
 dge_7d9d <- DGEList(counts=data_7d9d, group=tp_7d9d$time_points)
 colnames(dge_7d9d) <- tp_7d9d$Sample
-
-# Filter counts?
-##filter read with no/low counts
-#keep <- rowSums(cpm(y)) >= 2
-#y <- y[keep,]
-#
-##update library sizes
-#y$samples$lib.size <- colSums(y$counts)
-#dim(y)
 
 # Calculate normalization factor.
 dge_7d9d <- calcNormFactors(dge_7d9d)
@@ -259,4 +214,3 @@ merged_data$logCPM_7d_9d <- NULL
 
 # Merge differential expression into matrix.
 merged_data <- merge(merged_data, merged_dge, by.x="reference", by.y="transcript", all=TRUE)
-# TODO Is there a need to sort?
