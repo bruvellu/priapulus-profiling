@@ -1,4 +1,7 @@
-profiler <- function(transcript) {
+# Get arguments.
+#args <- commandArgs(trailingOnly=TRUE)
+
+profiler <- function(transcript, outdir) {
     print(transcript)
 
     # Create subset for transcript.
@@ -13,9 +16,12 @@ profiler <- function(transcript) {
     log_fc <- c(t_subset$logFC_0d_1d, t_subset$logFC_1d_3d,
                 t_subset$logFC_3d_5d, t_subset$logFC_5d_7d,
                 t_subset$logFC_7d_9d)
-    print(log_fc)
+
+    # Build file path.
+    filepath <- file.path(outdir, paste0(transcript, ".png"))
 
     # Plot average values per time point.
+    png(filepath)
     plot(avg_vector, main=transcript, ylab="Average of Normalized Counts", xlab="Time Points", pch=1, xaxt="n")
     axis(1, 1:length(avg_vector), c("0d", "1d", "3d", "5d", "7d", "9d"))
 
@@ -36,6 +42,8 @@ profiler <- function(transcript) {
                                        (avg_vector[4] + avg_vector[5]) / 2,
                                        (avg_vector[5] + avg_vector[6]) / 2),
          labels=as.character(round(log_fc, digits=1)), pos=1)
+
+    dev.off()
 }
 
 get_color <- function(pvalue) {
@@ -46,5 +54,18 @@ get_color <- function(pvalue) {
         return("black")
     }
 }
+
+#if (length(args) < 1) {
+    #print("No arguments.")
+#} else {
+    ## Show arguments.
+    #print(paste("Args:", args[1], args[2]))
+    ## Import vector with transcript names.
+    #source(args[1])
+    ## Loop over transcripts and plot.
+    #for (transcript in transcripts) {
+        #profiler(transcript, args[2])
+    #}
+#}
 
 # TODO Load profile category into merged_data.
