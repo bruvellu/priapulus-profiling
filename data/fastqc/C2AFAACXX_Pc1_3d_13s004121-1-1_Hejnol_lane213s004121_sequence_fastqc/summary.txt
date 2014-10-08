@@ -1,0 +1,11 @@
+PASS	Basic Statistics	C2AFAACXX_Pc1_3d_13s004121-1-1_Hejnol_lane213s004121_sequence.txt.gz
+PASS	Per base sequence quality	C2AFAACXX_Pc1_3d_13s004121-1-1_Hejnol_lane213s004121_sequence.txt.gz
+PASS	Per sequence quality scores	C2AFAACXX_Pc1_3d_13s004121-1-1_Hejnol_lane213s004121_sequence.txt.gz
+FAIL	Per base sequence content	C2AFAACXX_Pc1_3d_13s004121-1-1_Hejnol_lane213s004121_sequence.txt.gz
+FAIL	Per base GC content	C2AFAACXX_Pc1_3d_13s004121-1-1_Hejnol_lane213s004121_sequence.txt.gz
+FAIL	Per sequence GC content	C2AFAACXX_Pc1_3d_13s004121-1-1_Hejnol_lane213s004121_sequence.txt.gz
+PASS	Per base N content	C2AFAACXX_Pc1_3d_13s004121-1-1_Hejnol_lane213s004121_sequence.txt.gz
+PASS	Sequence Length Distribution	C2AFAACXX_Pc1_3d_13s004121-1-1_Hejnol_lane213s004121_sequence.txt.gz
+FAIL	Sequence Duplication Levels	C2AFAACXX_Pc1_3d_13s004121-1-1_Hejnol_lane213s004121_sequence.txt.gz
+FAIL	Overrepresented sequences	C2AFAACXX_Pc1_3d_13s004121-1-1_Hejnol_lane213s004121_sequence.txt.gz
+FAIL	Kmer Content	C2AFAACXX_Pc1_3d_13s004121-1-1_Hejnol_lane213s004121_sequence.txt.gz
