@@ -36,4 +36,5 @@ names(merged_data) <- c("reference", "count_Pc1_0d", "count_Pc2_0d", "count_Pc1_
 # Name rows with transcript name.
 rownames(merged_data) <- merged_data[,1]
 
-# TODO Remember to remove counts for unmapped transcripts (*).
+# Remove counts for unmapped transcripts (*).
+merged_data <- subset(merged_data, reference != "*")
