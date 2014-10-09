@@ -21,7 +21,7 @@ profiler <- function(transcript, outdir) {
     filepath <- file.path(outdir, paste0(transcript, ".png"))
 
     # Plot average values per time point.
-    png(filepath)
+    png(filepath, width=1000, height=1000, units="px")
     plot(avg_vector, main=transcript, ylab="Average of Normalized Counts", xlab="Time Points", pch=1, xaxt="n")
     axis(1, 1:length(avg_vector), c("0d", "1d", "3d", "5d", "7d", "9d"))
 
