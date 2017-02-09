@@ -42,13 +42,13 @@ An aliquot of every RNA sample above was pooled together for the deep
 sequencing of a reference transcriptome. We used a full lane of Illumina
 HiSeq2000 to sequence 100bp paired end reads.
 
-| Paired ends  | reads                       |
-| :---------:  | :---:                       |
-| PcauRNAseq_1 | [232,220,195][PcauRNAseq_1] |
-| PcauRNAseq_2 | [232,220,195][PcauRNAseq_2] |
+| Paired ends  | reads                 |
+| :---------:  | :---:                 |
+| Pcau_1       | [232,220,195][Pcau_1] |
+| Pcau_2       | [232,220,195][Pcau_2] |
 
-[PcauRNAseq_1]: https://dl.dropboxusercontent.com/u/203439/priapulus_caudatus/PcauRNAseq_1_fastqc/fastqc_report.html
-[PcauRNAseq_2]: https://dl.dropboxusercontent.com/u/203439/priapulus_caudatus/PcauRNAseq_2_fastqc/fastqc_report.html
+[Pcau_1]: data/Pcau_1_fastqc.html
+[Pcau_2]: data/Pcau_2_fastqc.html
 
 ## Individual developmental stages for expression quantification
 
