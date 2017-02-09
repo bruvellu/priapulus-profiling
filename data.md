@@ -47,8 +47,8 @@ HiSeq2000 to sequence 100bp paired end reads.
 | Pcau_1       | [232,220,195][Pcau_1] |
 | Pcau_2       | [232,220,195][Pcau_2] |
 
-[Pcau_1]: data/Pcau_1_fastqc.html
-[Pcau_2]: data/Pcau_2_fastqc.html
+[Pcau_1]: rnaseq/Pcau_1_fastqc.html
+[Pcau_2]: rnaseq/Pcau_2_fastqc.html
 
 ## Individual developmental stages for expression quantification
 
