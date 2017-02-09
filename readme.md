@@ -1,4 +1,4 @@
-# Dynamics of gene expression in the development of the penis worm _Priapulus caudatus_
+# Developmental dynamics of gene expression in the penis worm _Priapulus caudatus_
 
 
 _Priapulus caudatus_ is a mud-dwelling marine predator best known as the _penis
