@@ -1,30 +1,14 @@
-Gene expression profiling of priapulid development
-==================================================
+# Dynamics of gene expression in the development of the penis worm _Priapulus caudatus_
 
-**Objective:** characterize differentially expressed genes during the
-development of a priapulid worm using RNAseq data. [Read
-more.](description.md)
 
-**Progress:**
-- Fixed Fritzen's installation quirks for Agalma.
-- Assembled new reference with Agalma 0.3.5.
-- Prepared data, calculated read counts, replicate plots.
-- Generated STEM profiles.
-- Ran differential expression analysis and got significant change in expression
-  for many genes that correlate with developmental events.
-- Started playing with visualizing the data.
-
-**Plan:**
-- Consolidate data analyses and differentially expressed genes.
-    - Review RNAseq literature and get to know all the caveats of RNAseq and
-      differential expression analyses.
-    - Thoroughly understand the statistical strength and weaknesses of the data,
-      including all implicit assumptions.
-    - Delineate the assumptions of the data and how the differential expression test
-      is being executed.
-    - Try different DE methods.
-- Annotate genes with Gene Ontology and merge with results.
-- Select relevant developmental pathways and describe gene activity.
-- Explore the possibility of comparing with data sets of other species.
-- Think about data visualization.
-
+_Priapulus caudatus_ is a mud-dwelling marine predator best known as the _penis
+worm_. Priapulids have a key phylogenetic position in the animal tree of life.
+They belong to the Ecdysozoa -- or, the animals that molt -- together with the
+arthropods and nematode worms. We know in exceptional detail how flies and
+nematodes develop, but surprisingly little about gene activity in the priapulid
+embryo and how it compares to other ecdysozoans. Here we characterize the
+developmental dynamics of gene expression in _P. caudatus_ using RNA-seq data
+and compare to the gene activity in the fly _Drosophila melanogaster_ and in
+the nematode _Caenorhabditis elegans_ development. The comparative study of
+priapulid development is important to understand the evolution of ecdysozoan
+development.
