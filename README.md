@@ -3,7 +3,7 @@
 
 _Priapulus caudatus_ is a mud-dwelling marine predator best known as the _penis
 worm_. Priapulids have a key phylogenetic position in the animal tree of life.
-They belong to the Ecdysozoa -- or, the animals that molt -- together with the
+They belong to the Ecdysozoa – the animals that molt – together with the
 arthropods and nematode worms. We know in exceptional detail how flies and
 nematodes develop, but surprisingly little about gene activity in the priapulid
 embryo and how it compares to other ecdysozoans. Here we characterize the
